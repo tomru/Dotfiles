@@ -171,4 +171,9 @@ autoload -U promptinit
 promptinit
 
 # Use the wunjo prompt theme
-prompt clint 
+prompt adam2 
+
+if [ -f $HOME/.local_profile ]
+then
+    . HOME/.local_profile
+fi
