@@ -1,72 +1,7 @@
 # my own confs
 
-### check for DIST
-if [ -f /etc/redhat-release ]; then
-  DIST="redhat"
-elif [ -f /etc/debian_version ]; then
-  DIST="debian"
-elif [ -f /etc/gentoo-release ] || [ -f /usr/bin/emerge ]; then
-  DIST="gentoo"
-elif [ -f /etc/arch-release ]; then
-  DIST="arch"
-fi
-
-### check for DOMAINNAME
-DOMAINNAME=$(dnsdomainname 2>/dev/null || hostname -d)
-case "${DOMAINNAME}" in
-
-   stratoserver.net*)
-   ;;
-
-   *)
-   ;;
-esac
-
-### check for HOSTNAME
-HOSTNAME=$(hostname 2>/dev/null || hostname -f)
-case "${HOSTNAME}" in
-
-   h1450889.stratoserver.net*)
-   ;;
-   igrats.de*)
-   ;;
-   *)
-   ;;
-
-esac
-
-
 # vim keyset
 bindkey -v
-
-## get keys working
-# found at http://maxime.ritter.eu.org/stuff/zshrc
-case $TERM in 
-  linux)
-  bindkey "^[[2~" yank
-  bindkey "^[[3~" delete-char
-  bindkey "^[[5~" up-line-or-history ## PageUp
-  bindkey "^[[6~" down-line-or-history ## PageDown
-  bindkey "^[[1~" beginning-of-line
-  bindkey "^[[4~" end-of-line
-  bindkey "^[e" expand-cmd-path ## C-e for expanding path of typed command
-  bindkey "^[[A" up-line-or-search ## up arrow for back-history-search
-  bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
-  bindkey " " magic-space ## do history expansion on space
-;;
-  *xterm*|rxvt|(dt|k|E)term)
-  bindkey "^[[2~" yank
-  bindkey "^[[3~" delete-char
-  bindkey "^[[5~" up-line-or-history ## PageUp
-  bindkey "^[[6~" down-line-or-history ## PageDown
-  bindkey "^[[7~" beginning-of-line
-  bindkey "^[[8~" end-of-line
-  bindkey "^[e" expand-cmd-path ## C-e for expanding path of typed command
-  bindkey "^[[A" up-line-or-search ## up arrow for back-history-search
-  bindkey "^[[B" down-line-or-search ## down arrow for fwd-history-search
-  bindkey " " magic-space ## do history expansion on space
-;;
-esac
 
 # no freakin' beeeep
 unsetopt beep
@@ -88,6 +23,33 @@ setopt HIST_VERIFY
 
 # Alias
 alias ls="ls --color=auto -T 0"
+
+## get keys working
+bindkey "^[[2~" yank                    # Insert
+bindkey "^[[3~" delete-char             # Del
+bindkey "^[[5~" up-line-or-history      # PageUp
+bindkey "^[[6~" down-line-or-history    # PageDown
+bindkey "^[e"   expand-cmd-path         # C-e for expanding path of typed command.
+bindkey "^[[A"  up-line-or-search       # Up arrow for back-history-search.
+bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
+bindkey " "     magic-space             # Do history expansion on space.
+case "$TERM" in
+        linux|screen)
+                bindkey "^[[1~" beginning-of-line       # Pos1
+                bindkey "^[[4~" end-of-line             # End
+        ;;
+        *xterm*|(dt|k)term)
+                bindkey "^[[H"  beginning-of-line       # Pos1
+                bindkey "^[[F"  end-of-line             # End
+                bindkey "^[[7~" beginning-of-line       # Pos1
+                bindkey "^[[8~" end-of-line             # End
+        ;;
+        rxvt|Eterm)
+                bindkey "^[[7~" beginning-of-line       # Pos1
+                bindkey "^[[8~" end-of-line             # End
+        ;;
+esac
+
 
 # Completion
 zmodload -i zsh/complist
@@ -112,11 +74,6 @@ zstyle ':completion:*:*:kill:*:jobs' verbose yes
 
 autoload -U sched
 
-
-# From the zshwiki. Hide CVS files/directores from being completed.
-zstyle ':completion:*:(all-|)files' ignored-patterns '(|*/)CVS'
-zstyle ':completion:*:cd:*' ignored-patterns '(*/)#CVS'
-
 # insert all expansions for expand completer
 zstyle ':completion:*:expand:*' tag-order all-expansions
 
@@ -135,7 +92,6 @@ setopt nocorrectall
 
 setopt interactivecomments
 
-
 setopt extendedglob
 
 setopt EXTENDEDGLOB     # file globbing is awesome
@@ -149,18 +105,6 @@ setopt AUTO_NAME_DIRS   # change directories  to variable names
 setopt CHASE_LINKS      # if you pwd from a symlink, you get the actual path
 setopt AUTO_CONTINUE    # automatically sent a CONT signal by disown
 setopt LONG_LIST_JOBS   # List jobs in the long format by default
-
-
-# prompt
-if test -z $SSH_TTY
-then
-  PROMPT=$'%{\e[01;32m%}\%j,%{\e[01;36m%}%m.%l,%{\e[01;34m%}%?,%{\e[01;33m%}\%1~ %{\e[01;32m%}$%{\e[0m%} '
-  [ $UID = 0 ] && export PROMPT=$'%{\e[0;31m%}[%{\e[0m%}%n%{\e[0;31m%}@%{\e[0m%}%m%{\e[0;31m%}:%{\e[0m%}%~%{\e[0;31m%}]%{\e[0m%}%# '
-else
-  PROMPT=$'%{\e[01;32m%}\%j,%{\e[01;36m%}%m,%{\e[01;34m%}%?,%{\e[01;33m%}\%1~ %{\e[01;32m%}$%{\e[0m%} '
-  [ $UID = 0 ] && export PROMPT=$'%{\e[0;31m%}[%{\e[0m%}%n%{\e[0;31m%}@%{\e[0m%}%m%{\e[0;31m%}:%{\e[0m%}%~%{\e[0;31m%}]%{\e[0m%}%# '
-fi
-
 
 # zgitinit and prompt_wunjo_setup must be somewhere in your $fpath, see README for more.
 
