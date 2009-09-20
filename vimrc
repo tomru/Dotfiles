@@ -15,26 +15,6 @@ set background=dark
 " always show ruler
 set ruler
 
-" search related settings
-
-" show parial pattern matches in real time
-set incsearch
-" I like highlighted search pattern
-set hlsearch
-" search for upper and lowercase
-set ignorecase
-" but if user type uppercase - search exaclty
-set smartcase
-
-" no backup, we got scm :)
-set nobackup
-
-"use a scrollable menu for filename completions
-set wildmenu
-
-"ignore class and object files
-set wildignore=*.class,*.o,*.bak,*.swp,*.pyc
-
 "of course
 syntax on
 
@@ -47,6 +27,30 @@ set titlestring=%<%F\ %M%=%l/%L\ -\ %p%% titlelen=70
 " display linenumber
 set number
 
+
+" search related settings
+
+" show parial pattern matches in real time
+set incsearch
+" I like highlighted search pattern
+set hlsearch
+" search for upper and lowercase
+set ignorecase
+" but if user type uppercase - search exaclty
+set smartcase
+
+
+" no backup, we got scm :)
+set nobackup
+
+"use a scrollable menu for filename completions
+set wildmenu
+
+"ignore class and object files
+set wildignore=*.class,*.o,*.bak,*.swp,*.pyc
+
+
+" spelling stuff
 if version >= 700
   " spelling files:
   " http://ftp.vim.org/pub/vim/runtime/spell/
@@ -66,7 +70,7 @@ endif
 "maximum mumber of undos
 set undolevels=1000
 
-" indent stuff, tab stuff
+" indent stuff, tab stuff for all files
 set autoindent
 set smartindent
 set tabstop=4
@@ -76,10 +80,29 @@ set shiftwidth=4
 " no swp file cluttering in workdir
 set directory=~/.vimswp
 
+"I need more information
+set statusline=%<%F%=\ [%1*%M%*%n%R%H%Y]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b''%03B'
+"always show statusline
+set laststatus=2
+
+"modus (insert,visual ...)
+highlight modeMsg	    cterm=bold ctermfg=white  ctermbg=blue
+"active statusLine
+highlight statusLine  	cterm=bold ctermfg=yellow ctermbg=red 
+"inactive statusLine
+highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
+"visual mode
+highlight visual		cterm=bold ctermfg=yellow ctermbg=red
+"cursor colors
+highlight cursor        cterm=bold 
+"vertical line on split screen
+highlight VertSplit     cterm=bold ctermfg=yellow ctermbg=yellow
+
+" highlight spell errors
+highlight SpellErrors ctermfg=Red cterm=underline term=reverse
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATING
-
-
 
 
 if has("autocmd")
@@ -127,7 +150,7 @@ if has("autocmd")
 
   "for both CSS and HTML, use genuine tab characters for indentation, to make
   "files a few bytes smaller:
-  autocmd FileType html,css set noexpandtab tabstop=2
+  autocmd FileType html,css set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 
   "in makefiles, don't expand tabs to spaces, since actual tab characters are
   "needed, and have indentation at 8 chars to be sure that all indents are tabs
@@ -136,29 +159,6 @@ if has("autocmd")
   autocmd FileType automake set noexpandtab shiftwidth=8
 
 endif " has("autocmd")
-
-
-
-"I need more information
-set statusline=%<%F%=\ [%1*%M%*%n%R%H%Y]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b''%03B'
-"always show statusline
-set laststatus=2
-
-"modus (insert,visual ...)
-highlight modeMsg	    cterm=bold ctermfg=white  ctermbg=blue
-"active statusLine
-highlight statusLine  	cterm=bold ctermfg=yellow ctermbg=red 
-"inactive statusLine
-highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
-"visual mode
-highlight visual		cterm=bold ctermfg=yellow ctermbg=red
-"cursor colors
-highlight cursor        cterm=bold 
-"vertical line on split screen
-highlight VertSplit     cterm=bold ctermfg=yellow ctermbg=yellow
-
-" highlight spell errors
-highlight SpellErrors ctermfg=Red cterm=underline term=reverse
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
