@@ -39,6 +39,8 @@ case "$TERM" in
                 bindkey "^[[4~" end-of-line             # End
         ;;
         *xterm*|(dt|k)term)
+                bindkey "\eOH"  beginning-of-line       # Pos1
+                bindkey "\eOF"  end-of-line             # End
                 bindkey "^[[H"  beginning-of-line       # Pos1
                 bindkey "^[[F"  end-of-line             # End
                 bindkey "^[[7~" beginning-of-line       # Pos1
