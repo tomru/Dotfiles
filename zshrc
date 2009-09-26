@@ -56,11 +56,9 @@ zmodload -i zsh/complist
 
 # display colored directory entries
 # display current dircolors with dircolors -p
-if [ -f ${HOME}/.dir_colors ]
-then
+if [ -f ${HOME}/.dir_colors ] ; then
     eval $(dircolors -b ${HOME}/.dir_colors)
-elif [ -f /etc/DIR_COLORS ]
-then
+elif [ -f /etc/DIR_COLORS ] ; then
     eval $(dircolors -b /etc/DIR_COLORS)
 fi
 
@@ -117,12 +115,12 @@ promptinit
 # Use the wunjo prompt theme
 prompt adam2 
 
-if [ -f $HOME/.local_profile ] then
+if [ -f $HOME/.local_profile ] ; then
     . $HOME/.local_profile
 fi
 
 # Alias
 
-if [ -f $HOME/.zsh/zshalias ] then
+if [ -f $HOME/.zsh/zshalias ] ; then
 	. $HOME/.zsh/zshalias
 fi
