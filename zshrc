@@ -21,8 +21,6 @@ setopt SHARE_HISTORY
 
 setopt HIST_VERIFY
 
-# Alias
-alias ls="ls --color=auto -T 0"
 
 ## get keys working
 bindkey "^[[2~" yank                    # Insert
@@ -119,7 +117,12 @@ promptinit
 # Use the wunjo prompt theme
 prompt adam2 
 
-if [ -f $HOME/.local_profile ]
-then
-    . HOME/.local_profile
+if [ -f $HOME/.local_profile ] then
+    . $HOME/.local_profile
+fi
+
+# Alias
+
+if [ -f $HOME/.zsh/zshalias ] then
+	. $HOME/.zsh/zshalias
 fi
