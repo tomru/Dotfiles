@@ -27,7 +27,7 @@ bindkey "^[[2~" yank                    # Insert
 bindkey "^[[3~" delete-char             # Del
 bindkey "^[[5~" up-line-or-history      # PageUp
 bindkey "^[[6~" down-line-or-history    # PageDown
-bindkey "^[e"   expand-cmd-path         # C-e for expanding path of typed command.
+bindkey "^[E"   expand-cmd-path         # C-e for expanding path of typed command.
 bindkey "^[[A"  up-line-or-search       # Up arrow for back-history-search.
 bindkey "^[[B"  down-line-or-search     # Down arrow for fwd-history-search.
 bindkey " "     magic-space             # Do history expansion on space.
@@ -104,16 +104,9 @@ setopt CHASE_LINKS      # if you pwd from a symlink, you get the actual path
 setopt AUTO_CONTINUE    # automatically sent a CONT signal by disown
 setopt LONG_LIST_JOBS   # List jobs in the long format by default
 
-# zgitinit and prompt_wunjo_setup must be somewhere in your $fpath, see README for more.
 
-setopt promptsubst
-
-# Load the prompt theme system
-autoload -U promptinit
-promptinit
-
-# Use the wunjo prompt theme
-prompt adam2 
+# set the prompt from phil http://aperiodic.net/phil/prompt/
+. $HOME/.zsh/prompt
 
 if [ -f $HOME/.local_profile ] ; then
     . $HOME/.local_profile
