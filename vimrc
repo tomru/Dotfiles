@@ -27,7 +27,6 @@ set titlestring=%<%F\ %M%=%l/%L\ -\ %p%% titlelen=70
 " display linenumber
 set number
 
-
 " search related settings
 
 " show parial pattern matches in real time
@@ -162,6 +161,21 @@ endif " has("autocmd")
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" OMNICOMPLETION
+
+autocmd FileType python					set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript			set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html						set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css						set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml						set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php						set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c							set omnifunc=ccomplete#Complete
+autocmd FileType rb,ruby,eruby	set omnifunc=rubycomplete#Complete
+autocmd FileType sql						set omnifunc=sqlcomplete#Complete
+autocmd Filetype *							set omnifunc=syntaxcomplete#Complete
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MAPPINGS
 
 "" Function Keys Sector
@@ -198,8 +212,6 @@ set tags+=$HOME/.vim/tags/python.ctags
 "remap tag jumping
 map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
-"Code Completion for python
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 "remap code complete to ctrl space
 inoremap <Nul> <C-x><C-o>
 "tab nav with alt left or right
