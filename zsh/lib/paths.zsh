@@ -1,0 +1,1 @@
+inbox="$HOME/Desktop/Inbox"
