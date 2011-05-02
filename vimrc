@@ -100,6 +100,10 @@ highlight VertSplit     cterm=bold ctermfg=yellow ctermbg=yellow
 " highlight spell errors
 highlight SpellErrors ctermfg=Red cterm=underline term=reverse
 
+
+" set whitespace characters to something more readable
+set listchars=tab:▸\ ,eol:¬
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TEXT FORMATING
 
