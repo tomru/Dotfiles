@@ -1,232 +1,277 @@
-" .vimrc
-
-" Use Vim not vi settings
+" FULL VIM
 set nocompatible
 
-" gui appearence 
-if has("gui_running")
-  colorscheme slate
-  set guifont=Terminus\ 8
-endif
-
-" term appearence 
-set background=dark
-
-" always show ruler
-set ruler
-
-"of course
-syntax on
-
-" I work with buffers, when I open a buffer that is recently open in a window,
-" don't open this buffer twice: switch to the already open one! Nice for :make, :cn, ... ;-)
-set switchbuf=useopen
-" title
-set titlestring=%<%F\ %M%=%l/%L\ -\ %p%% titlelen=70
-
-" display linenumber
-set number
-
-" search related settings
-
-" show parial pattern matches in real time
-set incsearch
-" I like highlighted search pattern
-set hlsearch
-" search for upper and lowercase
-set ignorecase
-" but if user type uppercase - search exaclty
-set smartcase
-
-
-" no backup, we got scm :)
-set nobackup
-
-"use a scrollable menu for filename completions
-set wildmenu
-
-"ignore class and object files
-set wildignore=*.class,*.o,*.bak,*.swp,*.pyc
-
-
-" spelling stuff
-if version >= 700
-  " spelling files:
-  " http://ftp.vim.org/pub/vim/runtime/spell/
-  " move de.latin1.spl and de.latin1.sug to RUNTIME/spell
-  set spelllang=de
-  set sps=best,10
-  set omnifunc=ccomplete#Complete
-map <S-h> gT
-map <S-l> gt
-else
-" spell check for the folloging files
-  let spell_auto_type = "tex,mail,text,human"
-  let spell_markup_ft = ",tex,mail,text,human"
-  let spell_guess_language_ft = ""
-endif
-
-"maximum mumber of undos
-set undolevels=1000
-
-" indent stuff, tab stuff for all files
-set autoindent
-set smartindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-" no swp file cluttering in workdir
-set directory=~/.vimswp
-
-"I need more information
-set statusline=%<%F%=\ [%1*%M%*%n%R%H%Y]\ \ %-25(%3l,%c%03V\ \ %P\ (%L)%)%12o'%03b''%03B'
-"always show statusline
-set laststatus=2
-
-"modus (insert,visual ...)
-highlight modeMsg	    cterm=bold ctermfg=white  ctermbg=blue
-"active statusLine
-highlight statusLine  	cterm=bold ctermfg=yellow ctermbg=red 
-"inactive statusLine
-highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
-"visual mode
-highlight visual		cterm=bold ctermfg=yellow ctermbg=red
-"cursor colors
-highlight cursor        cterm=bold 
-"vertical line on split screen
-highlight VertSplit     cterm=bold ctermfg=yellow ctermbg=yellow
-
-" highlight spell errors
-highlight SpellErrors ctermfg=Red cterm=underline term=reverse
-
-
-" set whitespace characters to something more readable
-set listchars=tab:▸\ ,eol:¬
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TEXT FORMATING
-
-
-if has("autocmd")
-
-  filetype on
-    augroup filetype
-    filetype plugin indent on
-    autocmd BufNewFile,BufRead *.txt set filetype=human
-  augroup END
-
-  "vim jumps always to the last edited line, if possible
-  "autocmd BufRead *,.* :normal '"
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  "in human-language files, automatically format everything at 78 chars:
-  autocmd FileType mail,human 
-    \ set spelllang=de formatoptions+=t textwidth=78 nocindent dictionary=/usr/share/dict/words
-  
-
-  "LaTeX to the fullest! ...dislike overlong lines:
-  autocmd FileType tex set formatoptions+=t textwidth=80 nocindent
-  autocmd FileType tex set makeprg=pdflatex\ %
-
-  "for C-like programming, have automatic indentation:
-  autocmd FileType slang set cindent tabstop=4 shiftwidth=4 tw=78
-
-
-  "for actual C programming where comments have explicit end
-  "characters, if starting a new line in the middle of a comment automatically
-  "insert the comment leader characters:
-  "for a more _weighty_ comments use: comments=sl:/*,mb:**,elx:*/
-  autocmd FileType c,cpp set formatoptions+=ro dictionary=$HOME/.vim/c_dictionary
-                       \ tw=78 tabstop=4 shiftwidth=4 noexpandtab cindent
-
-  
-  " indent xml code
-  augroup xml
-      map ,mf !xmllint --format --recover - 2>/dev/null<CR>
-  "    au!
-  "    autocmd BufWrite *xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-  augroup END
-
-  "for both CSS and HTML, use genuine tab characters for indentation, to make
-  "files a few bytes smaller:
-  autocmd FileType html,css set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-
-  "in makefiles, don't expand tabs to spaces, since actual tab characters are
-  "needed, and have indentation at 8 chars to be sure that all indents are tabs
-  "(despite the mappings later):
-  autocmd FileType make     set noexpandtab shiftwidth=8
-  autocmd FileType automake set noexpandtab shiftwidth=8
-
-endif " has("autocmd")
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OMNICOMPLETION
-
-autocmd FileType python					set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript			set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html						set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css						set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml						set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php						set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c							set omnifunc=ccomplete#Complete
-autocmd FileType rb,ruby,eruby	set omnifunc=rubycomplete#Complete
-autocmd FileType sql						set omnifunc=sqlcomplete#Complete
-autocmd Filetype *							set omnifunc=syntaxcomplete#Complete
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MAPPINGS
-
-"" Function Keys Sector
-
-"write a changelog entry upon pressing F1
-"nnoremap <silent> <F1> :r !date<CR>Thomas Ruoff <ThomasRuoff@gmail.com><CR><CR>
-"F2 -> F4  == misc
-"search the current word under cursor in all files in working directory
-nnoremap <silent> <F2> vawy:! grep -n -H <C-R>" .* *<CR>
-
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
-
-"compile, translate, ...
-map <F5> :make<CR>
-
-" F9 F11 Shift-F11 and F12 are used in python mode
-
-set pastetoggle=<F10>
-
-"F11 -> F12 == resize window
-"map <F11>   <ESC>:resize -5 <CR>
-"map <F12>   <ESC>:resize +5 <CR>
-
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-	if os.path.isdir(p):
-		vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
-"use ctags
-set tags+=$HOME/.vim/tags/python.ctags
-"remap tag jumping
-map <silent><C-Left> <C-T>
-map <silent><C-Right> <C-]>
-"remap code complete to ctrl space
-inoremap <Nul> <C-x><C-o>
-"tab nav with alt left or right
-map <silent><A-Right> :tabnext<CR>
-map <silent><A-Left> :tabprevious<CR>
+" PATHOGEN
+filetype off
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
 filetype plugin indent on
-python << EOL
-import vim
-def EvaluateCurrentRange():
-	eval(compile('\n'.join(vim.current.range),'','exec'),globals())
-EOL
-map <C-h> :py EvaluateCurrentRange()
 
-" vim:set ts=2 tw=80:
+" MAP LEADER
+noremap , \
+let mapleader = ","
+
+" CONFIGURATION MAPPING
+set scrolloff=3                     " show 3 lines of context around the cursor
+set autoread                        " set to auto read when a file is changed from the outside
+set mouse=a                         " allow for full mouse support
+set autowrite
+set showcmd                         " show typed commands
+
+set wildmenu                        " turn on WiLd menu
+set wildmode=list:longest,list:full " activate TAB auto-completion for file paths
+set wildignore+=*.o,.git,.svn,node_modules
+
+set ruler                           " always show current position
+set backspace=indent,eol,start      " set backspace config, backspace as normal
+set nomodeline                      " security
+set encoding=utf8
+
+set hlsearch                        " highlight search things
+set incsearch                       " go to search results as typing
+set smartcase                       " but case-sensitive if expression contains a capital letter.
+set ignorecase                      " ignore case when searching
+set gdefault                        " assume global when searching or substituting
+set magic                           " set magic on, for regular expressions
+set showmatch                       " show matching brackets when text indicator is over them
+
+set lazyredraw                      " don't redraw screen during macros
+set ttyfast                         " improves redrawing for newer computers
+set fileformats=unix,mac,dos
+
+set nobackup                        " prevent backups of files, since using versioning mostly and undofile
+set nowritebackup
+set noswapfile
+set directory=~/.vim/.swp,/tmp      " swap directory
+set shiftwidth=4                    " set tab width
+set softtabstop=4
+set tabstop=4
+set smarttab
+set expandtab
+set autoindent                      " set automatic code indentation
+set hidden
+
+set wrap                            " wrap lines
+set linebreak                       " this will not break whole words while wrap is enabled
+set showbreak=…
+set cursorline                      " highlight current line
+set list listchars=tab:\ \ ,trail:· " show · for trailing space, \ \ for trailing tab
+set spelllang=en,de                 " set spell check language
+set noeb vb t_vb=                   " disable audio and visual bells
+au GUIEnter * set vb t_vb=
+
+syntax enable                       " enable syntax highlighting
+
+" VIM 7.3 FEATURES
+
+if v:version >= 703
+    set undofile
+    set undodir=$HOME/.vim/.undo
+    set undolevels=1000
+    set undoreload=10000
+    set colorcolumn=115          " show a right margin column
+endif
+
+" COLOR SCHEME
+set t_Co=256
+set background=dark
+"colorscheme solarized
+"if has("gui_running")
+"    colorscheme railscast
+"endif
+
+" FOLDING
+set foldenable                   " enable folding
+set foldmethod=marker            " detect triple-{ style fold markers
+set foldlevel=99
+
+" ADDITIONAL KEY MAPPINGS
+" fast saving
+nmap <leader>w :up<cr>
+" fast escaping
+imap jj <ESC>
+" prevent accidental striking of F1 key
+map <F1> <ESC>
+imap <F1> <ESC>
+" clear highlight
+nnoremap <leader><space> :noh<cr>
+" map Y to match C and D behavior
+nnoremap Y y$
+" yank entire file (global yank)
+nmap gy ggVGy
+" ignore lines when going up or down
+nnoremap j gj
+nnoremap k gk
+" auto complete {} indent and position the cursor in the middle line
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap [<CR>  [<CR>]<Esc>O
+" fast window switching
+map <leader>, <C-W>w
+" cycle between buffers
+map <leader>. :b#<cr>
+" change directory to current buffer
+map <leader>cd :cd %:p:h<cr>
+" swap implementations of ` and ' jump to prefer row and column jumping
+nnoremap ' `
+nnoremap ` '
+" indent visual selected code without unselecting and going back to normal mode
+vmap > >gv
+vmap < <gv
+" pull word under cursor into lhs of a substitute (for quick search and replace)
+nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+" strip all trailing whitespace in the current file
+nnoremap <leader>W :%s/\s\+$//e<cr>:let @/=''<CR>
+" insert path of current file into a command
+cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+" fast editing of the .vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<cr>
+nmap <silent> <leader>sv :so $MYVIMRC<cr>
+" allow saving when you forgot sudo
+cmap w!! w !sudo tee % >/dev/null
+" turn on spell checking
+map <leader>spl :setlocal spell!<cr>
+" spell checking shortcuts
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
+
+"" ADDITIONAL AUTOCOMMANDS
+
+" saving when focus lost (after tabbing away or switching buffers)
+au FocusLost,BufLeave,WinLeave,TabLeave * silent! up
+" open in last edit place
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+au QuickFixCmdPost *grep* cwindow
+
+
+"" ADDITIONAL GUI SETTINGS
+
+if has("gui_running")
+    set guioptions-=T
+    " set guioptions-=m
+    set linespace=6
+    set columns=160 lines=26
+    set guioptions-=T
+
+    " crazy hack to get gvim to remove all scrollbars
+    set guioptions+=LlRrb
+    set guioptions-=LlRrb
+
+    if has("mac")
+        set guifont=DejaVu\ Sans\ Mono\:h14
+    else
+        set guifont=Ubuntu\ Mono\ 11
+    endif
+endif
+
+"" ABBREVIATIONS
+source $HOME/.vim/autocorrect.vim
+
+"" PLUGIN SETTINGS
+
+" NERDTree
+nmap <leader>n :NERDTreeToggle<CR>
+let g:NERDChristmasTree=1
+let g:NERDTreeDirArrows=1
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+
+" Super Tab
+" let g:SuperTabDefaultCompletionType = "context"
+
+" Unimpaired
+" bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" Command-T
+let g:CommandTMaxHeight=20
+
+" Ack
+set grepprg=ack
+nnoremap <leader>a :Ack<space>
+let g:ackhighlight=1
+let g:ackprg="ack-grep -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
+
+" CoffeeScript
+au FileType coffee set expandtab tabstop=3 shiftwidth=3
+map <leader>cc :CoffeeCompile<cr>
+map <silent> <leader>cm :CoffeeMake<cr> <cr>
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+
+"" LANGUAGE SPECIFIC
+
+" CSS
+au FileType css set expandtab tabstop=2 shiftwidth=2
+
+" HTML
+au FileType html,xhtml set formatoptions+=tl
+au FileType html,xhtml set foldmethod=indent smartindent
+au FileType html,xhtml set expandtab tabstop=3 shiftwidth=3
+au FileType html,php,xhtml,jsp,ejs let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+" Ruby
+au FileType ruby setlocal ts=2 sts=2 sw=2 expandtab foldmethod=syntax
+
+" Python
+au FileType python set noexpandtab
+
+" JavaScript
+au FileType javascript setlocal ts=2 sts=2 sw=2
+au BufRead,BufNewFile *.json set ft=json
+
+"" STATUS LINE
+
+set laststatus=2 " always hide the statusline
+set statusline= " clear the statusline for when vimrc is reloaded
+set statusline+=%-2.2n\  " buffer number
+set statusline+=%f\  " tail of the filename
+
+"display a warning if fileformat isnt unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+
+"display a warning if file encoding isnt utf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h "help file flag
+set statusline+=%y\  "filetype
+set statusline+=%r "read only flag
+set statusline+=%m  "modified flag
+
+" display the filesize
+set statusline+=[%{FileSize()}]
+set statusline+=\
+" display current git branch
+set statusline+=%{fugitive#statusline()}
+set statusline+=\
+" display a warning with Syntastic, of validation errors and syntax checkers
+set statusline+=%#warningmsg#
+set statusline+=%*
+
+set statusline+=%=  "left/right separator
+
+set statusline+=%c, " cursor column
+set statusline+=%l/%L " cursor line/total lines
+set statusline+=\ %P\  " percent through file
+set laststatus=2  " always show status line
+
+function! FileSize()
+    let bytes = getfsize(expand("%:p"))
+    if bytes <= 0
+        return ""
+    endif
+    if bytes < 1024
+        return bytes . " Bytes"
+    else
+        return (bytes / 1024) . "kB"
+    endif
+endfunction
