@@ -75,10 +75,10 @@ endif
 " COLOR SCHEME
 set t_Co=256
 set background=dark
-"colorscheme solarized
-"if has("gui_running")
-"    colorscheme railscast
-"endif
+"colorscheme slate
+if has("gui_running")
+    colorscheme slate
+endif
 
 " FOLDING
 set foldenable                   " enable folding
