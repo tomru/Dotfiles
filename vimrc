@@ -206,6 +206,10 @@ map <leader>cc :CoffeeCompile<cr>
 map <silent> <leader>cm :CoffeeMake<cr> <cr>
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 
+" MAIL HUMAN TEX
+au BufNewFile,BufRead *.txt set filetype=human
+au FileType human,mail,tex set expandtab textwidth=78 nocindent
+
 "" LANGUAGE SPECIFIC
 
 " CSS
