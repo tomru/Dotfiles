@@ -20,7 +20,7 @@ set showcmd                         " show typed commands
 
 set wildmenu                        " turn on WiLd menu
 set wildmode=list:longest,list:full " activate TAB auto-completion for file paths
-set wildignore+=*.o,.git,.svn,node_modules
+set wildignore+=*.o,*.class,*.pyc,.git,.svn,node_modules
 
 set ruler                           " always show current position
 set backspace=indent,eol,start      " set backspace config, backspace as normal
