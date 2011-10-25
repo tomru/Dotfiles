@@ -136,6 +136,8 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+" toggle show number
+map <leader>ln :set number!<cr>
 
 "" ADDITIONAL AUTOCOMMANDS
 
