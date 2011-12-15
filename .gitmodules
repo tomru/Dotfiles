@@ -16,3 +16,6 @@
 [submodule "vim/bundle/vim-l9"]
 	path = vim/bundle/vim-l9
 	url = git@github.com:igrat/vim-l9.git
+[submodule "vim/bundle/vim-jade"]
+	path = vim/bundle/vim-jade
+	url = https://github.com/digitaltoad/vim-jade.git
