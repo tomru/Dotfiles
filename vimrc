@@ -72,12 +72,11 @@ if v:version >= 703
 endif
 
 " COLOR SCHEME
-set t_Co=256
+"set t_Co=256
 set background=dark
-"colorscheme slate
-if has("gui_running")
-    colorscheme slate
-endif
+"if has("gui_running")
+"    colorscheme slate
+"endif
 
 " FOLDING
 set foldenable                   " enable folding
