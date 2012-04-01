@@ -1,30 +1,9 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git@github.com:igrat/oh-my-zsh.git
-[submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/igrat/vim-fugitive.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-fuzzyfinder"]
-	path = vim/bundle/vim-fuzzyfinder
-	url = git@github.com:igrat/vim-fuzzyfinder.git
-[submodule "vim/bundle/vim-l9"]
-	path = vim/bundle/vim-l9
-	url = git@github.com:igrat/vim-l9.git
-[submodule "vim/bundle/vim-jade"]
-	path = vim/bundle/vim-jade
-	url = https://github.com/digitaltoad/vim-jade.git
-[submodule "vim/bundle/vim-coffee-script"]
-	path = vim/bundle/vim-coffee-script
-    url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "config/awesome"]
 	path = config/awesome
 	url = git@github.com:igrat/awesome-config.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git

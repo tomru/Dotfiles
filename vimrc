@@ -1,10 +1,31 @@
 " FULL VIM
 set nocompatible
 
-" PATHOGEN
-filetype off
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
+" Vundle
+filetype off  " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-fugitive'
+Bundle 'clones/vim-l9'
+Bundle 'clones/vim-fuzzyfinder'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kchmck/vim-coffee-script'
+
+" vim-scripts repos
+"Bundle 'L9'
+
+" non github repos
+"Bundle 'git://git.wincent.com/command-t.git'
+
+" Continue with the rest
+
 filetype plugin indent on
 
 " MAP LEADER
@@ -227,51 +248,9 @@ au FileType python set noexpandtab
 au FileType javascript setlocal ts=2 sts=2 sw=2
 au BufRead,BufNewFile *.json set ft=json
 
+" always show status line
+set laststatus=2
 
-"" STATUS LINE
-
-set laststatus=2 " always hide the statusline
-set statusline= " clear the statusline for when vimrc is reloaded
-set statusline+=%-2.2n\  " buffer number
-set statusline+=%f\  " tail of the filename
-
-"display a warning if fileformat isnt unix
-set statusline+=%#warningmsg#
-set statusline+=%{&ff!='unix'?'['.&ff.']':''}
-set statusline+=%*
-
-"display a warning if file encoding isnt utf-8
-set statusline+=%#warningmsg#
-set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
-set statusline+=%*
-
-set statusline+=%h "help file flag
-set statusline+=%y\  "filetype
-set statusline+=%r "read only flag
-set statusline+=%m  "modified flag
-
-" display the filesize
-set statusline+=[%{FileSize()}]
-set statusline+=\
-" display current git branch
-set statusline+=%{fugitive#statusline()}
-set statusline+=\
-" display a warning with Syntastic, of validation errors and syntax checkers
-set statusline+=%#warningmsg#
-set statusline+=%*
-
-set statusline+=%=  "left/right separator
-
-set statusline+=%c, " cursor column
-set statusline+=%l/%L " cursor line/total lines
-set statusline+=\ %P\  " percent through file
-set laststatus=2  " always show status line
-
-"" TODO COLORING Status line
-"highlight statusLine    cterm=bold ctermfg=yellow ctermbg=darkred
-"highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
-"
-"highlight modeMsg       cterm=bold ctermfg=white  ctermbg=darkblue
 
 "" MISC FUNCTIONS
 function! FileSize()
