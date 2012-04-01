@@ -21,7 +21,10 @@
 	url = https://github.com/digitaltoad/vim-jade.git
 [submodule "vim/bundle/vim-coffee-script"]
 	path = vim/bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
+    url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "config/awesome"]
 	path = config/awesome
 	url = git@github.com:igrat/awesome-config.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git

@@ -72,11 +72,9 @@ if v:version >= 703
 endif
 
 " COLOR SCHEME
-"set t_Co=256
 set background=dark
-"if has("gui_running")
-"    colorscheme slate
-"endif
+let g:solarized_contrast = "high"
+colorscheme solarized
 
 " FOLDING
 set foldenable                   " enable folding
@@ -269,11 +267,11 @@ set statusline+=%l/%L " cursor line/total lines
 set statusline+=\ %P\  " percent through file
 set laststatus=2  " always show status line
 
-"" COLORING ELEMENTS
-highlight statusLine    cterm=bold ctermfg=yellow ctermbg=darkred
-highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
-
-highlight modeMsg       cterm=bold ctermfg=white  ctermbg=darkblue
+"" TODO COLORING Status line
+"highlight statusLine    cterm=bold ctermfg=yellow ctermbg=darkred
+"highlight statusLineNC 	cterm=bold ctermfg=black  ctermbg=white
+"
+"highlight modeMsg       cterm=bold ctermfg=white  ctermbg=darkblue
 
 "" MISC FUNCTIONS
 function! FileSize()
