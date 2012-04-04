@@ -32,7 +32,8 @@ URxvt*boldFont: xft:terminus:bold:pixelsize=15
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
+URxvt.scrollBar:            true
+URxvt.scrollBar_right:      true
 
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher
@@ -46,6 +47,14 @@ URxvt.cursorUnderline:      false
 
 ! Pointer
 URxvt.pointerBlank:         true
+
+! scrollback buffer lines - 65535 is max on most machines (64 is default)
+URxvt*saveLines:            65536
+
+! Create a dump of the content of the terminal in /tmp
+! <PRINT> : current screen
+! <CTRL>+<PRINT> : current screen and scrollbackbuffer
+URxvt.print-pipe:           cat > $(echo /tmp/urxvt.dump.$(date +'%Y-%m-%d--%H:%M:%S'))
 
 !!Source http://github.com/altercation/solarized
 
