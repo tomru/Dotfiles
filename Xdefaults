@@ -49,7 +49,7 @@ URxvt.cursorUnderline:      false
 URxvt.pointerBlank:         true
 
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt*saveLines:            65536
+URxvt.saveLines:            65536
 
 ! Create a dump of the content of the terminal in /tmp
 ! <PRINT> : current screen
