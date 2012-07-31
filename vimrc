@@ -35,7 +35,7 @@ let mapleader = ","
 " CONFIGURATION MAPPING
 set scrolloff=3                     " show 3 lines of context around the cursor
 set autoread                        " set to auto read when a file is changed from the outside
-set mouse=a                         " allow for full mouse support
+"set mouse=a                         " allow for full mouse support
 set autowrite
 set showcmd                         " show typed commands
 
