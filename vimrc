@@ -17,6 +17,7 @@ Bundle 'clones/vim-l9'
 Bundle 'clones/vim-fuzzyfinder'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'scrooloose/syntastic.git'
 
 " vim-scripts repos
 "Bundle 'L9'
