@@ -29,4 +29,15 @@ plugins=(git svn debian npm node)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:$PATH
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# local node install
+NODE_PATH="$HOME/.nave/current"
+if [ -d $NODE_PATH ] ; then
+    PATH="$NODE_PATH/bin:$PATH"
+    export NODE_PATH
+fi
