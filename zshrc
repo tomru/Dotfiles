@@ -36,7 +36,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 # local node install
-NODE_PATH="$HOME/.nave/current"
+NODE_PATH="$HOME/local"
 if [ -d $NODE_PATH ] ; then
     PATH="$NODE_PATH/bin:$PATH"
     export NODE_PATH
