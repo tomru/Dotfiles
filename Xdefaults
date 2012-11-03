@@ -27,8 +27,8 @@ URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
 ! Fonts
-URxvt*font: xft:terminus:pixelsize=15
-URxvt*boldFont: xft:terminus:bold:pixelsize=15
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
