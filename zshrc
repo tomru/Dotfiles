@@ -30,9 +30,14 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-# use $HOME/local as default prefix for npm global installs
-HOME_LOCAL=$HOME/local
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
 
-if [ -d "$HOME_LOCAL/bin" ] ; then
-    PATH="$HOME_LOCAL/bin:$PATH"
+# local node install
+NODE_PATH="$HOME/local"
+if [ -d $NODE_PATH ] ; then
+    PATH="$NODE_PATH/bin:$PATH"
+    export NODE_PATH
 fi
