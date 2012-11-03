@@ -2,5 +2,5 @@ irssi
 
 vim/bundle/*
 !vim/bundle/vundle
-vim/.netrwhist
 vim/spell
+.netrwhist
