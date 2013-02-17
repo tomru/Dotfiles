@@ -18,6 +18,7 @@ Bundle 'clones/vim-fuzzyfinder'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic.git'
+Bundle 'myusuf3/numbers.vim.git'
 
 " vim-scripts repos
 "Bundle 'L9'
@@ -83,6 +84,9 @@ set noeb vb t_vb=                   " disable audio and visual bells
 au GUIEnter * set vb t_vb=
 
 syntax enable                       " enable syntax highlighting
+
+" toggle number plugin
+nnoremap <F3> :NumbersToggle<CR>
 
 " Statusline
 
