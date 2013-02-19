@@ -18,6 +18,7 @@ Bundle 'clones/vim-fuzzyfinder'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'myusuf3/numbers.vim.git'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline'
 Bundle 'flazz/vim-colorschemes'
 
