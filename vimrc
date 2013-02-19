@@ -26,6 +26,9 @@ Bundle 'flazz/vim-colorschemes'
 " non github repos
 "Bundle 'git://git.wincent.com/command-t.git'
 
+" enable 256 color !!1!
+set t_Co=256
+
 " Continue with the rest
 
 filetype plugin indent on
