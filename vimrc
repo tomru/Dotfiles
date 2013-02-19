@@ -15,10 +15,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-fugitive'
 Bundle 'clones/vim-l9'
 Bundle 'clones/vim-fuzzyfinder'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'myusuf3/numbers.vim.git'
+Bundle 'flazz/vim-colorschemes'
 
 " vim-scripts repos
 "Bundle 'L9'
