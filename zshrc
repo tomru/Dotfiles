@@ -41,3 +41,15 @@ if [ -d $NODE_PATH ] ; then
     PATH="$NODE_PATH/bin:$PATH"
     export NODE_PATH
 fi
+
+# python pip local
+PIP_PATH="$HOME/.local"
+if [ -d $PIP_PATH ] ; then
+    PATH="$PIP_PATH/bin:$PATH"
+    export PIP_PATH
+fi
+
+# Vim Powerline if on path
+if command -v powerline > /dev/null ; then
+    . ~/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
+fi

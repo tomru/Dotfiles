@@ -18,6 +18,7 @@ Bundle 'clones/vim-fuzzyfinder'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic.git'
 Bundle 'myusuf3/numbers.vim.git'
+Bundle 'Lokaltog/powerline'
 Bundle 'flazz/vim-colorschemes'
 
 " vim-scripts repos
@@ -105,6 +106,9 @@ if has('statusline')
     "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
+
+" Powerline
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " VIM 7.3 FEATURES
 
