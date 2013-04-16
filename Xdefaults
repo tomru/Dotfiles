@@ -22,13 +22,12 @@ URxvt.fading:               0
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
 URxvt.loginShell:           true
-URxvt.saveLines:            50
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
 ! Fonts
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=14
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14
+URxvt*font: xft:DejaVu Sans Mono for Powerline:pixelsize=13
+URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:bold:pixelsize=13
 
 ! Scrollbar
 URxvt.scrollStyle:          rxvt
@@ -37,8 +36,8 @@ URxvt.scrollBar_right:      true
 
 ! Perl extensions
 URxvt.perl-ext-common:      default,matcher
+URxvt.url-launcher:         xdg-open
 URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
 
 ! Cursor
 URxvt.cursorBlink:          true
@@ -55,6 +54,11 @@ URxvt.saveLines:            65536
 ! <PRINT> : current screen
 ! <CTRL>+<PRINT> : current screen and scrollbackbuffer
 URxvt.print-pipe:           cat > $(echo /tmp/urxvt.dump.$(date +'%Y-%m-%d--%H:%M:%S'))
+
+! Colors
+URxvt.colorIT:              #87af4f
+URxvt.colorBD:              #d7d7d7
+URxvt.colorUL:              #2aa198
 
 !!Source http://github.com/altercation/solarized
 
