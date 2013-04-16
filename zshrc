@@ -24,32 +24,9 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn debian npm node)
+plugins=(git archlinux npm node)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# local node install
-NODE_PATH="$HOME/local"
-if [ -d $NODE_PATH ] ; then
-    PATH="$NODE_PATH/bin:$PATH"
-    export NODE_PATH
-fi
-
-# python pip local
-PIP_PATH="$HOME/.local"
-if [ -d $PIP_PATH ] ; then
-    PATH="$PIP_PATH/bin:$PATH"
-    export PIP_PATH
-fi
-
-# Vim Powerline if on path
-if command -v powerline > /dev/null ; then
-    . ~/.vim/bundle/powerline/powerline/bindings/zsh/powerline.zsh
-fi
