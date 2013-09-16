@@ -1,47 +1,122 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+ZILSH_VERBOSITY=2
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
+autoload -U colors && colors
+source ~/.zsh/zilsh/zilsh.zsh
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# oh-my-zilch config
+#
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+omz_plugins=(bower gitfast git-extras node npm pass screen vi-mode)
 
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+case $(hostname) in
+    t430s-arch)
+        omz_plugins+=(archlinux systemd)
+        ;;
+    cassiopeia.uberspace.de)
+        omz_plugins+=()
+        ;;
+    everard)
+        omz_plugins+=(debian jira)
+        ;;
+esac
 
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+ZILSH_THEME="pygmalion.zsh-theme"
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+_zilsh_init "~/.zsh/bundle/"
 
-# Uncomment following line if you want to disable command autocorrection
-DISABLE_CORRECTION="true"
+############
+## Settings
+#############
+PATH="$PATH:$HOME/local/bin"
+EDITOR="vim"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+#################################
+## Custom Functions And Aliases
+#################################
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git archlinux npm node screen)
+# List all
+alias ll="ls -alF"
 
-source $ZSH/oh-my-zsh.sh
+# git aliases
+alias gch="git checkout"
+alias gco="git commit"
+alias gadd="git add"
+alias glog="git log --all"
+alias giraffe="git log --graph --pretty=oneline --abbrev-commit"
 
-# Customize to your needs...
+# Remote X over SSH
+alias sex="ssh -C -X -c blowfish"
+
+alias -s bz2='tar -xjvf'
+alias -s gz='tar -xzvf'
+alias -s xz='tar -xJvf'
+
+
+##############
+## VCS info
+#############
+
+setopt prompt_subst
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '%F{242}%s%F{238}-%F{247}%b %F{238}(%F{244}%a%F{238})%f'
+zstyle ':vcs_info:*' formats '%F{242}%s%F{238}-%F{247}%b%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+vcs_info_wrapper() {
+    vcs_info
+    if [ -n "$vcs_info_msg_0_" ]; then
+        echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+    fi
+}
+
+
+############
+## Colors
+###########
+
+alias ls="ls --color"
+
+# Now replace all the greps!
+# I'm gonna be honest, I forget what fgrep and egrep are.
+# But the place I grabbed this from had them, so w/e
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
+
+
+#################
+## Keybindings
+################
+bindkey "^P" vi-up-line-or-history
+bindkey "^N" vi-down-line-or-history
+
+bindkey "^[[1~" vi-beginning-of-line   # Home
+bindkey "^[[4~" vi-end-of-line         # End
+bindkey '^[[2~' beep                   # Insert
+bindkey '^[[3~' delete-char            # Del
+bindkey '^[[5~' vi-backward-blank-word # Page Up
+bindkey '^[[6~' vi-forward-blank-word  # Page Down
+
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+
+bindkey -a 'gg' beginning-of-buffer-or-history
+bindkey -a 'g~' vi-oper-swap-case
+bindkey -a G end-of-buffer-or-history
+
+bindkey -a u undo
+bindkey -a '^R' redo
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+
+##################
+# Source Things
+#################
+
+# Source Node Version Manager, if installed.
+source ~/.nvm/nvm.sh
+
