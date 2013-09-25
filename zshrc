@@ -1,4 +1,4 @@
-ZILSH_VERBOSITY=3
+ZILSH_VERBOSITY=2
 
 autoload -U colors && colors
 source ~/.zsh/zilsh/zilsh.zsh
@@ -16,12 +16,11 @@ case $(hostname) in
         omz_plugins+=()
         ;;
     everard)
-        omz_plugins=(debian)
+        omz_plugins+=(debian jira)
         ;;
 esac
 
 
-JIRA_URL="https://jira.brandwatch.com"
 ZILSH_THEME="pygmalion.zsh-theme"
 
 _zilsh_init "~/.zsh/bundle/"
