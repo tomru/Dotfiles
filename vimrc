@@ -273,7 +273,7 @@ au FileType ruby setlocal ts=2 sts=2 sw=2 expandtab foldmethod=syntax
 au FileType python set noexpandtab
 
 " JavaScript
-au FileType javascript setlocal ts=2 sts=2 sw=2
+au FileType javascript setlocal ts=4 sts=4 sw=4
 au BufRead,BufNewFile *.json set ft=json
 
 
