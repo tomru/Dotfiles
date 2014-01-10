@@ -15,25 +15,17 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'tpope/vim-fugitive'
 Bundle 'clones/vim-l9'
 Bundle 'clones/vim-fuzzyfinder'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'scrooloose/syntastic.git'
-Bundle 'myusuf3/numbers.vim.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline'
 Bundle 'flazz/vim-colorschemes'
 
-" vim-scripts repos
-"Bundle 'L9'
 
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
+filetype plugin indent on
 
 " enable 256 color !!1!
 set t_Co=256
 
-" Continue with the rest
-
-filetype plugin indent on
 
 " MAP LEADER
 noremap , \
@@ -42,7 +34,7 @@ let mapleader = ","
 " CONFIGURATION MAPPING
 set scrolloff=3                     " show 3 lines of context around the cursor
 set autoread                        " set to auto read when a file is changed from the outside
-"set mouse=a                         " allow for full mouse support
+set mouse=a                         " allow for full mouse support
 set autowrite
 set showcmd                         " show typed commands
 
@@ -89,9 +81,6 @@ set noeb vb t_vb=                   " disable audio and visual bells
 au GUIEnter * set vb t_vb=
 
 syntax enable                       " enable syntax highlighting
-
-" toggle number plugin
-nnoremap <F3> :NumbersToggle<CR>
 
 " Statusline
 
@@ -181,8 +170,12 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-" toggle show number
-map <leader>ln :set number!<cr>
+
+" numbers
+set number
+set relativenumber
+nnoremap <F3> :set nonumber!<CR>
+nnoremap <F4> :set relativenumber!<CR>
 
 "" ADDITIONAL AUTOCOMMANDS
 
@@ -213,9 +206,6 @@ if has("gui_running")
     endif
 endif
 
-"" ABBREVIATIONS
-source $HOME/.vim/autocorrect.vim
-
 "" PLUGIN SETTINGS
 
 " NERDTree
@@ -236,21 +226,6 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-" Command-T
-let g:CommandTMaxHeight=20
-
-" Ack
-set grepprg=ack
-nnoremap <leader>a :Ack<space>
-let g:ackhighlight=1
-let g:ackprg="ack-grep -H --type-set jade=.jade --type-set stylus=.styl --type-set coffee=.coffee --nocolor --nogroup --column --ignore-dir=node_modules -G '^((?!min\.).)*$'"
-
-" CoffeeScript
-au FileType coffee set expandtab tabstop=3 shiftwidth=3
-map <leader>cc :CoffeeCompile<cr>
-map <silent> <leader>cm :CoffeeMake<cr> <cr>
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
-
 " MAIL HUMAN TEX
 au BufNewFile,BufRead *.txt set filetype=human
 au FileType human,mail,tex set expandtab textwidth=78 nocindent
@@ -266,26 +241,9 @@ au FileType html,xhtml set foldmethod=indent smartindent
 au FileType html,xhtml set expandtab tabstop=3 shiftwidth=3
 au FileType html,php,xhtml,jsp,ejs let b:delimitMate_matchpairs = "(:),[:],{:}"
 
-" Ruby
-au FileType ruby setlocal ts=2 sts=2 sw=2 expandtab foldmethod=syntax
-
 " Python
 au FileType python set noexpandtab
 
 " JavaScript
 au FileType javascript setlocal ts=4 sts=4 sw=4
 au BufRead,BufNewFile *.json set ft=json
-
-
-"" MISC FUNCTIONS
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes . " Bytes"
-    else
-        return (bytes / 1024) . "kB"
-    endif
-endfunction
