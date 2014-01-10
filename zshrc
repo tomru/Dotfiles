@@ -31,6 +31,8 @@ _zilsh_init "~/.zsh/bundle/"
 PATH="$PATH:$HOME/local/bin"
 EDITOR="vim"
 
+# turn of autocorrection
+unsetopt correct_all
 
 #################################
 ## Custom Functions And Aliases
@@ -120,3 +122,10 @@ bindkey '^H' backward-delete-char
 # Source Node Version Manager, if installed.
 source ~/.nvm/nvm.sh
 
+# https://github.com/clvv/fasd
+if command -v fasd >/dev/null 2>&1 ; then
+    eval "$(fasd --init auto)"
+    alias v='f -e vim' # quick opening files with vim
+    alias m='f -e mplayer' # quick opening files with mplayer
+    alias o='a -e xdg-open' # quick opening files with xdg-open
+fi
