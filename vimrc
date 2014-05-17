@@ -19,6 +19,9 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'mileszs/ack.vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'editorconfig/editorconfig-vim'
 
 
 filetype plugin indent on
