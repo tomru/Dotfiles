@@ -124,7 +124,7 @@ set foldlevel=99
 
 " ADDITIONAL KEY MAPPINGS
 " fast saving
-nmap <leader>w :up<cr>
+nmap <leader>w :update<cr>
 " fast escaping
 imap jj <ESC>
 " prevent accidental striking of F1 key
