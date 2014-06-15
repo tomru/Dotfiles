@@ -27,7 +27,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'Lokaltog/powerline'
+Plugin 'vim-airline', {'name': 'airline'}
 Plugin 'flazz/vim-colorschemes'
 
 
@@ -95,23 +95,10 @@ au GUIEnter * set vb t_vb=
 
 syntax enable                       " enable syntax highlighting
 
-" Statusline
-
 if has('statusline')
     set laststatus=2
-
-    " Broken down into easily includeable segments
-    set statusline=%<%f\    " Filename
-    set statusline+=%w%h%m%r " Options
-    set statusline+=%{fugitive#statusline()} "  Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " filetype
-    set statusline+=\ [%{getcwd()}]          " current dir
-    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " VIM 7.3 FEATURES
 
@@ -184,11 +171,15 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" numbers
-set number
-set relativenumber
-nnoremap <F3> :set nonumber!<CR>
-nnoremap <F4> :set relativenumber!<CR>
+nmap <silent> <leader>hh :set invhlsearch<CR>
+nmap <silent> <leader>ll :set invlist<CR>
+nmap <silent> <leader>nn :set invnumber<CR>
+nmap <silent> <leader>pp :set invpaste<CR>
+nmap <silent> <leader>ii :set invrelativenumber<CR>
+
+if exists('+relativenumber')
+  set relativenumber
+endif
 
 "" ADDITIONAL AUTOCOMMANDS
 
