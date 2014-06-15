@@ -3,28 +3,38 @@ set nocompatible
 
 " Vundle
 filetype off  " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-fugitive'
-Bundle 'clones/vim-l9'
-Bundle 'clones/vim-fuzzyfinder'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/powerline'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'mileszs/ack.vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'editorconfig/editorconfig-vim'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'L9'
+
+Plugin 'clones/vim-fuzzyfinder'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
+
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic.git'
+
+Plugin 'mileszs/ack.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'Lokaltog/powerline'
+Plugin 'flazz/vim-colorschemes'
 
 
-filetype plugin indent on
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 " enable 256 color !!1!
 set t_Co=256
@@ -228,6 +238,10 @@ nmap <C-Down> ]e
 " bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+" yankstack
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " MAIL HUMAN TEX
 au BufNewFile,BufRead *.txt set filetype=human
