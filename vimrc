@@ -3,25 +3,38 @@ set nocompatible
 
 " Vundle
 filetype off  " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-fugitive'
-Bundle 'clones/vim-l9'
-Bundle 'clones/vim-fuzzyfinder'
-Bundle 'scrooloose/syntastic.git'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/powerline'
-Bundle 'flazz/vim-colorschemes'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'L9'
+
+Plugin 'clones/vim-fuzzyfinder'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
+
+Plugin 'editorconfig/editorconfig-vim'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic.git'
+
+Plugin 'mileszs/ack.vim'
+
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'vim-airline', {'name': 'airline'}
+Plugin 'flazz/vim-colorschemes'
 
 
-filetype plugin indent on
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 
 " enable 256 color !!1!
 set t_Co=256
@@ -34,7 +47,7 @@ let mapleader = ","
 " CONFIGURATION MAPPING
 set scrolloff=3                     " show 3 lines of context around the cursor
 set autoread                        " set to auto read when a file is changed from the outside
-set mouse=a                         " allow for full mouse support
+"set mouse=a                         " allow for full mouse support
 set autowrite
 set showcmd                         " show typed commands
 
@@ -82,23 +95,10 @@ au GUIEnter * set vb t_vb=
 
 syntax enable                       " enable syntax highlighting
 
-" Statusline
-
 if has('statusline')
     set laststatus=2
-
-    " Broken down into easily includeable segments
-    set statusline=%<%f\    " Filename
-    set statusline+=%w%h%m%r " Options
-    set statusline+=%{fugitive#statusline()} "  Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " filetype
-    set statusline+=\ [%{getcwd()}]          " current dir
-    "set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " VIM 7.3 FEATURES
 
@@ -121,7 +121,7 @@ set foldlevel=99
 
 " ADDITIONAL KEY MAPPINGS
 " fast saving
-nmap <leader>w :up<cr>
+nmap <leader>w :update<cr>
 " fast escaping
 imap jj <ESC>
 " prevent accidental striking of F1 key
@@ -171,11 +171,15 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-" numbers
-set number
-set relativenumber
-nnoremap <F3> :set nonumber!<CR>
-nnoremap <F4> :set relativenumber!<CR>
+nmap <silent> <leader>hh :set invhlsearch<CR>
+nmap <silent> <leader>ll :set invlist<CR>
+nmap <silent> <leader>nn :set invnumber<CR>
+nmap <silent> <leader>pp :set invpaste<CR>
+nmap <silent> <leader>ii :set invrelativenumber<CR>
+
+if exists('+relativenumber')
+  set relativenumber
+endif
 
 "" ADDITIONAL AUTOCOMMANDS
 
@@ -225,6 +229,10 @@ nmap <C-Down> ]e
 " bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+" yankstack
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " MAIL HUMAN TEX
 au BufNewFile,BufRead *.txt set filetype=human

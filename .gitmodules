@@ -1,9 +1,9 @@
-[submodule "vim/bundle/vundle"]
-	path = vim/bundle/vundle
-	url = git://github.com/gmarik/vundle.git
 [submodule "zsh/zilsh"]
 	path = zsh/zilsh
 	url = git@github.com:zilsh/zilsh.git
 [submodule "zsh/bundle/oh-my-zilsh"]
 	path = zsh/bundle/oh-my-zilsh
 	url = git@github.com:zilsh/oh-my-zilsh.git
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
