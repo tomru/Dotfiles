@@ -129,3 +129,7 @@ if command -v fasd >/dev/null 2>&1 ; then
     alias m='f -e mplayer' # quick opening files with mplayer
     alias o='a -e xdg-open' # quick opening files with xdg-open
 fi
+
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
