@@ -30,6 +30,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline', {'name': 'airline'}
 Plugin 'flazz/vim-colorschemes'
 
+Plugin 'snipMate'
+
+Plugin 'mustache/vim-mustache-handlebars'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,18 +244,11 @@ au FileType human,mail,tex set expandtab textwidth=78 nocindent
 
 "" LANGUAGE SPECIFIC
 
-" CSS
-au FileType css set expandtab tabstop=2 shiftwidth=2
-
-" HTML
-au FileType html,xhtml set formatoptions+=tl
-au FileType html,xhtml set foldmethod=indent smartindent
-au FileType html,xhtml set expandtab tabstop=3 shiftwidth=3
-au FileType html,php,xhtml,jsp,ejs let b:delimitMate_matchpairs = "(:),[:],{:}"
-
 " Python
 au FileType python set noexpandtab
 
 " JavaScript
-au FileType javascript setlocal ts=4 sts=4 sw=4
 au BufRead,BufNewFile *.json set ft=json
+
+" Mustache
+au BufRead,BufNewFile *.template set filetype=html syntax=mustache
