@@ -181,6 +181,19 @@ nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>pp :set invpaste<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
 
+" accomondate with german keyboard
+
+" LATIN SMALL LETTER SHARP S
+noremap <Char-252> <C-]>
+" LATIN CAPITAL A WITH DIAERESIS
+noremap <Char-196> }
+" LATIN CAPITAL O WITH DIAERESIS
+noremap <Char-214> {
+" LATIN SMALL A WITH DIAERESIS
+noremap <Char-228> ]
+" LATIN SMALL O WITH DIAERESIS
+noremap <Char-246> [ 
+
 if exists('+relativenumber')
   set relativenumber
 endif

@@ -23,3 +23,9 @@
     cmd = /usr/bin/bcompare $LOCAL $REMOTE $BASE $MERGED
 [push]
 	default = current
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1229x863+2049+127
+	main-window-view = FileView
+	file-view-vpane-position = 304
+	file-view-hpane-position = 363
