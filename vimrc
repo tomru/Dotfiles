@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'L9'
+Plugin 'unimpaired.vim'
 
 Plugin 'clones/vim-fuzzyfinder'
 Plugin 'scrooloose/nerdtree'
@@ -241,11 +242,11 @@ let g:NERDTreeShowHidden=1
 
 " Unimpaired
 " bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <leader>k [e
+nmap <leader>j ]e
 " bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <leader>k [egv
+vmap <leader>j ]egv
 
 " yankstack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
