@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'unimpaired.vim'
 
-Plugin 'clones/vim-fuzzyfinder'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
