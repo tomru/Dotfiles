@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'L9'
+Plugin 'unimpaired.vim'
 
 Plugin 'clones/vim-fuzzyfinder'
 Plugin 'scrooloose/nerdtree'
@@ -183,16 +184,11 @@ nmap <silent> <leader>ii :set invrelativenumber<CR>
 
 " accomondate with german keyboard
 
-" LATIN SMALL LETTER SHARP S
-noremap <Char-252> <C-]>
-" LATIN CAPITAL A WITH DIAERESIS
-noremap <Char-196> }
-" LATIN CAPITAL O WITH DIAERESIS
-noremap <Char-214> {
-" LATIN SMALL A WITH DIAERESIS
-noremap <Char-228> ]
-" LATIN SMALL O WITH DIAERESIS
-noremap <Char-246> [ 
+nnoremap ß <C-]>
+nnoremap Ä }
+nnoremap Ö {
+nnoremap ä ]
+nnoremap ö [
 
 if exists('+relativenumber')
   set relativenumber
@@ -241,11 +237,11 @@ let g:NERDTreeShowHidden=1
 
 " Unimpaired
 " bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <leader>k [e
+nmap <leader>j ]e
 " bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <leader>k [egv
+vmap <leader>j ]egv
 
 " yankstack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
