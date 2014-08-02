@@ -1,35 +1,25 @@
-ZILSH_VERBOSITY=2
+export ZSH=$HOME/.oh-my-zsh
 
-autoload -U colors && colors
-source ~/.zsh/zilsh/zilsh.zsh
+ZSH_THEME="pygmalion"
 
-# oh-my-zilch config
-#
-
-omz_plugins=(bower gitfast git-extras node npm pass screen vi-mode)
+plugins=(bower gitfast git-extras node npm pass screen vi-mode)
 
 case $(hostname) in
     t430s-arch)
-        omz_plugins+=(archlinux systemd)
+        plugins+=(archlinux systemd)
         ;;
     cassiopeia.uberspace.de)
-        omz_plugins+=()
+        plugins+=()
         ;;
     everard)
-        omz_plugins+=(debian jira)
+        plugins+=(debian jira)
         ;;
 esac
 
+source $ZSH/oh-my-zsh.sh
 
-ZILSH_THEME="pygmalion.zsh-theme"
-
-_zilsh_init "~/.zsh/bundle/"
-
-############
-## Settings
-#############
-PATH="$PATH:$HOME/local/bin"
-EDITOR="vim"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
 # turn of autocorrection
 unsetopt correct_all
