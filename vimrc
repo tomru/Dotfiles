@@ -2,6 +2,7 @@
 set nocompatible
 
 " Vundle
+
 filetype off  " required!
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -16,6 +17,8 @@ Plugin 'unimpaired.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
+
+Plugin 'surround.vim'
 
 Plugin 'editorconfig/editorconfig-vim'
 
@@ -34,6 +37,7 @@ Plugin 'snipMate'
 
 Plugin 'mustache/vim-mustache-handlebars'
 
+Plugin 'mhinz/vim-startify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -44,12 +48,7 @@ filetype plugin indent on    " required
 set t_Co=256
 
 
-" MAP LEADER
-noremap , \
-let mapleader = ","
-
 " CONFIGURATION MAPPING
-set scrolloff=3                     " show 3 lines of context around the cursor
 set autoread                        " set to auto read when a file is changed from the outside
 "set mouse=a                         " allow for full mouse support
 set autowrite
@@ -105,7 +104,6 @@ endif
 
 
 " VIM 7.3 FEATURES
-
 if v:version >= 703
     set undofile
     set undodir=$HOME/.vim/.undo
@@ -123,7 +121,12 @@ set foldenable                   " enable folding
 set foldmethod=marker            " detect triple-{ style fold markers
 set foldlevel=99
 
-" ADDITIONAL KEY MAPPINGS
+" KEY MAPPINGS
+
+" MAP LEADER
+noremap , \
+let mapleader = ","
+
 " fast saving
 nmap <leader>w :update<cr>
 " fast escaping
@@ -141,9 +144,9 @@ nmap gy ggVGy
 nnoremap j gj
 nnoremap k gk
 " auto complete {} indent and position the cursor in the middle line
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap [<CR>  [<CR>]<Esc>O
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap (<CR>  (<CR>)<Esc>O
+"inoremap [<CR>  [<CR>]<Esc>O
 " fast window switching
 map <leader>, <C-W>w
 " cycle between buffers
@@ -151,11 +154,13 @@ map <leader>. :b#<cr>
 " change directory to current buffer
 map <leader>cd :cd %:p:h<cr>
 " swap implementations of ` and ' jump to prefer row and column jumping
-nnoremap ' `
-nnoremap ` '
+" nnoremap ' `
+" nnoremap ` '
 " indent visual selected code without unselecting and going back to normal mode
 vmap > >gv
 vmap < <gv
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
 " pull word under cursor into lhs of a substitute (for quick search and replace)
 nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 " strip all trailing whitespace in the current file
@@ -181,13 +186,21 @@ nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>pp :set invpaste<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
 
+" remap [] to <> for german keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
+
 " accomondate with german keyboard
 
-nnoremap ß <C-]>
-nnoremap Ä }
-nnoremap Ö {
-nnoremap ä ]
-nnoremap ö [
+"nnoremap ß <C-]>
+"nnoremap Ä }
+"nnoremap Ö {
+"nnoremap ä ]
+"nnoremap ö [
 
 if exists('+relativenumber')
   set relativenumber
@@ -196,31 +209,10 @@ endif
 "" ADDITIONAL AUTOCOMMANDS
 
 " saving when focus lost (after tabbing away or switching buffers)
-au FocusLost,BufLeave,WinLeave,TabLeave * silent! up
+"au FocusLost,BufLeave,WinLeave,TabLeave * silent! up
 " open in last edit place
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-au QuickFixCmdPost *grep* cwindow
-
-
-"" ADDITIONAL GUI SETTINGS
-
-if has("gui_running")
-    set guioptions-=T
-    " set guioptions-=m
-    set linespace=6
-    set columns=160 lines=26
-    set guioptions-=T
-
-    " crazy hack to get gvim to remove all scrollbars
-    set guioptions+=LlRrb
-    set guioptions-=LlRrb
-
-    if has("mac")
-        set guifont=DejaVu\ Sans\ Mono\:h14
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 9
-    endif
-endif
+"au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
+"au QuickFixCmdPost *grep* cwindow
 
 "" PLUGIN SETTINGS
 
@@ -230,9 +222,6 @@ let g:NERDChristmasTree=1
 let g:NERDTreeDirArrows=1
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeShowHidden=1
-
-" Super Tab
-" let g:SuperTabDefaultCompletionType = "context"
 
 " Unimpaired
 " bubble single lines
@@ -246,11 +235,12 @@ vmap <leader>j ]egv
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+
+" FILETYPE SPECIFIC
+
 " MAIL HUMAN TEX
 au BufNewFile,BufRead *.txt set filetype=human
 au FileType human,mail,tex set expandtab textwidth=78 nocindent
-
-"" LANGUAGE SPECIFIC
 
 " Python
 au FileType python set noexpandtab
