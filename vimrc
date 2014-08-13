@@ -14,30 +14,32 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'unimpaired.vim'
 
+Plugin 'mhinz/vim-startify'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
 
+Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
 Plugin 'surround.vim'
 
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
 Plugin 'editorconfig/editorconfig-vim'
-
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic.git'
-
-Plugin 'mileszs/ack.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'mileszs/ack.vim'
+
 Plugin 'vim-airline', {'name': 'airline'}
-Plugin 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
 
-Plugin 'snipMate'
+Plugin 'scrooloose/syntastic.git'
+Plugin 'Townk/vim-autoclose'
 
+Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
-
-Plugin 'mhinz/vim-startify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,7 +52,7 @@ set t_Co=256
 
 " CONFIGURATION MAPPING
 set autoread                        " set to auto read when a file is changed from the outside
-"set mouse=a                         " allow for full mouse support
+set mouse=a                         " allow for full mouse support
 set autowrite
 set showcmd                         " show typed commands
 
@@ -79,6 +81,7 @@ set nobackup                        " prevent backups of files, since using vers
 set nowritebackup
 set noswapfile
 set directory=~/.vim/.swp,/tmp      " swap directory
+
 set shiftwidth=4                    " set tab width
 set softtabstop=4
 set tabstop=4
@@ -89,10 +92,12 @@ set hidden
 
 set wrap                            " wrap lines
 set linebreak                       " this will not break whole words while wrap is enabled
-set showbreak=…
+"set showbreak=…
 set cursorline                      " highlight current line
 set list listchars=tab:\ \ ,trail:· " show · for trailing space, \ \ for trailing tab
+
 set spelllang=en,de                 " set spell check language
+
 set noeb vb t_vb=                   " disable audio and visual bells
 au GUIEnter * set vb t_vb=
 
@@ -101,7 +106,6 @@ syntax enable                       " enable syntax highlighting
 if has('statusline')
     set laststatus=2
 endif
-
 
 " VIM 7.3 FEATURES
 if v:version >= 703
@@ -113,7 +117,6 @@ endif
 
 " COLOR SCHEME
 set background=dark
-let g:solarized_contrast = "high"
 colorscheme solarized
 
 " FOLDING
@@ -147,10 +150,12 @@ nnoremap k gk
 "inoremap {<CR>  {<CR>}<Esc>O
 "inoremap (<CR>  (<CR>)<Esc>O
 "inoremap [<CR>  [<CR>]<Esc>O
+
 " fast window switching
 map <leader>, <C-W>w
 " cycle between buffers
 map <leader>. :b#<cr>
+
 " change directory to current buffer
 map <leader>cd :cd %:p:h<cr>
 " swap implementations of ` and ' jump to prefer row and column jumping
@@ -161,17 +166,23 @@ vmap > >gv
 vmap < <gv
 " Visually select the text that was last edited/pasted
 nmap gV `[v`]
+
 " pull word under cursor into lhs of a substitute (for quick search and replace)
 nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+
 " strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//e<cr>:let @/=''<CR>
+
 " insert path of current file into a command
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+
 " fast editing of the .vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<cr>
+
 " allow saving when you forgot sudo
 cmap w!! w !sudo tee % >/dev/null
+
 " turn on spell checking
 map <leader>spl :setlocal spell!<cr>
 " spell checking shortcuts
@@ -182,37 +193,14 @@ map <leader>s? z=
 
 nmap <silent> <leader>hh :set invhlsearch<CR>
 nmap <silent> <leader>ll :set invlist<CR>
-nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>pp :set invpaste<CR>
+
+nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
-
-" remap [] to <> for german keyboard
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
-
-" accomondate with german keyboard
-
-"nnoremap ß <C-]>
-"nnoremap Ä }
-"nnoremap Ö {
-"nnoremap ä ]
-"nnoremap ö [
 
 if exists('+relativenumber')
   set relativenumber
 endif
-
-"" ADDITIONAL AUTOCOMMANDS
-
-" saving when focus lost (after tabbing away or switching buffers)
-"au FocusLost,BufLeave,WinLeave,TabLeave * silent! up
-" open in last edit place
-"au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
-"au QuickFixCmdPost *grep* cwindow
 
 "" PLUGIN SETTINGS
 
@@ -235,7 +223,6 @@ vmap <leader>j ]egv
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
-
 " FILETYPE SPECIFIC
 
 " MAIL HUMAN TEX
@@ -245,7 +232,7 @@ au FileType human,mail,tex set expandtab textwidth=78 nocindent
 " Python
 au FileType python set noexpandtab
 
-" JavaScript
+" Json
 au BufRead,BufNewFile *.json set ft=json
 
 " Mustache
