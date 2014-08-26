@@ -27,6 +27,10 @@ Plugin 'honza/vim-snippets'
 
 Plugin 'editorconfig/editorconfig-vim'
 
+Plugin 'sheerun/vim-polyglot'
+
+Plugin 'nathanaelkane/vim-indent-guides'
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
@@ -40,157 +44,168 @@ Plugin 'Townk/vim-autoclose'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'gorodinskiy/vim-coloresque'
+
+Plugin 'inside/vim-search-pulse'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" enable 256 color !!1!
-set t_Co=256
+"" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
 
+"" Unleash all VIM power
+set nocompatible
 
-" CONFIGURATION MAPPING
-set autoread                        " set to auto read when a file is changed from the outside
-set mouse=a                         " allow for full mouse support
-set autowrite
-set showcmd                         " show typed commands
+"" Fix backspace indent
+set backspace=indent,eol,start
 
-set wildmenu                        " turn on WiLd menu
-set wildmode=list:longest,list:full " activate TAB auto-completion for file paths
-set wildignore+=*.o,*.class,*.pyc,.git,.svn,node_modules
+"" allow plugins by file type
+filetype on
+filetype plugin on
+filetype indent on
 
-set ruler                           " always show current position
-set backspace=indent,eol,start      " set backspace config, backspace as normal
-set nomodeline                      " security
-set encoding=utf8
-
-set hlsearch                        " highlight search things
-set incsearch                       " go to search results as typing
-set smartcase                       " but case-sensitive if expression contains a capital letter.
-set ignorecase                      " ignore case when searching
-set gdefault                        " assume global when searching or substituting
-set magic                           " set magic on, for regular expressions
-set showmatch                       " show matching brackets when text indicator is over them
-
-set lazyredraw                      " don't redraw screen during macros
-set ttyfast                         " improves redrawing for newer computers
-set fileformats=unix,mac,dos
-
-set nobackup                        " prevent backups of files, since using versioning mostly and undofile
-set nowritebackup
-set noswapfile
-set directory=~/.vim/.swp,/tmp      " swap directory
-
-set shiftwidth=4                    " set tab width
-set softtabstop=4
+"" Tabs. May be overriten by autocmd rules
 set tabstop=4
-set smarttab
+set softtabstop=0
+set shiftwidth=4
 set expandtab
-set autoindent                      " set automatic code indentation
+
+"" Enable hidden buffers
 set hidden
 
-set wrap                            " wrap lines
-set linebreak                       " this will not break whole words while wrap is enabled
-"set showbreak=…
-set cursorline                      " highlight current line
-set list listchars=tab:\ \ ,trail:· " show · for trailing space, \ \ for trailing tab
+"" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
-set spelllang=en,de                 " set spell check language
+"" Encoding
+set bomb
+set ttyfast
+set binary
 
-set noeb vb t_vb=                   " disable audio and visual bells
-au GUIEnter * set vb t_vb=
+"" Directories for swp files
+set nobackup
+set noswapfile
 
-syntax enable                       " enable syntax highlighting
+set fileformats=unix,mac,dos
+set showcmd
 
-if has('statusline')
-    set laststatus=2
+"" Mouse
+set mouse=a
+
+"
+" Visual Settings
+"
+
+if has("gui_running")
+  "disable menu, toolsbar, scrollbar
+  set guioptions -=m
+  set guioptions -=T
+  set guioptions -=r
 endif
 
-" VIM 7.3 FEATURES
-if v:version >= 703
-    set undofile
-    set undodir=$HOME/.vim/.undo
-    set undolevels=1000
-    set undoreload=10000
-endif
+set ruler
+set number
 
-" COLOR SCHEME
+set t_Co=256
+set cursorline
+
+syntax enable
 set background=dark
 colorscheme solarized
 
-" FOLDING
-set foldenable                   " enable folding
-set foldmethod=marker            " detect triple-{ style fold markers
-set foldlevel=99
+set scrolloff=3
 
+"" Status bar
+set laststatus=2
+
+"" Use modeline overrides
+set modeline
+set modelines=10
+
+set title
+set titleold="Terminal"
+set titlestring=%F
+
+"" disable visual bell
+set visualbell
+set t_vb=
+
+"" enable spelling
+set spelllang=en,de
+
+"" long lines
+let &showbreak='↪ '
+
+"
 " KEY MAPPINGS
+"
 
-" MAP LEADER
+"" MAP LEADER
 noremap , \
 let mapleader = ","
 
-" fast saving
+"" fast saving
 nmap <leader>w :update<cr>
-" fast escaping
+"" fast escaping
 imap jj <ESC>
-" prevent accidental striking of F1 key
+"" prevent accidental striking of F1 key
 map <F1> <ESC>
 imap <F1> <ESC>
-" clear highlight
+"" clear highlight
 nnoremap <leader><space> :noh<cr>
-" map Y to match C and D behavior
+"" map Y to match C and D behavior
 nnoremap Y y$
-" yank entire file (global yank)
+"" yank entire file (global yank)
 nmap gy ggVGy
-" ignore lines when going up or down
+"" ignore lines when going up or down
 nnoremap j gj
 nnoremap k gk
-" auto complete {} indent and position the cursor in the middle line
-"inoremap {<CR>  {<CR>}<Esc>O
-"inoremap (<CR>  (<CR>)<Esc>O
-"inoremap [<CR>  [<CR>]<Esc>O
 
-" fast window switching
+"" fast window switching
 map <leader>, <C-W>w
-" cycle between buffers
+"" cycle between buffers
 map <leader>. :b#<cr>
 
-" change directory to current buffer
+"" change directory to current buffer
 map <leader>cd :cd %:p:h<cr>
-" swap implementations of ` and ' jump to prefer row and column jumping
-" nnoremap ' `
-" nnoremap ` '
-" indent visual selected code without unselecting and going back to normal mode
+"" indent visual selected code without unselecting and going back to normal mode
 vmap > >gv
 vmap < <gv
-" Visually select the text that was last edited/pasted
+"" Visually select the text that was last edited/pasted
 nmap gV `[v`]
 
-" pull word under cursor into lhs of a substitute (for quick search and replace)
+"" pull word under cursor into lhs of a substitute (for quick search and replace)
 nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 
-" strip all trailing whitespace in the current file
+"" strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//e<cr>:let @/=''<CR>
 
-" insert path of current file into a command
+"" insert path of current file into a command
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
-" fast editing of the .vimrc
+"" fast editing of the .vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<cr>
 
-" allow saving when you forgot sudo
+"" allow saving when you forgot sudo
 cmap w!! w !sudo tee % >/dev/null
 
-" turn on spell checking
+"" turn on spell checking
 map <leader>spl :setlocal spell!<cr>
-" spell checking shortcuts
+"" spell checking shortcuts
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+"" toggle states
 nmap <silent> <leader>hh :set invhlsearch<CR>
 nmap <silent> <leader>ll :set invlist<CR>
 nmap <silent> <leader>pp :set invpaste<CR>
@@ -202,38 +217,60 @@ if exists('+relativenumber')
   set relativenumber
 endif
 
-"" PLUGIN SETTINGS
+"
+" Plugin Configuration
+"
 
-" NERDTree
+"" ariline
+let g:airline_theme = 'solarized'
+let g:airline_enable_syntastic = 1
+let g:airline#extensions#tabline#enabled = 1
+
+"" NERDTree configuration
 nmap <leader>n :NERDTreeToggle<CR>
-let g:NERDChristmasTree=1
-let g:NERDTreeDirArrows=1
-let g:NERDTreeQuitOnOpen=1
-let g:NERDTreeShowHidden=1
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 20
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
-" Unimpaired
-" bubble single lines
+"" Unimpaired
+"" bubble single lines
 nmap <leader>k [e
 nmap <leader>j ]e
-" bubble multiple lines
+"" bubble multiple lines
 vmap <leader>k [egv
 vmap <leader>j ]egv
 
-" yankstack
+"" yankstack
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
-" FILETYPE SPECIFIC
 
-" MAIL HUMAN TEX
+"
+" Autocmd Rules
+"
+
+"" do syntax highlight syncing from start
+autocmd BufEnter * :syntax sync fromstart
+
+"" Remember cursor position
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+set autoread
+
+"" txt, mail, human, tex
 au BufNewFile,BufRead *.txt set filetype=human
-au FileType human,mail,tex set expandtab textwidth=78 nocindent
+au FileType human,mail,tex set wrap wm=2 textwidth=78 nocindent
 
-" Python
+"" Python
 au FileType python set noexpandtab
 
-" Json
+"" Json
 au BufRead,BufNewFile *.json set ft=json
 
-" Mustache
+"" Mustache
 au BufRead,BufNewFile *.template set filetype=html syntax=mustache
