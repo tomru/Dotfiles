@@ -109,9 +109,6 @@ bindkey '^H' backward-delete-char
 # Source Things
 #################
 
-# Source Node Version Manager, if installed.
-source ~/.nvm/nvm.sh
-
 # https://github.com/clvv/fasd
 if command -v fasd >/dev/null 2>&1 ; then
     eval "$(fasd --init auto)"
@@ -119,3 +116,10 @@ if command -v fasd >/dev/null 2>&1 ; then
     alias m='f -e mplayer' # quick opening files with mplayer
     alias o='a -e xdg-open' # quick opening files with xdg-open
 fi
+
+# solarized dircolors
+source ~/.dircolors
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
