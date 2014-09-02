@@ -14,8 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'unimpaired.vim'
 
-Plugin 'mhinz/vim-startify'
-
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
