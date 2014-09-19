@@ -168,8 +168,15 @@ nnoremap k gk
 
 "" fast window switching
 map <leader>, <C-W>w
+
+"" open next buffer
+map <leader>. :bn<cr>
+
 "" cycle between buffers
-map <leader>. :b#<cr>
+map <leader>: :b#<cr>
+
+"" delete buffer
+map <leader>bd :bd<cr>
 
 "" change directory to current buffer
 map <leader>cd :cd %:p:h<cr>
