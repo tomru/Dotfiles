@@ -17,7 +17,10 @@ Plugin 'unimpaired.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'maxbrunsfeld/vim-yankstack', {'name': 'yankstack'}
+Plugin 'Gundo'
+
+Plugin 'scrooloose/nerdcommenter'
+
 Plugin 'surround.vim'
 
 Plugin 'SirVer/ultisnips'
@@ -254,6 +257,15 @@ vmap <leader>j ]egv
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
+"" Make Ctrl-P plugin a lot faster for Git projects
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+
+"" Indent Guides
+nmap <leader>g :IndentGuidesToggle<CR>
+
+"" Gundo
+nmap <leader>u :GundoToggle<CR>
 
 "
 " Autocmd Rules
