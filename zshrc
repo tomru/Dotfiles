@@ -5,7 +5,7 @@ ZSH_THEME="pygmalion"
 plugins=(bower gitfast git-extras node npm pass screen vi-mode)
 
 case $(hostname) in
-    t430s-arch)
+    t430s-arch|pi)
         plugins+=(archlinux systemd)
         ;;
     cassiopeia.uberspace.de)
