@@ -229,6 +229,10 @@ endif
 " Plugin Configuration
 "
 
+"" syntastic
+let g:syntastic_javascript_checkers = ['jscs','jshint']
+let g:syntastic_check_on_open = 1
+
 "" ariline
 let g:airline_theme = 'solarized'
 let g:airline_enable_syntastic = 1
