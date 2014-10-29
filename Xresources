@@ -27,8 +27,8 @@ URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
 ! Fonts
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=13
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=13
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14
 
 ! Font size
 URxvt.keysym.C-Up:     perl:font-size:increase
