@@ -15,3 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 # todo.sh
 alias t=todo.sh
 
+# Base16 Shell
+BASE16_SCHEME="solarized"
+BASE16_SHELL="$HOME/.base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
