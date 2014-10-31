@@ -38,7 +38,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mileszs/ack.vim'
 
 Plugin 'vim-airline', {'name': 'airline'}
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 
 Plugin 'scrooloose/syntastic.git'
 Plugin 'Townk/vim-autoclose'
@@ -119,7 +119,8 @@ set cursorline
 
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-solarized
 
 set scrolloff=3
 
@@ -234,7 +235,7 @@ let g:syntastic_javascript_checkers = ['jscs','jshint']
 let g:syntastic_check_on_open = 1
 
 "" ariline
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'powerlineish'
 let g:airline_enable_syntastic = 1
 let g:airline#extensions#tabline#enabled = 1
 
