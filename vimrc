@@ -41,7 +41,7 @@ Plugin 'vim-airline', {'name': 'airline'}
 Plugin 'chriskempson/base16-vim'
 
 Plugin 'scrooloose/syntastic.git'
-Plugin 'Townk/vim-autoclose'
+Plugin 'Raimondi/delimitMate'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
