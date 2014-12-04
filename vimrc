@@ -1,58 +1,66 @@
-" FULL VIM
-set nocompatible
+" NeoBundle
+if !1 | finish | endif
 
-" Vundle
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
-filetype off  " required!
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-Plugin 'L9'
-Plugin 'unimpaired.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
+" my bundles
+NeoBundle 'L9'
+NeoBundle 'unimpaired.vim'
 
-Plugin 'Gundo'
+NeoBundle 'Shougo/unite.vim'
 
-Plugin 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'kien/ctrlp.vim'
 
-Plugin 'surround.vim'
+NeoBundle 'scrooloose/nerdcommenter'
 
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+NeoBundle 'surround.vim'
 
-Plugin 'editorconfig/editorconfig-vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
 
-Plugin 'sheerun/vim-polyglot'
+NeoBundle 'editorconfig/editorconfig-vim'
 
-Plugin 'nathanaelkane/vim-indent-guides'
+NeoBundle 'sheerun/vim-polyglot'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
-Plugin 'mileszs/ack.vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
 
-Plugin 'vim-airline', {'name': 'airline'}
-Plugin 'chriskempson/base16-vim'
+NeoBundle 'rking/ag.vim'
 
-Plugin 'scrooloose/syntastic.git'
-Plugin 'Raimondi/delimitMate'
+NeoBundle 'vim-airline'
+NeoBundle 'chriskempson/base16-vim'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'gorodinskiy/vim-coloresque'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'Raimondi/delimitMate'
 
-Plugin 'inside/vim-search-pulse'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'JavaScript-Indent'
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+NeoBundle 'marijnh/tern_for_vim'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+NeoBundle 'mustache/vim-mustache-handlebars'
+NeoBundle 'gorodinskiy/vim-coloresque'
 
+NeoBundle 'inside/vim-search-pulse'
+
+call neobundle#end()
+
+filetype plugin indent on
+
+NeoBundleCheck
+
+" other stuff
 
 "" Encoding
 set encoding=utf-8
@@ -143,15 +151,16 @@ set t_vb=
 set spelllang=en,de
 
 "" long lines
-let &showbreak='↪ '
+set showbreak=~
 
 "
 " KEY MAPPINGS
 "
 
 "" MAP LEADER
-noremap , \
+	noremap , \
 let mapleader = ","
+"let mapleader = "\<Space>"
 
 "" fast saving
 nmap <leader>w :update<cr>
@@ -231,7 +240,7 @@ endif
 "
 
 "" syntastic
-let g:syntastic_javascript_checkers = ['jscs','jshint']
+let g:syntastic_javascript_checkers = ['jshint','jscs']
 let g:syntastic_check_on_open = 1
 
 "" ariline
@@ -241,14 +250,6 @@ let g:airline#extensions#tabline#enabled = 1
 
 "" NERDTree configuration
 nmap <leader>n :NERDTreeToggle<CR>
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 20
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 
 "" Unimpaired
 "" bubble single lines
@@ -271,6 +272,14 @@ nmap <leader>g :IndentGuidesToggle<CR>
 
 "" Gundo
 nmap <leader>u :GundoToggle<CR>
+
+"" Ultisnips
+"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Tex
+let g:tex_flavor = "latex"
 
 "
 " Autocmd Rules
