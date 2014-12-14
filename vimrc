@@ -158,7 +158,7 @@ set showbreak=~
 "
 
 "" MAP LEADER
-	noremap , \
+noremap , \
 let mapleader = ","
 "let mapleader = "\<Space>"
 
@@ -244,7 +244,9 @@ let g:syntastic_javascript_checkers = ['jshint','jscs']
 let g:syntastic_check_on_open = 1
 
 "" ariline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'bubblegum'
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
 let g:airline_enable_syntastic = 1
 let g:airline#extensions#tabline#enabled = 1
 
