@@ -16,51 +16,66 @@ Xft.hintstyle:              hintslight
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.internalBorder:       3
-URxvt.lineSpace:            0
+URxvt*depth:                32
+URxvt*geometry:             90x30
+URxvt*transparent:          false
+URxvt*fading:               0
+! URxvt*urgentOnBell:         true
+! URxvt*visualBell:           true
+URxvt*loginShell:           true
+URxvt*internalBorder:       3
+URxvt*lineSpace:            0
+URxvt*skipBuiltinGlyphs:    true
 
 ! Fonts
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=14
-URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14
+URxvt*font:                 xft:DejaVu Sans Mono:style=Book:size=10, \
+                            xft:Droid Sans Fallback:style=Regular, \
+                            xft:Droid Sans Japanese:style=Regular, \
+                            xft:unifont:style=Medium
+URxvt*boldFont:             xft:DejaVu Sans Mono:style=Book:size=10, \
+                            xft:Droid Sans Fallback:style=Regular, \
+                            xft:Droid Sans Japanese:style=Regular, \
+                            xft:unifont:style=Medium
+URxvt*italicFont:           xft:DejaVu Sans Mono:style=Book:size=10, \
+                            xft:Droid Sans Fallback:style=Regular, \
+                            xft:Droid Sans Japanese:style=Regular, \
+                            xft:unifont:style=Medium
+URxvt*boldItalicFont:       xft:DejaVu Sans Mono:style=Book:size=10, \
+                            xft:Droid Sans Fallback:style=Regular, \
+                            xft:Droid Sans Japanese:style=Regular, \
+                            xft:unifont:style=Medium
 
 ! Font size
-URxvt.keysym.C-Up:     perl:font-size:increase
-URxvt.keysym.C-Down:   perl:font-size:decrease
-URxvt.keysym.C-S-Up:   perl:font-size:incglobal
-URxvt.keysym.C-S-Down: perl:font-size:decglobal
+URxvt*keysym.C-Up:     perl:font-size:increase
+URxvt*keysym.C-Down:   perl:font-size:decrease
+URxvt*keysym.C-S-Up:   perl:font-size:incglobal
+URxvt*keysym.C-S-Down: perl:font-size:decglobal
 
 ! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            true
-URxvt.scrollBar_right:      true
+URxvt*scrollStyle:          rxvt
+URxvt*scrollBar:            true
+URxvt*scrollBar_right:      true
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,matcher,font-size
-URxvt.url-launcher:         xdg-open
-URxvt.matcher.button:       1
+URxvt*perl-ext-common:      default,matcher,font-size
+URxvt*url-launcher:         xdg-open
+URxvt*matcher.button:       1
 
 ! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
+URxvt*cursorBlink:          true
+URxvt*cursorColor:          #657b83
+URxvt*cursorUnderline:      false
 
 ! Pointer
-URxvt.pointerBlank:         true
+URxvt*pointerBlank:         true
 
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt.saveLines:            65536
+URxvt*saveLines:            65536
 
 ! Create a dump of the content of the terminal in /tmp
 ! <PRINT> : current screen
 ! <CTRL>+<PRINT> : current screen and scrollbackbuffer
-URxvt.print-pipe:           cat > $(echo /tmp/urxvt.dump.$(date +'%Y-%m-%d--%H:%M:%S'))
+URxvt*print-pipe:           cat > $(echo /tmp/urxvt.dump.$(date +'%Y-%m-%d--%H:%M:%S'))
 
 ! Base16 Solarized Dark
 ! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
