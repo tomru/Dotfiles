@@ -24,62 +24,6 @@ source $ZSH/oh-my-zsh.sh
 # turn of autocorrection
 unsetopt correct_all
 
-#################################
-## Custom Functions And Aliases
-#################################
-
-# List all
-alias ll="ls -alF"
-
-# git aliases
-alias gch="git checkout"
-alias gco="git commit"
-alias gadd="git add"
-alias glog="git log --all"
-alias giraffe="git log --graph --pretty=oneline --abbrev-commit"
-
-# Remote X over SSH
-alias sex="ssh -C -X -c blowfish"
-
-alias -s bz2='tar -xjvf'
-alias -s gz='tar -xzvf'
-alias -s xz='tar -xJvf'
-
-
-##############
-## VCS info
-#############
-
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats '%F{242}%s%F{238}-%F{247}%b %F{238}(%F{244}%a%F{238})%f'
-zstyle ':vcs_info:*' formats '%F{242}%s%F{238}-%F{247}%b%f'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
-
-zstyle ':vcs_info:*' enable git cvs svn
-
-vcs_info_wrapper() {
-    vcs_info
-    if [ -n "$vcs_info_msg_0_" ]; then
-        echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-    fi
-}
-
-
-############
-## Colors
-###########
-
-alias ls="ls --color"
-
-# Now replace all the greps!
-# I'm gonna be honest, I forget what fgrep and egrep are.
-# But the place I grabbed this from had them, so w/e
-alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
-
-
 #################
 ## Keybindings
 ################
@@ -109,17 +53,15 @@ bindkey '^H' backward-delete-char
 # Source Things
 #################
 
-# https://github.com/clvv/fasd
-if command -v fasd >/dev/null 2>&1 ; then
-    eval "$(fasd --init auto)"
-    alias v='f -e vim' # quick opening files with vim
-    alias m='f -e mplayer' # quick opening files with mplayer
-    alias o='a -e xdg-open' # quick opening files with xdg-open
-fi
-
 # solarized dircolors
 source ~/.dircolors
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# rvm
+if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
+    source $HOME/.rvm/scripts/rvm
+    export PATH="$PATH:$HOME/.rvm/bin"
+fi
