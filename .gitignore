@@ -4,3 +4,4 @@ vim/bundle/*
 !vim/bundle/Vundle.vim
 vim/spell
 .netrwhist
+Xresources.compiled
