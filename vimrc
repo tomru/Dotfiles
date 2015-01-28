@@ -294,6 +294,9 @@ set autoread
 au BufNewFile,BufRead *.txt set filetype=human
 au FileType human,mail,tex set wrap wm=2 textwidth=78 nocindent spell
 
+"" Markdown
+au FileType markdown set spell
+
 "" Python
 au FileType python set noexpandtab
 
