@@ -70,14 +70,6 @@ set fileencodings=utf-8
 "" Unleash all VIM power
 set nocompatible
 
-"" Fix backspace indent
-set backspace=indent,eol,start
-
-"" allow plugins by file type
-filetype on
-filetype plugin on
-filetype indent on
-
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
