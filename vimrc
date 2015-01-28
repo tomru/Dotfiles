@@ -27,6 +27,8 @@ NeoBundle 'surround.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
+NeoBundle 'sjl/gundo.vim'
+
 NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'sheerun/vim-polyglot'
