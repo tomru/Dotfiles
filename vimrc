@@ -40,6 +40,8 @@ NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 'rking/ag.vim'
 
+NeoBundle 'christoomey/vim-tmux-navigator'
+
 NeoBundle 'vim-airline'
 NeoBundle 'chriskempson/base16-vim'
 
@@ -173,6 +175,14 @@ nmap gy ggVGy
 "" ignore lines when going up or down
 nnoremap j gj
 nnoremap k gk
+
+" Easier split navigation
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 "" fast window switching
 map <leader>, <C-W>w
