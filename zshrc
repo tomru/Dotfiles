@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="pygmalion"
 
-plugins=(bower gitfast git-extras node npm pass screen vi-mode)
+plugins=(bower gitfast git-extras node npm pass screen vi-mode tmux)
 
 case $(hostname) in
     t430s-arch|pi)

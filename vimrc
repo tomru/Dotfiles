@@ -27,6 +27,8 @@ NeoBundle 'surround.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
 
+NeoBundle 'sjl/gundo.vim'
+
 NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'sheerun/vim-polyglot'
@@ -37,6 +39,8 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 'rking/ag.vim'
+
+NeoBundle 'christoomey/vim-tmux-navigator'
 
 NeoBundle 'vim-airline'
 NeoBundle 'chriskempson/base16-vim'
@@ -70,14 +74,6 @@ set fileencodings=utf-8
 "" Unleash all VIM power
 set nocompatible
 
-"" Fix backspace indent
-set backspace=indent,eol,start
-
-"" allow plugins by file type
-filetype on
-filetype plugin on
-filetype indent on
-
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
@@ -107,6 +103,7 @@ set showcmd
 
 "" Mouse
 set mouse=a
+set ttymouse=urxvt
 
 "
 " Visual Settings
@@ -178,6 +175,14 @@ nmap gy ggVGy
 "" ignore lines when going up or down
 nnoremap j gj
 nnoremap k gk
+
+" Easier split navigation
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 "" fast window switching
 map <leader>, <C-W>w
@@ -298,6 +303,9 @@ set autoread
 "" txt, mail, human, tex
 au BufNewFile,BufRead *.txt set filetype=human
 au FileType human,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+
+"" Markdown
+au FileType markdown set spell
 
 "" Python
 au FileType python set noexpandtab
