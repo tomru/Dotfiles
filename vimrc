@@ -103,7 +103,6 @@ set showcmd
 
 "" Mouse
 set mouse=a
-set ttymouse=urxvt
 
 "
 " Visual Settings
