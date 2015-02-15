@@ -42,7 +42,7 @@ NeoBundle 'rking/ag.vim'
 
 NeoBundle 'christoomey/vim-tmux-navigator'
 
-NeoBundle 'vim-airline'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'chriskempson/base16-vim'
 
 NeoBundle 'scrooloose/syntastic.git'
@@ -247,12 +247,20 @@ endif
 let g:syntastic_javascript_checkers = ['jshint','jscs']
 let g:syntastic_check_on_open = 1
 
-"" ariline
-let g:airline_theme = 'bubblegum'
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-let g:airline_enable_syntastic = 1
-let g:airline#extensions#tabline#enabled = 1
+"" lightline
+let g:lightline = {
+\  'colorscheme': 'solarized',
+\  'active': {
+\    'left': [ [ 'mode', 'paste' ],
+\              [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+\  },
+\  'component': {
+\    'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+\  },
+\  'component_visible_condition': {
+\    'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+\  }
+\}
 
 "" NERDTree configuration
 nmap <leader>n :NERDTreeToggle<CR>
