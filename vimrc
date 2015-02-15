@@ -66,6 +66,9 @@ NeoBundleCheck
 
 " other stuff
 
+"" reload when vim config changes
+autocmd! bufwritepost .vimrc source %
+
 "" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
