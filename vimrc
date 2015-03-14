@@ -74,9 +74,6 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-"" Unleash all VIM power
-set nocompatible
-
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
