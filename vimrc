@@ -146,8 +146,38 @@ set t_vb=
 "" enable spelling
 set spelllang=en,de
 
-"" long lines
-set showbreak=~
+" Spelling highlights. Use underline in term to prevent cursorline highlights
+" from interfering
+if !has("gui_running")
+  hi clear SpellBad
+  hi SpellBad cterm=underline ctermfg=red
+  hi clear SpellCap
+  hi SpellCap cterm=underline ctermfg=blue
+  hi clear SpellLocal
+  hi SpellLocal cterm=underline ctermfg=blue
+  hi clear SpellRare
+  hi SpellRare cterm=underline ctermfg=blue
+endif
+
+" Sets how many lines of history vim has to remember
+set history=10000
+
+" Display unprintable chars
+set list
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set showbreak=↪
+
+" Open all folds initially
+set foldmethod=indent
+set foldlevelstart=99
+
+" Writes to the unnamed register also writes to the * and + registers. This
+" makes it easy to interact with the system clipboard
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 "
 " KEY MAPPINGS
@@ -234,6 +264,13 @@ nmap <silent> <leader>pp :set invpaste<CR>
 
 nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
+
+" <Leader>0: Run the visually selected code in node and replace it with the output
+vnoremap <silent> <Leader>0 :!node<cr>
+
+" +/-: Increment number
+nnoremap + <c-a>
+nnoremap - <c-x>
 
 if exists('+relativenumber')
   set relativenumber
