@@ -1,78 +1,57 @@
-" NeoBundle
-if !1 | finish | endif
+call plug#begin('~/.vim/plugged')
 
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+Plug 'tpope/vim-sensible'
 
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+Plug 'L9'
+Plug 'unimpaired.vim'
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+Plug 'Shougo/unite.vim'
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
 
-" my bundles
-NeoBundle 'L9'
-NeoBundle 'unimpaired.vim'
+Plug 'scrooloose/nerdcommenter'
 
-NeoBundle 'Shougo/unite.vim'
+Plug 'surround.vim'
 
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'kien/ctrlp.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
 
-NeoBundle 'surround.vim'
+Plug 'editorconfig/editorconfig-vim'
 
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+Plug 'sheerun/vim-polyglot'
 
-NeoBundle 'sjl/gundo.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
-NeoBundle 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-NeoBundle 'sheerun/vim-polyglot'
+Plug 'rking/ag.vim'
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
+Plug 'christoomey/vim-tmux-navigator'
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+Plug 'chriskempson/base16-vim'
 
-NeoBundle 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
 
-NeoBundle 'christoomey/vim-tmux-navigator'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'JavaScript-Indent'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'chriskempson/base16-vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'gorodinskiy/vim-coloresque'
 
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'Raimondi/delimitMate'
+Plug 'inside/vim-search-pulse'
 
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'JavaScript-Indent'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'marijnh/tern_for_vim'
-
-NeoBundle 'mustache/vim-mustache-handlebars'
-NeoBundle 'gorodinskiy/vim-coloresque'
-
-NeoBundle 'inside/vim-search-pulse'
-
-call neobundle#end()
-
-filetype plugin indent on
-
-NeoBundleCheck
-
-" other stuff
+call plug#end()
 
 "" reload when vim config changes
 autocmd! bufwritepost .vimrc source %
-
-"" Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -85,28 +64,27 @@ set hidden
 
 "" Searching
 set hlsearch
-set incsearch
-set ignorecase
 set smartcase
-
-"" Encoding
-set bomb
-set ttyfast
-set binary
 
 "" Directories for swp files
 set nobackup
 set noswapfile
 
-set fileformats=unix,mac,dos
-set showcmd
-
 "" Mouse
 set mouse=a
 
-"
-" Visual Settings
-"
+"" Visual settings
+syntax enable
+set cursorline
+
+set number
+if exists('+relativenumber')
+  set relativenumber
+endif
+
+set background=dark
+let base16colorspace=256
+colorscheme base16-solarized
 
 if has("gui_running")
   "disable menu, toolsbar, scrollbar
@@ -114,22 +92,6 @@ if has("gui_running")
   set guioptions -=T
   set guioptions -=r
 endif
-
-set ruler
-set number
-
-set t_Co=256
-set cursorline
-
-syntax enable
-set background=dark
-let base16colorspace=256
-colorscheme base16-solarized
-
-set scrolloff=3
-
-"" Status bar
-set laststatus=2
 
 "" Use modeline overrides
 set modeline
@@ -159,11 +121,7 @@ if !has("gui_running")
   hi SpellRare cterm=underline ctermfg=blue
 endif
 
-" Sets how many lines of history vim has to remember
-set history=10000
-
 " Display unprintable chars
-set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 set showbreak=↪
 
@@ -192,15 +150,8 @@ let mapleader = ","
 nmap <leader>w :update<cr>
 "" fast escaping
 imap jj <ESC>
-"" prevent accidental striking of F1 key
-map <F1> <ESC>
-imap <F1> <ESC>
 "" clear highlight
 nnoremap <leader><space> :noh<cr>
-"" map Y to match C and D behavior
-nnoremap Y y$
-"" yank entire file (global yank)
-nmap gy ggVGy
 "" ignore lines when going up or down
 nnoremap j gj
 nnoremap k gk
@@ -272,10 +223,6 @@ vnoremap <silent> <Leader>0 :!node<cr>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
-if exists('+relativenumber')
-  set relativenumber
-endif
-
 "
 " Plugin Configuration
 "
@@ -310,10 +257,6 @@ nmap <leader>j ]e
 vmap <leader>k [egv
 vmap <leader>j ]egv
 
-"" yankstack
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
 "" Make Ctrl-P plugin a lot faster for Git projects
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
@@ -341,8 +284,6 @@ autocmd BufEnter * :syntax sync fromstart
 
 "" Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-set autoread
 
 "" txt, mail, human, tex
 au BufNewFile,BufRead *.txt set filetype=human
