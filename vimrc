@@ -21,6 +21,8 @@ Plug 'sjl/gundo.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'nathanaelkane/vim-indent-guides'
@@ -263,8 +265,13 @@ nmap <leader>g :IndentGuidesToggle<CR>
 "" Gundo
 nmap <leader>u :GundoToggle<CR>
 
+"" YouCompleteMe
+let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<u-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<c-tab>'
+
 "" Ultisnips
-"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
