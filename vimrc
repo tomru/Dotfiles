@@ -38,13 +38,9 @@ Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 
-Plug 'jelera/vim-javascript-syntax'
-Plug 'JavaScript-Indent'
-Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'gorodinskiy/vim-coloresque'
 
 Plug 'inside/vim-search-pulse'
 
