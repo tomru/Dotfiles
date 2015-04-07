@@ -1,7 +1,5 @@
 irssi
-
-vim/bundle/*
-!vim/bundle/Vundle.vim
+vim/plugged/*
 vim/spell
 .netrwhist
 Xresources.compiled

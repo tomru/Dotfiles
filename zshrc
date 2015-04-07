@@ -49,6 +49,11 @@ bindkey -a '^R' redo
 bindkey '^?' backward-delete-char
 bindkey '^H' backward-delete-char
 
+
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
 ##################
 # Source Things
 #################

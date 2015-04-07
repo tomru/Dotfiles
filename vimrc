@@ -1,81 +1,55 @@
-" NeoBundle
-if !1 | finish | endif
+call plug#begin('~/.vim/plugged')
 
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+Plug 'tpope/vim-sensible'
 
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+Plug 'L9'
+Plug 'unimpaired.vim'
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+Plug 'Shougo/unite.vim'
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
 
-" my bundles
-NeoBundle 'L9'
-NeoBundle 'unimpaired.vim'
+Plug 'scrooloose/nerdcommenter'
 
-NeoBundle 'Shougo/unite.vim'
+Plug 'surround.vim'
 
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'kien/ctrlp.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-NeoBundle 'scrooloose/nerdcommenter'
+Plug 'sjl/gundo.vim'
 
-NeoBundle 'surround.vim'
+Plug 'editorconfig/editorconfig-vim'
 
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
 
-NeoBundle 'sjl/gundo.vim'
+Plug 'sheerun/vim-polyglot'
 
-NeoBundle 'editorconfig/editorconfig-vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
-NeoBundle 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
+Plug 'rking/ag.vim'
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
 
-NeoBundle 'rking/ag.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'chriskempson/base16-vim'
 
-NeoBundle 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
 
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'chriskempson/base16-vim'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'Raimondi/delimitMate'
+Plug 'mustache/vim-mustache-handlebars'
 
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'JavaScript-Indent'
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-NeoBundle 'marijnh/tern_for_vim'
+Plug 'inside/vim-search-pulse'
 
-NeoBundle 'mustache/vim-mustache-handlebars'
-NeoBundle 'gorodinskiy/vim-coloresque'
-
-NeoBundle 'inside/vim-search-pulse'
-
-call neobundle#end()
-
-filetype plugin indent on
-
-NeoBundleCheck
-
-" other stuff
+call plug#end()
 
 "" reload when vim config changes
 autocmd! bufwritepost .vimrc source %
-
-"" Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-
-"" Unleash all VIM power
-set nocompatible
 
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
@@ -88,28 +62,27 @@ set hidden
 
 "" Searching
 set hlsearch
-set incsearch
-set ignorecase
 set smartcase
-
-"" Encoding
-set bomb
-set ttyfast
-set binary
 
 "" Directories for swp files
 set nobackup
 set noswapfile
 
-set fileformats=unix,mac,dos
-set showcmd
-
 "" Mouse
 set mouse=a
 
-"
-" Visual Settings
-"
+"" Visual settings
+syntax enable
+set cursorline
+
+set number
+if exists('+relativenumber')
+  set relativenumber
+endif
+
+set background=dark
+let base16colorspace=256
+colorscheme base16-solarized
 
 if has("gui_running")
   "disable menu, toolsbar, scrollbar
@@ -117,22 +90,6 @@ if has("gui_running")
   set guioptions -=T
   set guioptions -=r
 endif
-
-set ruler
-set number
-
-set t_Co=256
-set cursorline
-
-syntax enable
-set background=dark
-let base16colorspace=256
-colorscheme base16-solarized
-
-set scrolloff=3
-
-"" Status bar
-set laststatus=2
 
 "" Use modeline overrides
 set modeline
@@ -149,8 +106,34 @@ set t_vb=
 "" enable spelling
 set spelllang=en,de
 
-"" long lines
-set showbreak=~
+" Spelling highlights. Use underline in term to prevent cursorline highlights
+" from interfering
+if !has("gui_running")
+  hi clear SpellBad
+  hi SpellBad cterm=underline ctermfg=red
+  hi clear SpellCap
+  hi SpellCap cterm=underline ctermfg=blue
+  hi clear SpellLocal
+  hi SpellLocal cterm=underline ctermfg=blue
+  hi clear SpellRare
+  hi SpellRare cterm=underline ctermfg=blue
+endif
+
+" Display unprintable chars
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set showbreak=↪
+
+" Open all folds initially
+set foldmethod=indent
+set foldlevelstart=99
+
+" Writes to the unnamed register also writes to the * and + registers. This
+" makes it easy to interact with the system clipboard
+if has ('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif
 
 "
 " KEY MAPPINGS
@@ -165,15 +148,8 @@ let mapleader = ","
 nmap <leader>w :update<cr>
 "" fast escaping
 imap jj <ESC>
-"" prevent accidental striking of F1 key
-map <F1> <ESC>
-imap <F1> <ESC>
 "" clear highlight
 nnoremap <leader><space> :noh<cr>
-"" map Y to match C and D behavior
-nnoremap Y y$
-"" yank entire file (global yank)
-nmap gy ggVGy
 "" ignore lines when going up or down
 nnoremap j gj
 nnoremap k gk
@@ -238,9 +214,12 @@ nmap <silent> <leader>pp :set invpaste<CR>
 nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
 
-if exists('+relativenumber')
-  set relativenumber
-endif
+" <Leader>0: Run the visually selected code in node and replace it with the output
+vnoremap <silent> <Leader>0 :!node<cr>
+
+" +/-: Increment number
+nnoremap + <c-a>
+nnoremap - <c-x>
 
 "
 " Plugin Configuration
@@ -276,10 +255,6 @@ nmap <leader>j ]e
 vmap <leader>k [egv
 vmap <leader>j ]egv
 
-"" yankstack
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
 "" Make Ctrl-P plugin a lot faster for Git projects
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
@@ -290,8 +265,13 @@ nmap <leader>g :IndentGuidesToggle<CR>
 "" Gundo
 nmap <leader>u :GundoToggle<CR>
 
+"" YouCompleteMe
+let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<u-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<c-tab>'
+
 "" Ultisnips
-"let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -307,8 +287,6 @@ autocmd BufEnter * :syntax sync fromstart
 
 "" Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-set autoread
 
 "" txt, mail, human, tex
 au BufNewFile,BufRead *.txt set filetype=human
