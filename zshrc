@@ -12,7 +12,7 @@ case $(hostname) in
         plugins+=()
         ;;
     everard)
-        plugins+=(debian jira)
+        plugins+=(jira)
         ;;
 esac
 
