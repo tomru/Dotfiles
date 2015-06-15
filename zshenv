@@ -1,8 +1,8 @@
-##################
+########################
 # Source Things
-#################
+########################
 
-# solarized dircolors
+# dircolors
 [ -s ~/.dircolors ] && . ~/.dircolors
 
 # extend path
@@ -10,20 +10,24 @@ export PATH=$HOME/local/bin:$PATH
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# todo.sh
-alias t=todo.sh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" && nvm use > /dev/null
 
 # Base16 Shell
 BASE16_SCHEME="solarized"
 BASE16_SHELL="$HOME/.base16-shell/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
+########################
+# Dist related settings
+########################
 DIST=$(lsb_release -si)
-case $DIST in
+case DIST in
     Arch )
-        # use python 2.7 by default
-        export PYTHON=python2
         ;;
 esac
+
+########################
+# Aliases
+########################
+alias g=git
+rl () { $(npm bin)/$* }
