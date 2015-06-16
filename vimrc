@@ -4,47 +4,44 @@ Plug 'tpope/vim-sensible'
 
 Plug 'L9'
 Plug 'unimpaired.vim'
+Plug 'surround.vim'
+
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Shougo/unite.vim'
-
-Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+
+Plug 'sjl/gundo.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'surround.vim'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'sjl/gundo.vim'
-
-Plug 'editorconfig/editorconfig-vim'
-
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'scrooloose/syntastic'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'inside/vim-search-pulse'
 
 Plug 'rking/ag.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
-
 Plug 'itchyny/lightline.vim'
 Plug 'chriskempson/base16-vim'
 
-Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
 
-Plug 'inside/vim-search-pulse'
+Plug 'shime/vim-livedown'
+
 
 call plug#end()
 
@@ -293,7 +290,7 @@ au BufNewFile,BufRead *.txt set filetype=human
 au FileType human,mail,tex set wrap wm=2 textwidth=78 nocindent spell
 
 "" Markdown
-au FileType markdown set spell
+au FileType markdown set wrap wm=2 textwidth=78 nocindent spell
 
 "" Python
 au FileType python set noexpandtab
