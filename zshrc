@@ -6,6 +6,7 @@ antigen bundle gerges/oh-my-zsh-jira-plus
 
 antigen use oh-my-zsh
 
+antigen bundle tmux
 antigen theme robbyrussell
 
 antigen apply
