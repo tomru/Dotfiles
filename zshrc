@@ -6,7 +6,6 @@ antigen bundle gerges/oh-my-zsh-jira-plus
 
 antigen use oh-my-zsh
 
-antigen bundle command-not-found
 antigen theme robbyrussell
 
 antigen apply
