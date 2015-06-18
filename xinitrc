@@ -15,7 +15,7 @@ case $((hostname)) in
 
         pulseaudio --start
 
-        eval $(gpg-agent --daemon) &
+        eval $(gpg-agent --enable-ssh-support --daemon)
 
         xrdb $HOME/.Xresources
 
