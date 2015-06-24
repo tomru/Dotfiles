@@ -1,14 +1,18 @@
-source ~/.dotfiles/antigen/antigen.zsh
+# load zgen
+source "${HOME}/.dotfiles/zgen/zgen.zsh"
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle peterhurford/git-it-on.zsh
-antigen bundle gerges/oh-my-zsh-jira-plus
+if ! zgen saved; then
+    echo "Creating a zgen save"
 
-antigen use oh-my-zsh
+    zgen oh-my-zsh
+    zgen oh-my-zsh themes/robbyrussell
 
-antigen bundle tmux
-antigen theme robbyrussell
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
 
-antigen apply
+    zgen load peterhurford/git-it-on.zsh
+    zgen load gerges/oh-my-zsh-jira-plus
 
+    zgen save
+fi
 
