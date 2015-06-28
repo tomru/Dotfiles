@@ -4,9 +4,6 @@ source "${HOME}/.dotfiles/zgen/zgen.zsh"
 if ! zgen saved; then
     echo "Creating a zgen save"
 
-    zgen oh-my-zsh
-    zgen oh-my-zsh themes/robbyrussell
-
     zgen load zsh-users/zsh-completions src
     zgen load zsh-users/zsh-syntax-highlighting
 
