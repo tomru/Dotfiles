@@ -10,6 +10,9 @@ if ! zgen saved; then
     zgen load peterhurford/git-it-on.zsh
     zgen load gerges/oh-my-zsh-jira-plus
 
+    zgen load mafredri/zsh-async
+    zgen load sindresorhus/pure
+
     zgen save
 fi
 
