@@ -4,6 +4,13 @@ source "${HOME}/.dotfiles/zgen/zgen.zsh"
 if ! zgen saved; then
     echo "Creating a zgen save"
 
+    zgen oh-my-zsh lib/spectrum.zsh
+    zgen oh-my-zsh lib/directories.zsh
+    zgen oh-my-zsh lib/grep.zsh
+    zgen oh-my-zsh lib/history.zsh
+    zgen oh-my-zsh plugins/common-aliases
+    zgen oh-my-zsh plugins/frontend-search
+
     zgen load zsh-users/zsh-completions src
     zgen load zsh-users/zsh-syntax-highlighting
 
@@ -15,9 +22,6 @@ if ! zgen saved; then
 
     zgen save
 fi
-
-# dircolors
-[ -s ~/.dircolors ] && . ~/.dircolors
 
 # extend path
 export PATH="$HOME/local/bin:$PATH"
@@ -45,29 +49,23 @@ esac
 ########################
 # Aliases
 ########################
+alias _=sudo
 alias g=git
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
 rl () { $(npm bin)/$* }
 
+# colors
+autoload -U colors && colors
+alias ls='ls --color=tty'
 
 # keybindings
 
+bindkey -v
+bindkey '^P' up-history
+bindkey '^N' down-history
+
 bindkey '^r' history-incremental-search-backward
 bindkey ' ' magic-space
-
-# history settings (from oh-my-zsh)
-if [ -z "$HISTFILE" ]; then
-    HISTFILE=$HOME/.zsh_history
-fi
-
-HISTSIZE=10000
-SAVEHIST=10000
-
-setopt append_history
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
-setopt hist_ignore_space
-setopt hist_verify
-setopt inc_append_history
-setopt share_history # share command history data
 
