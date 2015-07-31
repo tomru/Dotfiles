@@ -40,11 +40,20 @@ BASE16_SHELL="$HOME/.base16-shell/base16-$BASE16_SCHEME.dark.sh"
 ########################
 # Dist related settings
 ########################
-DIST=$(lsb_release -si)
-case DIST in
-    Arch )
+case $OSTYPE in
+    "darwin14.0" )
+        export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+        export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+        #eval $(ssh-agent -s)
         ;;
 esac
+
+########################
+# Other settings 
+########################
+setopt auto_cd
+setopt multios
+setopt cdablevars
 
 ########################
 # Aliases
