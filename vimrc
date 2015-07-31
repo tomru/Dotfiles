@@ -29,6 +29,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'inside/vim-search-pulse'
 
+Plug 'BufOnly.vim'
+
 Plug 'rking/ag.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
