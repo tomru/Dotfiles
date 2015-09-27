@@ -47,6 +47,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
 
 Plug 'shime/vim-livedown'
 Plug 'xuhdev/vim-latex-live-preview'
@@ -261,7 +262,7 @@ nnoremap <leader>sc :CloseSession<CR>
 "
 
 "" syntastic
-let g:syntastic_javascript_checkers = ['jshint','jscs']
+let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_check_on_open = 1
 
 "" lightline
@@ -313,6 +314,9 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 " Tex
 let g:tex_flavor = "latex"
 let g:livepreview_previewer = 'zathura'
+
+" JSX 
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "
 " Autocmd Rules
