@@ -10,6 +10,7 @@ Plug 'tpope/vim-sensible'
 Plug 'L9'
 Plug 'unimpaired.vim'
 Plug 'surround.vim'
+Plug 'Align'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -52,6 +53,7 @@ Plug 'mxw/vim-jsx'
 Plug 'shime/vim-livedown'
 Plug 'xuhdev/vim-latex-live-preview'
 
+Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
