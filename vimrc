@@ -208,9 +208,6 @@ nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 "" strip all trailing whitespace in the current file
 nnoremap <leader>W :%s/\s\+$//e<cr>:let @/=''<CR>
 
-"" insert path of current file into a command
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-
 "" fast editing of the .vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 nmap <silent> <leader>sv :so $MYVIMRC<cr>

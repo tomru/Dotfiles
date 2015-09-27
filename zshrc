@@ -47,6 +47,13 @@ alias ls='ls --color=tty'
 # keybindings
 
 bindkey -v
+export KEYTIMEOUT=1
+
+# prevent 2*ESC-i insert-mode switch failure
+noop () { }
+zle -N noop
+bindkey -M vicmd '\e' noop
+
 bindkey '^P' up-history
 bindkey '^N' down-history
 
