@@ -43,6 +43,7 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'shime/vim-livedown'
+Plug 'xuhdev/vim-latex-live-preview'
 
 
 call plug#end()
@@ -276,6 +277,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 " Tex
 let g:tex_flavor = "latex"
+let g:livepreview_previewer = 'zathura'
 
 "
 " Autocmd Rules
