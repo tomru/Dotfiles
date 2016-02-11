@@ -1,45 +1,36 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
 
-case $((hostname)) in
-    t430s-arch)
-        if [ -d /etc/X11/xinit/xinitrc.d ]; then
-          for f in /etc/X11/xinit/xinitrc.d/*; do
-            [ -x "$f" ] && . "$f"
-          done
-          unset f
-        fi
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
 
-        pulseaudio --start
+pulseaudio --start
+eval $(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)
 
-        eval $(gpg-agent --enable-ssh-support --daemon)
+xrdb $HOME/.Xresources
 
-        xrdb $HOME/.Xresources
+# add additional fonts
+xset +fp /usr/share/fonts/local
+xset fp rehash
 
-        # add additional fonts
-        xset +fp /usr/share/fonts/local
-        xset fp rehash
+echo $1 > ~/.xinitrc-arg
 
-        case $1 in
-            enlightenment)
-                exec enlightenment_start
-                ;;
-            xterm)
-                exec xterm
-                ;;
-            bspwm)
-                sxhkd &
-                exec bspwm
-                ;;
-            hlwm|*)  # default is herbstluftwm
-                /usr/bin/xscreensaver -no-splash &
-                xbindkeys &
-                exec herbstluftwm --locked
-                ;;
-        esac
-    ;;
+case $1 in
+    xterm)
+        exec xterm
+        ;;
+    hlwm|*)  # default is herbstluftwm
+        xbindkeys -n &
+        urxvtd &
+        udiskie --tray &
+        xautolock -time 10 -locker slock -corners -0+0 -cornerdelay 3 &
+        exec herbstluftwm --locked
+        ;;
 esac
-
