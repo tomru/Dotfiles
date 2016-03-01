@@ -14,7 +14,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
 
-Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/nerdcommenter'
 
@@ -263,7 +263,7 @@ let g:ctrlp_use_caching = 0
 nmap <leader>g :IndentGuidesToggle<CR>
 
 "" Gundo
-nmap <leader>u :GundoToggle<CR>
+nmap <leader>u :UndotreeToggle<CR>
 
 "" YouCompleteMe
 let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
