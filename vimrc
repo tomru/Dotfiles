@@ -12,7 +12,7 @@ Plug 'Shougo/unite.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
 
 Plug 'sjl/gundo.vim'
 Plug 'nathanaelkane/vim-indent-guides'
