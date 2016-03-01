@@ -9,7 +9,7 @@ Plug 'surround.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Shougo/unite.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
