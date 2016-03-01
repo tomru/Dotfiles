@@ -30,7 +30,7 @@ case $1 in
         xbindkeys -n &
         urxvtd &
         udiskie --tray &
-        xautolock -time 10 -locker slock -corners -0+0 -cornerdelay 3 &
+        systemctl --user start xautolock
         exec herbstluftwm --locked
         ;;
 esac
