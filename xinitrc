@@ -33,4 +33,7 @@ case $1 in
         systemctl --user start xautolock
         exec herbstluftwm --locked
         ;;
+    *)
+        exec $1
+        ;;
 esac
