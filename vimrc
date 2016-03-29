@@ -229,10 +229,10 @@ nmap <silent> <leader>pp :set invpaste<CR>
 nmap <silent> <leader>nn :set invnumber<CR>
 nmap <silent> <leader>ii :set invrelativenumber<CR>
 
-" <Leader>0: Run the visually selected code in node and replace it with the output
+"" <Leader>0: Run the visually selected code in node and replace it with the output
 vnoremap <silent> <Leader>0 :!node<cr>
 
-" +/-: Increment number
+"" +/-: Increment number
 nnoremap + <c-a>
 nnoremap - <c-x>
 
