@@ -56,6 +56,10 @@ call plug#end()
 "" reload when vim config changes
 autocmd! bufwritepost .vimrc source %
 
+"" enable local .vimrc
+set exrc " Enable use of directory-specific .vimrc
+set secure " Only run autocommands owned by me
+
 "" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
