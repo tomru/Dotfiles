@@ -26,7 +26,7 @@ case $1 in
     xterm)
         exec xterm
         ;;
-    hlwm|*)  # default is herbstluftwm
+    herbstluftwm)  # default is herbstluftwm
         xbindkeys -n &
         urxvtd &
         udiskie --tray &
