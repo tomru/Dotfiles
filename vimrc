@@ -136,7 +136,7 @@ endif
 
 " Display unprintable chars
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set showbreak=↪
+set showbreak=↳
 
 " Open all folds initially
 set foldmethod=indent
