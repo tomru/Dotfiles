@@ -44,6 +44,7 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'Raimondi/delimitMate'
 
+Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
 
