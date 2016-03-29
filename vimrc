@@ -77,6 +77,7 @@ set smartcase
 set nobackup
 set noswapfile
 
+set fileformats=unix,dos,mac
 
 " session management
 let g:session_directory = "~/.vim/session"
