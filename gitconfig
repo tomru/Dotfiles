@@ -8,6 +8,8 @@
 	status = auto
 [core]
 	autocrlf = input
+    editor=vim -f +1 -c start!
+    autocrlf=input
 [alias]
     st = status
     co = checkout
@@ -29,3 +31,5 @@
 	main-window-view = FileView
 	file-view-vpane-position = 304
 	file-view-hpane-position = 363
+[gui]
+	historybrowser = gitk
