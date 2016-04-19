@@ -60,3 +60,8 @@ bindkey '^N' down-history
 bindkey '^r' history-incremental-search-backward
 bindkey ' ' magic-space
 
+# Base16 Shell
+BASE16_SCHEME="solarized"
+BASE16_SHELL="$HOME/.base16-shell/base16-$BASE16_SCHEME.dark.sh"
+[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+
