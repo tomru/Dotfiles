@@ -1,6 +1,8 @@
 # extend path
 export PATH="$HOME/local/bin:$PATH"
 
+export EDITOR=$(which vim)
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
