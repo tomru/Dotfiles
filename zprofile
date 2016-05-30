@@ -11,7 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 # Dist related settings
 ########################
 case $OSTYPE in
-    "darwin14.0" )
+    "darwin14.0"|"darwin15.0" )
         export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
         export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
         #eval $(ssh-agent -s)
