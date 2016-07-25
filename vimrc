@@ -33,6 +33,7 @@ Plug 'scrooloose/syntastic'
 Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'inside/vim-search-pulse'
 
