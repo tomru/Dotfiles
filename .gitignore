@@ -1,5 +1,6 @@
 irssi
 vim/plugged/*
+vim/undos/*
 vim/spell
 .netrwhist
 Xresources.compiled

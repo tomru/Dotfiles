@@ -257,6 +257,12 @@ nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
 
+" persistent undo
+set undodir=~/.vim/undos
+set undofile
+set undolevels=1000
+set undoreload=10000
+
 "
 " Plugin Configuration
 "
