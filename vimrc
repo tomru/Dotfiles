@@ -16,33 +16,33 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Shougo/unite.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
 
 Plug 'mbbill/undotree'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/nerdcommenter'
 
-Plug 'sheerun/vim-polyglot'
+Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
-Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'inside/vim-search-pulse'
+Plug 'rking/ag.vim'
 
 Plug 'BufOnly.vim'
 
-Plug 'rking/ag.vim'
-
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
+
 Plug 'chriskempson/base16-vim'
 
 Plug 'Raimondi/delimitMate'
@@ -50,12 +50,11 @@ Plug 'Raimondi/delimitMate'
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 "Plug 'mxw/vim-jsx'
 
 Plug 'suan/vim-instant-markdown'
 Plug 'xuhdev/vim-latex-live-preview'
-
-Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
