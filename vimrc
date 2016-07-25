@@ -104,7 +104,7 @@ endif
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-solarized
+colorscheme base16-solarized-dark
 
 if has("gui_running")
   "disable menu, toolsbar, scrollbar
