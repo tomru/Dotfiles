@@ -41,12 +41,15 @@ alias tl='tmux list-sessions'
 rl () { $(npm bin)/$* }
 
 # utt time tracking
-alias uh='uttr --add hello'
-alias ust='uttr --add standup'
-alias ul='uttr --add "lunch**"'
+alias ua='uttr --add'
+alias uah='uttr --add hello'
+alias uas='uttr --add standup'
+alias ual='uttr --add "lunch**"'
 alias ue='uttr --edit'
 alias urw='uttr --report=week'
+alias urlw='uttr --report=lastWeek'
 alias urm='uttr --report=month'
+alias urlm='uttr --report=lastMonth'
 
 # colors
 autoload -U colors && colors
