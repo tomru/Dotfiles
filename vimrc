@@ -52,7 +52,7 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
 "Plug 'mxw/vim-jsx'
 
-Plug 'shime/vim-livedown'
+Plug 'suan/vim-instant-markdown'
 Plug 'xuhdev/vim-latex-live-preview'
 
 Plug 'wesQ3/vim-windowswap'
