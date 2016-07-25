@@ -19,6 +19,7 @@
     changes = diff --name-status -r
     diffstat = diff --stat -r
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    fix = "!f() { ${EDITOR} $(git diff --name-only | uniq ); }; f"
 [merge]
     tool = bc3
 [mergetool]
