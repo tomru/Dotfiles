@@ -7,6 +7,12 @@ export EDITOR=$(which vim)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# rbenv
+if [ -s "$HOME/.rbenv/bin/rbenv" ] ; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi
+
 ########################
 # Dist related settings
 ########################
