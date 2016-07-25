@@ -33,6 +33,7 @@ Plug 'scrooloose/syntastic'
 Plug 'pmsorhaindo/syntastic-local-eslint.vim'
 
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'inside/vim-search-pulse'
 
@@ -51,7 +52,7 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
 Plug 'mustache/vim-mustache-handlebars'
 "Plug 'mxw/vim-jsx'
 
-Plug 'shime/vim-livedown'
+Plug 'suan/vim-instant-markdown'
 Plug 'xuhdev/vim-latex-live-preview'
 
 Plug 'wesQ3/vim-windowswap'
@@ -103,7 +104,7 @@ endif
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-solarized
+colorscheme base16-solarized-dark
 
 if has("gui_running")
   "disable menu, toolsbar, scrollbar
@@ -256,6 +257,12 @@ nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
+
+" persistent undo
+set undodir=~/.vim/undos
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 "
 " Plugin Configuration
