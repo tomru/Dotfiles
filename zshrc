@@ -8,6 +8,7 @@ if ! zgen saved; then
     zgen oh-my-zsh lib/directories.zsh
     zgen oh-my-zsh lib/grep.zsh
     zgen oh-my-zsh lib/history.zsh
+    zgen oh-my-zsh lib/misc.zsh
     zgen oh-my-zsh plugins/common-aliases
     zgen oh-my-zsh plugins/frontend-search
 
