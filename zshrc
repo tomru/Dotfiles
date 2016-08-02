@@ -52,6 +52,10 @@ alias urlw='uttr --report=lastWeek'
 alias urm='uttr --report=month'
 alias urlm='uttr --report=lastMonth'
 
+# colourscheme
+alias dark='zsh ~/.base16-shell/scripts/base16-solarized-dark.sh'
+alias light='zsh ~/.base16-shell/scripts/base16-solarized-light.sh'
+
 # colors
 autoload -U colors && colors
 alias ls='ls --color=tty'
@@ -73,7 +77,6 @@ bindkey '^r' history-incremental-search-backward
 bindkey ' ' magic-space
 
 # Base16 Shell
-BASE16_SCHEME="solarized"
-BASE16_SHELL="$HOME/.base16-shell/base16-$BASE16_SCHEME.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+BASE16_SHELL=$HOME/.base16-shell/
+[ -n "$PS1" ] && dark 
 
