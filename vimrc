@@ -47,13 +47,13 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'Raimondi/delimitMate'
 
-Plug 'pangloss/vim-javascript'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
-Plug 'mtscout6/syntastic-local-eslint.vim'
-"Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
+Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 
-Plug 'suan/vim-instant-markdown'
-Plug 'xuhdev/vim-latex-live-preview'
+Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 call plug#end()
 
