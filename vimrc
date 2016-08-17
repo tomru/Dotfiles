@@ -49,7 +49,6 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript'}
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 "Plug 'mxw/vim-jsx'
 
@@ -271,7 +270,7 @@ set undoreload=10000
 let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0 
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -440,7 +439,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:tex_flavor = "latex"
 let g:livepreview_previewer = 'zathura'
 
-" JSX 
+" JSX
 " let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "
@@ -470,4 +469,4 @@ au FileType javascript map <leader>r <esc>:TernRename<CR>
 au BufRead,BufNewFile *.json set ft=json
 
 "" Mustache
-au BufRead,BufNewFile *.template set filetype=html syntax=mustache
+au BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
