@@ -11,6 +11,7 @@ Plug 'L9'
 Plug 'unimpaired.vim'
 Plug 'surround.vim'
 Plug 'Align'
+Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -44,8 +45,6 @@ Plug 'BufOnly.vim'
 Plug 'itchyny/lightline.vim'
 
 Plug 'chriskempson/base16-vim'
-
-Plug 'Raimondi/delimitMate'
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
