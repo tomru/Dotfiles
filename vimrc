@@ -88,6 +88,10 @@ let g:session_command_aliases = 1
 "" Mouse
 set mouse=a
 
+"" Use modeline overrides
+set modeline
+set modelines=10
+
 "" Visual settings
 syntax enable
 set cursorline
@@ -107,10 +111,6 @@ if has("gui_running")
   set guioptions -=T
   set guioptions -=r
 endif
-
-"" Use modeline overrides
-set modeline
-set modelines=10
 
 set title
 set titleold="Terminal"
