@@ -342,3 +342,6 @@ au BufRead,BufNewFile *.json set ft=json
 
 "" Mustache
 au BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
+
+"" always open help in vertical split
+au FileType help wincmd L
