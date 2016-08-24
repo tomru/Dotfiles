@@ -34,3 +34,5 @@
 	file-view-hpane-position = 363
 [gui]
 	historybrowser = gitk
+[rebase]
+	autosquash = true
