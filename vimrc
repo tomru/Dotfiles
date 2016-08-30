@@ -38,7 +38,7 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'inside/vim-search-pulse'
-Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 
 Plug 'BufOnly.vim'
 
@@ -265,6 +265,10 @@ set undoreload=10000
 " Plugin Configuration
 "
 
+"" ACK
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 "" syntastic
 let g:syntastic_always_populate_loc_list = 1
