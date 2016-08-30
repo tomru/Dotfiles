@@ -25,6 +25,8 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
 
 Plug 'mbbill/undotree'
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'SirVer/ultisnips'
@@ -269,6 +271,14 @@ set undoreload=10000
 "
 " Plugin Configuration
 "
+
+"" gutentags
+let g:gutentags_file_list_command = {
+    \ 'markers': {
+        \ '.git': 'git ls-files',
+        \ '.hg': 'hg files',
+        \ },
+    \ }
 
 "" ACK
 if executable('ag')
