@@ -48,8 +48,7 @@ Plug 'chriskempson/base16-vim'
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
-Plug 'mtscout6/syntastic-local-eslint.vim', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
@@ -266,13 +265,36 @@ set undoreload=10000
 " Plugin Configuration
 "
 
-"" syntastic
-let g:syntastic_javascript_checkers = ['eslint']
 
+"" syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" local linter support
+
+let g:syntastic_javascript_checkers = []
+
+function CheckJavaScriptLinter(filepath, linter)
+	if exists('b:syntastic_checkers')
+		return
+	endif
+	if filereadable(a:filepath)
+		let b:syntastic_checkers = [a:linter]
+		let {'b:syntastic_' . a:linter . '_exec'} = a:filepath
+	endif
+endfunction
+
+function SetupJavaScriptLinter()
+	let l:current_folder = expand('%:p:h')
+	let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
+	let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
+	call CheckJavaScriptLinter(l:bin_folder . 'standard', 'standard')
+	call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
+endfunction
+
+autocmd FileType javascript call SetupJavaScriptLinter()
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
@@ -315,7 +337,7 @@ let g:tex_flavor = "latex"
 let g:livepreview_previewer = 'zathura'
 
 " JSX
-" let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 "
 " Autocmd Rules
