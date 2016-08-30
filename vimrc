@@ -171,6 +171,9 @@ nnoremap <leader><space> :noh<cr>
 nnoremap j gj
 nnoremap k gk
 
+"" open last buffer
+nnoremap <BS> <C-^>
+
 " Easier split navigation
 
 " Use ctrl-[hjkl] to select the active split!
