@@ -237,6 +237,11 @@ vnoremap <silent> <Leader>0 :!node<cr>
 nnoremap + <c-a>
 nnoremap - <c-x>
 
+" debugging, use leader-DD to start, do a slow action, then leader-DQ to
+" finish. Your output will be in profile.log
+nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
+nnoremap <silent> <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
+
 "" abbreviations
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
