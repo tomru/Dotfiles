@@ -13,9 +13,12 @@ if [ -s "$HOME/.rbenv/bin/rbenv" ] ; then
     eval "$(rbenv init -)"
 fi
 
-########################
+# in case there are local settings needed
+if [ -s "$HOME/.zprofile.local" ] ; then
+    source $HOME/.zprofile.local
+fi
+
 # Dist related settings
-########################
 case $OSTYPE in
     "darwin14.0"|"darwin15.0" )
         export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
