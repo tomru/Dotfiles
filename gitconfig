@@ -7,9 +7,9 @@
 	interactive = auto
 	status = auto
 [core]
-	autocrlf = input
     editor=vim -f +1 -c start!
     autocrlf=input
+    eol=lf
 [alias]
     st = status
     co = checkout
