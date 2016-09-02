@@ -358,12 +358,8 @@ autocmd BufEnter * :syntax sync fromstart
 "" Remember cursor position
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
-"" txt, mail, human, tex
-au BufNewFile,BufRead *.txt set filetype=human
-au FileType human,mail,tex set wrap wm=2 textwidth=78 nocindent spell
-
-"" Markdown
-au FileType markdown set wrap wm=2 textwidth=78 nocindent spell
+"" txt, mail, tex
+au FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
 
 "" Python
 au FileType python set noexpandtab
