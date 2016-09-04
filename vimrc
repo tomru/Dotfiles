@@ -93,6 +93,7 @@ set modelines=10
 
 "" Visual settings
 syntax enable
+set synmaxcol=512
 set cursorline
 
 set number
