@@ -93,6 +93,7 @@ set modelines=10
 
 "" Visual settings
 syntax enable
+set synmaxcol=512
 set cursorline
 
 set number
@@ -285,7 +286,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = []
 
-function CheckJavaScriptLinter(filepath, linter)
+function! CheckJavaScriptLinter(filepath, linter)
 	if exists('b:syntastic_checkers')
 		return
 	endif
@@ -295,7 +296,7 @@ function CheckJavaScriptLinter(filepath, linter)
 	endif
 endfunction
 
-function SetupJavaScriptLinter()
+function! SetupJavaScriptLinter()
 	let l:current_folder = expand('%:p:h')
 	let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
 	let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
