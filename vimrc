@@ -264,6 +264,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
+iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
+
 "
 " Plugin Configuration
 "
