@@ -43,7 +43,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
 
 "" enable local .vimrc
-set exrc " Enable use of directory-specific .vimrc
+set exrc   " Enable use of directory-specific .vimrc
 set secure " Only run autocommands owned by me
 
 "" Tabs. May be overriten by autocmd rules
@@ -59,13 +59,49 @@ set hidden
 set hlsearch
 set smartcase
 
-"" Directories for swp files
+"" find
+set path+=**
+
+"" Display all matching files when we tab complete
+set wildmenu
+
+"set wildignorecase
+set wildignore+=.git,.hg,.svn
+set wildignore+=*.aux,*.out,*.toc
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
+set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
+set wildignore+=*.avi,*.m4a,*.mp3,*.oga,*.ogg,*.wav,*.webm
+set wildignore+=*.eot,*.otf,*.ttf,*.woff
+set wildignore+=*.doc,*.pdf
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.swp,.lock,.DS_Store,._*
+
+"" saving
+set fileformats=unix,dos,mac
+set fileformat=unix
+
+"" backups
+
+" Use backup files when writing (create new file, replace old one with new
+" one)
+set writebackup
+" but do not leave around backup.xyz~ files after that
 set nobackup
+" backupcopy=yes is the default, just be explicit. We need this for
+" webpack-dev-server and hot module reloading -- preserves special file types
+" like symlinks
+set backupcopy=yes nobackup
+
+" swap files
 set noswapfile
 
-set fileformats=unix,dos,mac
+" persistent undo
+set undodir=~/.vim/undos
+set undofile
+set undolevels=1000
+set undoreload=10000
 
-" session management
+"" session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
@@ -81,6 +117,9 @@ set modelines=10
 "" Visual settings
 syntax enable
 set synmaxcol=512
+
+set title
+
 set cursorline
 
 set number
@@ -99,33 +138,16 @@ if has("gui_running")
   set guioptions -=r
 endif
 
-set title
-set titleold="Terminal"
-set titlestring=%F
+" Display unprintable chars
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:·
+set showbreak=↳
 
 "" disable visual bell
 set visualbell
 set t_vb=
 
-"" enable spelling
+"" spelling
 set spelllang=en,de
-
-" Spelling highlights. Use underline in term to prevent cursorline highlights
-" from interfering
-if !has("gui_running")
-  hi clear SpellBad
-  hi SpellBad cterm=underline ctermfg=red
-  hi clear SpellCap
-  hi SpellCap cterm=underline ctermfg=blue
-  hi clear SpellLocal
-  hi SpellLocal cterm=underline ctermfg=blue
-  hi clear SpellRare
-  hi SpellRare cterm=underline ctermfg=blue
-endif
-
-" Display unprintable chars
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set showbreak=↳
 
 " Open all folds initially
 set foldmethod=indent
@@ -133,15 +155,24 @@ set foldlevelstart=99
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
+set clipboard^=unnamed
 if has ('unnamedplus')
-  set clipboard=unnamedplus
-else
-  set clipboard=unnamed
+  set clipboard^=unnamedplus
 endif
+
+" diff
+set fillchars+=diff:⣿
+set diffopt=vertical                  " Use in vertical diff mode
+set diffopt+=filler                   " blank lines to keep sides aligned
+set diffopt+=iwhite                   " Ignore whitespace changes
+
 
 "
 " KEY MAPPINGS
 "
+
+set notimeout
+set ttimeout
 
 "" MAP LEADER
 noremap , \
@@ -181,8 +212,6 @@ map <leader>: :b#<cr>
 "" delete buffer
 map <leader>bd :bd<cr>
 
-"" change directory to current buffer
-map <leader>cd :cd %:p:h<cr>
 "" indent visual selected code without unselecting and going back to normal mode
 vmap > >gv
 vmap < <gv
@@ -191,9 +220,6 @@ nmap gV `[v`]
 
 "" pull word under cursor into lhs of a substitute (for quick search and replace)
 nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
-
-"" strip all trailing whitespace in the current file
-nnoremap <leader>W :%s/\s\+$//e<cr>:let @/=''<CR>
 
 "" fast editing of the .vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
@@ -221,10 +247,6 @@ nmap <silent> <leader>ii :set invrelativenumber<CR>
 "" <Leader>0: Run the visually selected code in node and replace it with the output
 vnoremap <silent> <Leader>0 :!node<cr>
 
-"" +/-: Increment number
-nnoremap + <c-a>
-nnoremap - <c-x>
-
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log
 nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
@@ -242,18 +264,6 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-" session management
-nnoremap <leader>so :OpenSession<Space>
-nnoremap <leader>ss :SaveSession<Space>
-nnoremap <leader>sd :DeleteSession<CR>
-nnoremap <leader>sc :CloseSession<CR>
-
-" persistent undo
-set undodir=~/.vim/undos
-set undofile
-set undolevels=1000
-set undoreload=10000
-
 "
 " Plugin Configuration
 "
@@ -270,7 +280,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " local linter support
-
 let g:syntastic_javascript_checkers = []
 
 function! CheckJavaScriptLinter(filepath, linter)
@@ -309,15 +318,8 @@ nmap <leader>j ]e
 vmap <leader>k [egv
 vmap <leader>j ]egv
 
-"" Make Ctrl-P plugin a lot faster for Git projects
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_use_caching = 0
-
 "" Indent Guides
 nmap <leader>g :IndentGuidesToggle<CR>
-
-"" Gundo
-nmap <leader>u :UndotreeToggle<CR>
 
 "" YouCompleteMe
 let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
@@ -333,8 +335,11 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:tex_flavor = "latex"
 let g:livepreview_previewer = 'zathura'
 
-" JSX
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+" markdown
+let g:markdown_fenced_languages = [
+      \ 'html',
+      \ 'javascript', 'js=javascript', 'json=javascript'
+      \ ]
 
 "
 " Autocmd Rules
