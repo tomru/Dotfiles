@@ -33,9 +33,9 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'chriskempson/base16-vim'
 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install', 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'mxw/vim-jsx'
 
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
