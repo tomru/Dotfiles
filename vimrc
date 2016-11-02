@@ -13,22 +13,13 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'Shougo/unite.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
-
-Plug 'mbbill/undotree'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 
 Plug 'tpope/vim-fugitive'
@@ -37,8 +28,6 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'inside/vim-search-pulse'
 Plug 'mileszs/ack.vim'
-
-Plug 'BufOnly.vim'
 
 Plug 'itchyny/lightline.vim'
 
