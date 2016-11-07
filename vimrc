@@ -270,6 +270,7 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 "
 
 "" fzf 
+nmap <leader>b :Buffers<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>F :Files<cr>
 nmap <leader>a :Ag<space>
