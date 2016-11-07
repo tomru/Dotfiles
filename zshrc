@@ -80,3 +80,5 @@ bindkey ' ' magic-space
 BASE16_SHELL=$HOME/.base16-shell/
 [ -n "$PS1" ] && dark 
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
