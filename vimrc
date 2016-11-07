@@ -173,13 +173,10 @@ set diffopt+=iwhite                   " Ignore whitespace changes
 " KEY MAPPINGS
 "
 
-set notimeout
-set ttimeout
-
 "" MAP LEADER
 noremap , \
 let mapleader = ","
-"let mapleader = "\<Space>"
+set timeoutlen=200
 
 "" fast saving
 nmap <leader>w :update<cr>
