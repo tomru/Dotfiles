@@ -27,7 +27,6 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
 Plug 'inside/vim-search-pulse'
-Plug 'mileszs/ack.vim'
 
 Plug 'itchyny/lightline.vim'
 
@@ -39,6 +38,9 @@ Plug 'mxw/vim-jsx'
 
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -270,10 +272,13 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 " Plugin Configuration
 "
 
-"" ACK
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
+"" fzf 
+nmap <leader>f :GFiles<cr>
+nmap <leader>F :Files<cr>
+nmap <leader>a :Ag<space>
+vmap <leader>a y:Ag <c-r>" <cr>
+nmap <leader>A :Ag <c-r><c-w><cr>
+nmap <leader>c :Commits<cr>
 
 "" syntastic
 let g:syntastic_always_populate_loc_list = 1
