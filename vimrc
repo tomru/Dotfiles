@@ -15,6 +15,8 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
 
+Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'SirVer/ultisnips'
@@ -269,7 +271,16 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 " Plugin Configuration
 "
 
+"" gutentags
+let g:gutentags_file_list_command = {
+    \ 'markers': {
+        \ '.git': 'git ls-files',
+        \ '.hg': 'hg files',
+        \ },
+    \ }
+
 "" fzf 
+nmap <leader>b :Buffers<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>F :Files<cr>
 nmap <leader>a :Ag<space>
