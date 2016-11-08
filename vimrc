@@ -178,7 +178,7 @@ set diffopt+=iwhite                   " Ignore whitespace changes
 "" MAP LEADER
 noremap , \
 let mapleader = ","
-set timeoutlen=200
+set timeoutlen=400
 
 "" fast saving
 nmap <leader>w :update<cr>
@@ -284,7 +284,7 @@ nmap <leader>b :Buffers<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>F :Files<cr>
 nmap <leader>a :Ag<space>
-vmap <leader>a y:Ag <c-r>" <cr>
+vmap <leader>a y:Ag <c-r>"<cr>
 nmap <leader>A :Ag <c-r><c-w><cr>
 nmap <leader>c :Commits<cr>
 
