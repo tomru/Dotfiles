@@ -44,6 +44,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 "" enable local .vimrc
@@ -155,7 +157,7 @@ set spelllang=en,de
 
 " Open all folds initially
 set foldmethod=indent
-set foldlevelstart=99
+set foldlevelstart=10
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
@@ -272,6 +274,8 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 "
 
 "" gutentags
+
+let g:gutentags_cache_dir="~/.tags"
 let g:gutentags_file_list_command = {
     \ 'markers': {
         \ '.git': 'git ls-files',
@@ -283,6 +287,7 @@ let g:gutentags_file_list_command = {
 nmap <leader>b :Buffers<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>F :Files<cr>
+vmap <leader>f y:Files <c-r>"<cr>
 nmap <leader>a :Ag<space>
 vmap <leader>a y:Ag <c-r>"<cr>
 nmap <leader>A :Ag <c-r><c-w><cr>
@@ -336,15 +341,11 @@ vmap <leader>j ]egv
 "" Indent Guides
 nmap <leader>g :IndentGuidesToggle<CR>
 
-"" YouCompleteMe
-let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<u-k>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<c-tab>'
-
 "" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
 
 " Tex
 let g:tex_flavor = "latex"
