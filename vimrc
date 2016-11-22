@@ -155,7 +155,7 @@ set spelllang=en,de
 
 " Open all folds initially
 set foldmethod=indent
-set foldlevelstart=99
+set foldlevelstart=10
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
