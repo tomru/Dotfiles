@@ -287,6 +287,7 @@ let g:gutentags_file_list_command = {
 nmap <leader>b :Buffers<cr>
 nmap <leader>f :GFiles<cr>
 nmap <leader>F :Files<cr>
+vmap <leader>f y:Files <c-r>"<cr>
 nmap <leader>a :Ag<space>
 vmap <leader>a y:Ag <c-r>"<cr>
 nmap <leader>A :Ag <c-r><c-w><cr>
