@@ -44,6 +44,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'sheerun/vim-polyglot'
+
 call plug#end()
 
 "" enable local .vimrc
