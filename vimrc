@@ -342,9 +342,10 @@ vmap <leader>j ]egv
 nmap <leader>g :IndentGuidesToggle<CR>
 
 "" Ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
 
 " Tex
 let g:tex_flavor = "latex"
