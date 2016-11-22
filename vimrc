@@ -341,11 +341,6 @@ vmap <leader>j ]egv
 "" Indent Guides
 nmap <leader>g :IndentGuidesToggle<CR>
 
-"" YouCompleteMe
-let g:ycm_key_list_select_completion = ['<c-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<u-k>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<c-tab>'
-
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
