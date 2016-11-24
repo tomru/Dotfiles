@@ -1,6 +1,10 @@
-set encoding=utf-8
+" vim:      set fenc=utf-8 nu et sts=4 sw=4 ft=vim fdm=marker fmr={{{,}}}:
+" file:     ~/.vimrc
+" author: Thomas Ruoff (with the help of a myriad others)
+
 scriptencoding utf-8
 
+" Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
@@ -47,117 +51,41 @@ Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+" }}}
 
-"" enable local .vimrc
-set exrc   " Enable use of directory-specific .vimrc
-set secure " Only run autocommands owned by me
-
-"" Tabs. May be overriten by autocmd rules
-set tabstop=4
-set softtabstop=0
-set shiftwidth=4
-set expandtab
-
-"" Enable hidden buffers
-set hidden
-
-"" Searching
-set hlsearch
-set smartcase
-
-"" find
-set path+=**
-
-"" Display all matching files when we tab complete
-set wildmenu
-
-"set wildignorecase
-set wildignore+=.git,.hg,.svn
-set wildignore+=*.aux,*.out,*.toc
-set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class
-set wildignore+=*.ai,*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png,*.psd,*.webp
-set wildignore+=*.avi,*.m4a,*.mp3,*.oga,*.ogg,*.wav,*.webm
-set wildignore+=*.eot,*.otf,*.ttf,*.woff
-set wildignore+=*.doc,*.pdf
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*.swp,.lock,.DS_Store,._*
-
-"" saving
-set fileformats=unix,dos,mac
-set fileformat=unix
-
-"" backups
-
-" Use backup files when writing (create new file, replace old one with new
-" one)
-set writebackup
-" but do not leave around backup.xyz~ files after that
-set nobackup
-" backupcopy=yes is the default, just be explicit. We need this for
-" webpack-dev-server and hot module reloading -- preserves special file types
-" like symlinks
-set backupcopy=yes nobackup
-
-" swap files
-set noswapfile
-
-" persistent undo
-set undodir=~/.vim/undos
-set undofile
-set undolevels=1000
-set undoreload=10000
-
-"" session management
-let g:session_directory = "~/.vim/session"
-let g:session_autoload = "no"
-let g:session_autosave = "no"
-let g:session_command_aliases = 1
-
-"" Mouse
-set mouse=a
-
-"" Use modeline overrides
-set modeline
-set modelines=10
-
-"" Visual settings
-syntax enable
-set synmaxcol=512
-
-set title
-
-set cursorline
-
-set number
-if exists('+relativenumber')
-  set relativenumber
-endif
-
+" Basics {{{
+set encoding=utf-8
+filetype plugin indent on       " Load filetype plugin/indent files.
+syntax on                       " Enable syntax highlighting.
+set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
+set modeline                    " Use file-specific settings, if available.
+"set autochdir                   " Always switch to current file directory.
+set backup                      " Make backup files.
+set backupdir=~/.vim/backup     " Backup directory.
+set directory=~/.vim/tmp        " Directory for swap files.
+set mouse=a                     " Mouse support everywhere.
+set mousehide                   " Auto-hide cursor while typing.
+set wildmode=list:longest,full  " Make completion more like zsh.
+set wildmenu                    " Turn on command-line completion wild style.
+set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
+set ignorecase                  " Ignore case, except...
+set smartcase                   " ...when search string contains uppercase.
+set incsearch                   " Highlight as you type search phrase.
+" set hlserach
+set number                      " Show line numbers.
+set report=0                    " Tell me when anything is changed via :...
+set ruler                       " Show current positions along bottom.
+set scrolloff=5                 " Keep 5 lines (top/bottom) for scope.
+set showcmd                     " Show command being typed.
+set showmatch                   " Show matching brackets.
+set spell                       " Highlight misspelled words.
+set spellcapcheck=              " Don't highlight uncapitalized first word.
+set complete+=kspell            " Use <C-n> and <C-p> to get suggested spelling completions.
+set splitright                  " Split to the right when executing :vsplit.
+let g:netrw_liststyle=3         " Use tree style directory listing.
 set background=dark
-let base16colorspace=256
-colorscheme base16-solarized-dark
-
-if has("gui_running")
-  "disable menu, toolsbar, scrollbar
-  set guioptions -=m
-  set guioptions -=T
-  set guioptions -=r
-endif
-
-" Display unprintable chars
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:·
-set showbreak=↳
-
-"" disable visual bell
-set visualbell
-set t_vb=
-
-"" spelling
-set spelllang=en,de
-
-" Open all folds initially
-set foldmethod=indent
-set foldlevelstart=10
+set path+=**
+"set title
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
@@ -166,86 +94,127 @@ if has ('unnamedplus')
   set clipboard^=unnamedplus
 endif
 
-" diff
+" }}}
+
+" local .vimrc {{{
+set exrc   " Enable use of directory-specific .vimrc
+set secure " Only run autocommands owned by me
+" }}}
+
+" Text Formatting {{{
+set list                        " Show real tabs (so they can be removed).
+set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
+set linebreak                   " Don't soft-wrap in the middle of a word.
+set showbreak=↳                 " Show `…' at the beginning of a soft-broken line.
+set tabstop=8                   " Real tabs are 8 columns long.
+set expandtab                   " No real tabs (use spaces for tabs).
+set softtabstop=2               " Set # of spaces when hitting tab/delete.
+set shiftwidth=2                " Set # of softtabs when using cindent, <<, >>, ...
+set textwidth=80                " Set max # of characters on each line.
+set autoindent                  " Use indentation level of previous line.
+set nojoinspaces                " Don't add extra space after ., !, etc. when joining.
+set formatoptions+=j            " Delete comment character when joining commented lines.
+" }}}
+
+" Folding {{{
+set foldmethod=indent
+set foldlevelstart=3
+" }}}
+
+" diff settings {{{
 set fillchars+=diff:⣿
 set diffopt=vertical                  " Use in vertical diff mode
 set diffopt+=filler                   " blank lines to keep sides aligned
 set diffopt+=iwhite                   " Ignore whitespace changes
+" }}}
 
+" {{{ Undo
+set undodir=~/.vim/undos
+set undofile
+set undolevels=1000
+set undoreload=10000
+" }}}
 
-"
-" KEY MAPPINGS
-"
+" Visual Setting {{{
+set cursorline
+let base16colorspace=256
+colorscheme base16-solarized-dark
 
-"" MAP LEADER
-noremap , \
-let mapleader = ","
+set number
+if exists('+relativenumber')
+  set relativenumber
+endif
+" }}}
+
+" GUI Settings {{{
+if has("gui_running")
+  "disable menu, toolsbar, scrollbar
+  set guioptions -=m
+  set guioptions -=T
+  set guioptions -=r
+endif
+" }}}
+
+" Key mappings {{{
+
+let mapleader=','
+let maplocalleader=','
 set timeoutlen=400
 
-"" fast saving
-nmap <leader>w :update<cr>
 "" fast escaping
-imap jj <ESC>
+inoremap jj <ESC>
+
+"" fast editing
+nnoremap <leader>e :e<space>
+
+"" fast saving
+nnoremap <leader>w :update<cr>
+
 "" clear highlight
 nnoremap <leader><space> :noh<cr>
-"" ignore lines when going up or down
-nnoremap j gj
-nnoremap k gk
-
-"" open last buffer
-nnoremap <BS> <C-^>
-
-" Easier split navigation
-
-" Use ctrl-[hjkl] to select the active split!
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
 
 "" fast window switching
-map <leader>, <C-W>w
+noremap <leader>, <C-W>w
 
-"" open next buffer
-map <leader>. :bn<cr>
-
-"" cycle between buffers
-map <leader>: :b#<cr>
+"" open next,prev buffer, cycle
+noremap <leader>. :bn<cr>
+noremap <leader>m :bp<cr>
+noremap <leader>: :b#<cr>
 
 "" delete buffer
-map <leader>bd :bd<cr>
+noremap <leader>bd :bd<cr>
 
 "" indent visual selected code without unselecting and going back to normal mode
-vmap > >gv
-vmap < <gv
+vnoremap > >gv
+vnoremap < <gv
 "" Visually select the text that was last edited/pasted
-nmap gV `[v`]
+nnoremap gV `[v`]
 
 "" pull word under cursor into lhs of a substitute (for quick search and replace)
 nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 
 "" fast editing of the .vimrc
-nmap <silent> <leader>ev :e $MYVIMRC<cr>
-nmap <silent> <leader>sv :so $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :so $MYVIMRC<cr>
 
 "" allow saving when you forgot sudo
-cmap w!! w !sudo tee % >/dev/null
+cnoremap w!! w !sudo tee % >/dev/null
 
 "" turn on spell checking
-map <leader>spl :setlocal spell!<cr>
+noremap <leader>spl :setlocal spell!<cr>
 "" spell checking shortcuts
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
+noremap <leader>sn ]s
+noremap <leader>sp [s
+noremap <leader>sa zg
+noremap <leader>s? z=
 
 "" toggle states
-nmap <silent> <leader>hh :set invhlsearch<CR>
-nmap <silent> <leader>ll :set invlist<CR>
-nmap <silent> <leader>pp :set invpaste<CR>
+nnoremap <silent> <leader>hh :set invhlsearch<CR>
+nnoremap <silent> <leader>ll :set invlist<CR>
+nnoremap <silent> <leader>pp :set invpaste<CR>
 
-nmap <silent> <leader>nn :set invnumber<CR>
-nmap <silent> <leader>ii :set invrelativenumber<CR>
+nnoremap <silent> <leader>nn :set invnumber<CR>
+nnoremap <silent> <leader>ii :set invrelativenumber<CR>
 
 "" <Leader>0: Run the visually selected code in node and replace it with the output
 vnoremap <silent> <Leader>0 :!node<cr>
@@ -268,10 +237,9 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
+" }}}
 
-"
-" Plugin Configuration
-"
+" Plugin Configuration {{{
 
 "" gutentags
 
@@ -283,15 +251,15 @@ let g:gutentags_file_list_command = {
         \ },
     \ }
 
-"" fzf 
-nmap <leader>b :Buffers<cr>
-nmap <leader>f :GFiles<cr>
-nmap <leader>F :Files<cr>
-vmap <leader>f y:Files <c-r>"<cr>
-nmap <leader>a :Ag<space>
-vmap <leader>a y:Ag <c-r>"<cr>
-nmap <leader>A :Ag <c-r><c-w><cr>
-nmap <leader>c :Commits<cr>
+"" fzf
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>F :Files<cr>
+vnoremap <leader>f y:Files <c-r>"<cr>
+nnoremap <leader>a :Ag<space>
+vnoremap <leader>a y:Ag <c-r>"<cr>
+nnoremap <leader>A :Ag <c-r><c-w><cr>
+nnoremap <leader>c :Commits<cr>
 
 "" syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -327,19 +295,16 @@ if filereadable(expand("~/.vim/lightline.vim"))
     source ~/.vim/lightline.vim
 endif
 
-"" NERDTree configuration
-nmap <leader>n :NERDTreeToggle<CR>
-
 "" Unimpaired
 "" bubble single lines
-nmap <leader>k [e
-nmap <leader>j ]e
+nnoremap <leader>k [e
+nnoremap <leader>j ]e
 "" bubble multiple lines
-vmap <leader>k [egv
-vmap <leader>j ]egv
+vnoremap <leader>k [egv
+vnoremap <leader>j ]egv
 
 "" Indent Guides
-nmap <leader>g :IndentGuidesToggle<CR>
+nnoremap <leader>g :IndentGuidesToggle<CR>
 
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -356,10 +321,9 @@ let g:markdown_fenced_languages = [
       \ 'html',
       \ 'javascript', 'js=javascript', 'json=javascript'
       \ ]
+" }}}
 
-"
-" Autocmd Rules
-"
+" Autocmd Rules {{{
 
 "" do syntax highlight syncing from start
 autocmd BufEnter * :syntax sync fromstart
@@ -384,3 +348,15 @@ au BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
 
 "" always open help in vertical split
 au FileType help wincmd L
+
+" }}}
+
+" probably not needed {{{
+
+"" disable visual bell
+"set visualbell
+"set t_vb=
+
+"" spelling
+"set spelllang=en,de
+"}}}
