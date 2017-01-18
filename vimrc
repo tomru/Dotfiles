@@ -23,6 +23,8 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
+Plug 'fholgado/minibufexpl.vim'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -62,9 +64,8 @@ set hidden
 set ttyfast
 set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
 set modeline                    " Use file-specific settings, if available.
-set backup                      " Make backup files.
-set backupdir=~/.vim/backup     " Backup directory.
-set directory=~/.vim/tmp        " Directory for swap files.
+set nobackup
+set noswapfile
 set mouse=a                     " Mouse support everywhere.
 set mousehide                   " Auto-hide cursor while typing.
 set wildmode=list:longest,full  " Make completion more like zsh.
@@ -119,7 +120,7 @@ set formatoptions+=j            " Delete comment character when joining commente
 
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=3
+set foldlevelstart=10
 " }}}
 
 " Diff settings {{{
@@ -261,6 +262,9 @@ nnoremap <leader>a :Ag<space>
 vnoremap <leader>a y:Ag <c-r>"<cr>
 nnoremap <leader>A :Ag <c-r><c-w><cr>
 nnoremap <leader>c :Commits<cr>
+
+"" minibufexpl
+map <Leader>t :MBEToggle<cr>
 
 "" syntastic
 let g:syntastic_always_populate_loc_list = 1
