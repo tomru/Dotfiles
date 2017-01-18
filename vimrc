@@ -23,6 +23,8 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
+Plug 'fholgado/minibufexpl.vim'
+
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -261,6 +263,9 @@ nnoremap <leader>a :Ag<space>
 vnoremap <leader>a y:Ag <c-r>"<cr>
 nnoremap <leader>A :Ag <c-r><c-w><cr>
 nnoremap <leader>c :Commits<cr>
+
+"" minibufexpl
+map <Leader>t :MBEToggle<cr>
 
 "" syntastic
 let g:syntastic_always_populate_loc_list = 1
