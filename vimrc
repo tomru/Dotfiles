@@ -115,7 +115,7 @@ set formatoptions+=j            " Delete comment character when joining commente
 
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=3
+set foldlevelstart=10
 " }}}
 
 " Diff settings {{{
