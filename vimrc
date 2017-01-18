@@ -55,11 +55,13 @@ call plug#end()
 
 " Basics {{{
 set encoding=utf-8
+set nocompatible                " choose no compatibility with legacy vi
 filetype plugin indent on       " Load filetype plugin/indent files.
 syntax on                       " Enable syntax highlighting.
+set hidden
+set ttyfast
 set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
 set modeline                    " Use file-specific settings, if available.
-"set autochdir                   " Always switch to current file directory.
 set backup                      " Make backup files.
 set backupdir=~/.vim/backup     " Backup directory.
 set directory=~/.vim/tmp        " Directory for swap files.
@@ -71,7 +73,7 @@ set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
 set ignorecase                  " Ignore case, except...
 set smartcase                   " ...when search string contains uppercase.
 set incsearch                   " Highlight as you type search phrase.
-" set hlserach
+set hlsearch
 set number                      " Show line numbers.
 set report=0                    " Tell me when anything is changed via :...
 set ruler                       " Show current positions along bottom.
@@ -85,7 +87,6 @@ set splitright                  " Split to the right when executing :vsplit.
 let g:netrw_liststyle=3         " Use tree style directory listing.
 set background=dark
 set path+=**
-"set title
 
 " Writes to the unnamed register also writes to the * and + registers. This
 " makes it easy to interact with the system clipboard
@@ -96,7 +97,7 @@ endif
 
 " }}}
 
-" local .vimrc {{{
+" Local .vimrc {{{
 set exrc   " Enable use of directory-specific .vimrc
 set secure " Only run autocommands owned by me
 " }}}
@@ -106,10 +107,10 @@ set list                        " Show real tabs (so they can be removed).
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
 set linebreak                   " Don't soft-wrap in the middle of a word.
 set showbreak=↳                 " Show `…' at the beginning of a soft-broken line.
-set tabstop=8                   " Real tabs are 8 columns long.
+set tabstop=4                   " Real tabs are 4 columns long.
 set expandtab                   " No real tabs (use spaces for tabs).
-set softtabstop=2               " Set # of spaces when hitting tab/delete.
-set shiftwidth=2                " Set # of softtabs when using cindent, <<, >>, ...
+set softtabstop=4               " Set # of spaces when hitting tab/delete.
+set shiftwidth=4                " Set # of softtabs when using cindent, <<, >>, ...
 set textwidth=80                " Set max # of characters on each line.
 set autoindent                  " Use indentation level of previous line.
 set nojoinspaces                " Don't add extra space after ., !, etc. when joining.
@@ -121,7 +122,7 @@ set foldmethod=indent
 set foldlevelstart=3
 " }}}
 
-" diff settings {{{
+" Diff settings {{{
 set fillchars+=diff:⣿
 set diffopt=vertical                  " Use in vertical diff mode
 set diffopt+=filler                   " blank lines to keep sides aligned

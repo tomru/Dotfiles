@@ -1,31 +1,25 @@
-# load zgen
-source "${HOME}/.dotfiles/zgen/zgen.zsh"
+source ~/.dotfiles/zplug/init.zsh
 
-if ! zgen saved; then
-    echo "Creating a zgen save"
 
-    zgen oh-my-zsh lib/spectrum.zsh
-    zgen oh-my-zsh lib/directories.zsh
-    zgen oh-my-zsh lib/grep.zsh
-    zgen oh-my-zsh lib/history.zsh
-    zgen oh-my-zsh lib/misc.zsh
-    zgen oh-my-zsh plugins/common-aliases
-    zgen oh-my-zsh plugins/frontend-search
+zplug "lib/spectrum.zsh", from:oh-my-zsh
+zplug "lib/directories.zsh", from:oh-my-zsh
+zplug "lib/grep.zsh", from:oh-my-zsh
+zplug "lib/history.zsh", from:oh-my-zsh
+zplug "lib/misc.zsh", from:oh-my-zsh
+zplug "plugins/common-aliases", from:oh-my-zsh
+zplug "plugins/frontend-search", from:oh-my-zsh
 
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-syntax-highlighting
+zplug "zsh-users/zsh-completions", use:"src/*.zsh"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-    zgen load peterhurford/git-it-on.zsh
-    zgen load gerges/oh-my-zsh-jira-plus
+zplug "peterhurford/git-it-on.zsh"
+zplug "gerges/oh-my-zsh-jira-plus"
 
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-
-    zgen save
-fi
+zplug "mafredri/zsh-async"
+zplug "sindresorhus/pure"
 
 ########################
-# Other settings 
+# Other settings
 ########################
 setopt auto_cd
 setopt multios
@@ -78,7 +72,14 @@ bindkey ' ' magic-space
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.base16-shell/
-[ -n "$PS1" ] && dark 
+[ -n "$PS1" ] && dark
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zplug
+if ! zplug check; then
+    zplug install
+fi
+
+zplug load
