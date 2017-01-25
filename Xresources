@@ -52,7 +52,7 @@ URxvt*scrollBar:            true
 URxvt*scrollBar_right:      true
 
 ! Perl extensions
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,matcher,font-size
+URxvt.perl-ext-common:      default,selection-to-clipboard,url-select,keyboard-select,matcher,font-size
 URxvt.url-select.launcher:  xdg-open
 URxvt.url-select.underline: true
 URxvt.matcher.button:       1

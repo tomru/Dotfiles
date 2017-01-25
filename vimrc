@@ -88,12 +88,7 @@ let g:netrw_liststyle=3         " Use tree style directory listing.
 set background=dark
 set path+=**
 
-" Writes to the unnamed register also writes to the * and + registers. This
-" makes it easy to interact with the system clipboard
-set clipboard^=unnamed
-if has ('unnamedplus')
-  set clipboard^=unnamedplus
-endif
+set clipboard^=unnamedplus
 
 " }}}
 
