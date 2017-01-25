@@ -62,9 +62,8 @@ set hidden
 set ttyfast
 set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
 set modeline                    " Use file-specific settings, if available.
-set backup                      " Make backup files.
-set backupdir=~/.vim/backup     " Backup directory.
-set directory=~/.vim/tmp        " Directory for swap files.
+set nobackup                      " Make backup files.
+set noswapfile
 set mouse=a                     " Mouse support everywhere.
 set mousehide                   " Auto-hide cursor while typing.
 set wildmode=list:longest,full  " Make completion more like zsh.
