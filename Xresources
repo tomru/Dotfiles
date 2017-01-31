@@ -45,10 +45,6 @@ URxvt*boldItalicFont:       xft:DejaVu Sans Mono:style=Book:size=10, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
 ! Font size
-URxvt*keysym.C-Up:     perl:font-size:increase
-URxvt*keysym.C-Down:   perl:font-size:decrease
-URxvt*keysym.C-S-Up:   perl:font-size:incglobal
-URxvt*keysym.C-S-Down: perl:font-size:decglobal
 
 ! Scrollbar
 URxvt*scrollStyle:          rxvt
@@ -56,9 +52,18 @@ URxvt*scrollBar:            true
 URxvt*scrollBar_right:      true
 
 ! Perl extensions
-URxvt*perl-ext-common:      default,matcher,font-size
-URxvt*url-launcher:         xdg-open
-URxvt*matcher.button:       1
+URxvt.perl-ext-common:      default,selection-to-clipboard,url-select,keyboard-select,matcher,font-size
+URxvt.url-select.launcher:  xdg-open
+URxvt.url-select.underline: true
+URxvt.matcher.button:       1
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+URxvt.keysym.C-Up:          perl:font-size:increase
+URxvt.keysym.C-Down:        perl:font-size:decrease
+URxvt.keysym.C-S-Up:        perl:font-size:incglobal
+URxvt.keysym.C-S-Down:      perl:font-size:decglobal
+
 
 ! Cursor
 URxvt*cursorBlink:          true

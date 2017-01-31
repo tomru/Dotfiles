@@ -20,6 +20,11 @@ xrdb $HOME/.Xresources
 xset +fp /usr/share/fonts/local
 xset fp rehash
 
+# sync primary and secondary clipboard
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
+
 echo $1 > ~/.xinitrc-arg
 
 case $1 in

@@ -64,7 +64,7 @@ set hidden
 set ttyfast
 set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
 set modeline                    " Use file-specific settings, if available.
-set nobackup
+set nobackup                      " Make backup files.
 set noswapfile
 set mouse=a                     " Mouse support everywhere.
 set mousehide                   " Auto-hide cursor while typing.
@@ -89,12 +89,7 @@ let g:netrw_liststyle=3         " Use tree style directory listing.
 set background=dark
 set path+=**
 
-" Writes to the unnamed register also writes to the * and + registers. This
-" makes it easy to interact with the system clipboard
-set clipboard^=unnamed
-if has ('unnamedplus')
-  set clipboard^=unnamedplus
-endif
+set clipboard^=unnamedplus
 
 " }}}
 
