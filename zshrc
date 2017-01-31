@@ -1,11 +1,11 @@
 source ~/.dotfiles/zplug/init.zsh
 
 
-zplug "lib/spectrum.zsh", from:oh-my-zsh
-zplug "lib/directories.zsh", from:oh-my-zsh
-zplug "lib/grep.zsh", from:oh-my-zsh
-zplug "lib/history.zsh", from:oh-my-zsh
-zplug "lib/misc.zsh", from:oh-my-zsh
+zplug "lib/spectrum", from:oh-my-zsh
+zplug "lib/directories", from:oh-my-zsh
+zplug "lib/grep", from:oh-my-zsh
+zplug "lib/history", from:oh-my-zsh
+zplug "lib/misc", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/frontend-search", from:oh-my-zsh
 
