@@ -243,6 +243,9 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
 " Plugin Configuration {{{
 
+"" youcompleteme
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 "" gutentags
 
 let g:gutentags_cache_dir="~/.tags"
