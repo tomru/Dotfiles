@@ -89,7 +89,7 @@ let g:netrw_liststyle=3         " Use tree style directory listing.
 set background=dark
 set path+=**
 
-set clipboard^=unnamedplus
+set clipboard=unnamed
 
 " }}}
 
