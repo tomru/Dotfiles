@@ -184,6 +184,10 @@ noremap <leader>bd :bd<cr>
 "" indent visual selected code without unselecting and going back to normal mode
 vnoremap > >gv
 vnoremap < <gv
+
+"" allow using . with visual mode
+vnoremap . :norm.<cr>
+
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
