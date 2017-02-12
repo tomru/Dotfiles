@@ -30,6 +30,7 @@ setopt cdablevars
 ########################
 alias _=sudo
 alias g=git
+alias nohist='unset HISTFILE'
 alias ta='tmux attach -t'
 alias ts='tmux new-session -s'
 alias tl='tmux list-sessions'
