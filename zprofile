@@ -25,4 +25,8 @@ case $OSTYPE in
         export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
         #eval $(ssh-agent -s)
         ;;
+    "linux-gnu" )
+        export ANDROID_HOME=~/local/android-sdk
+        export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+        ;;
 esac
