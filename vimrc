@@ -252,14 +252,14 @@ let g:gutentags_file_list_command = {
     \ }
 
 "" fzf
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :GFiles<cr>
-nnoremap <leader>F :Files<cr>
-vnoremap <leader>f y:Files <c-r>"<cr>
-nnoremap <leader>a :Ag<space>
-vnoremap <leader>a y:Ag <c-r>"<cr>
-nnoremap <leader>A :Ag <c-r><c-w><cr>
-nnoremap <leader>c :Commits<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>ff :GFiles<cr>
+nnoremap <leader>FF :Files<cr>
+vnoremap <leader>ff y:Files <c-r>"<cr>
+nnoremap <leader>fa :Ag<space>
+vnoremap <leader>fa y:Ag <c-r>"<cr>
+nnoremap <leader>FA :Ag <c-r><c-w><cr>
+nnoremap <leader>fc :Commits<cr>
 
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
