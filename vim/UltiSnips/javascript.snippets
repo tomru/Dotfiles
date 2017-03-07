@@ -5,47 +5,11 @@ priority -30
 snippet def "define an AMD module"
 define([
 	'${1:backbone}'
-], function( 
-	${2:Name})
-) {
+], ( 
+	${2:Backbone})
+) => {
 	$0
 }
 endsnippet
 
-# Jasmine
-snippet des "Describe (js)" b
-describe('${1:description}', function() {
-	$0
-});
-endsnippet
-
-snippet it "it (js)" b
-it('${1:description}', function() {
-	$0
-});
-endsnippet
-
-snippet bef "before each (js)" b
-beforeEach(function() {
-	$0
-});
-endsnippet
-
-snippet aft "after each (js)" b
-afterEach(function() {
-	$0
-});
-endsnippet
-
-snippet befa "before all (js)" b
-beforeAll(function() {
-	$0
-});
-endsnippet
-
-snippet afta "after all (js)" b
-afterAll(function() {
-	$0
-});
-endsnippet
 # vim:ft=snippets:
