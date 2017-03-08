@@ -5,37 +5,37 @@ priority -50
 #
 
 snippet des "Describe (js)" b
-describe('${1:description}', () => {
+describe('${1:description}', function() {
 	$0
 });
 endsnippet
 
 snippet it "it (js)" b
-it('${1:description}', () => {
+it('${1:description}', function() {
 	$0
 });
 endsnippet
 
 snippet bef "before each (js)" b
-beforeEach(() => {
+beforeEach(function() {
 	$0
 });
 endsnippet
 
 snippet aft "after each (js)" b
-afterEach(() => {
+afterEach(function() {
 	$0
 });
 endsnippet
 
 snippet befa "before all (js)" b
-beforeAll(() => {
+beforeAll(function() {
 	$0
 });
 endsnippet
 
 snippet afta "after all (js)" b
-afterAll(() => {
+afterAll(function() {
 	$0
 });
 endsnippet
@@ -63,7 +63,7 @@ jasmine.stringMatching("${1:matcher}")
 endsnippet
 
 snippet ru "runs (js)" b
-runs(() => {
+runs(function() {
 	$0
 });
 endsnippet
