@@ -192,14 +192,10 @@ vnoremap . :norm.<cr>
 nnoremap gV `[v`]
 
 "" pull word under cursor into lhs of a substitute (for quick search and replace)
-nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+nnoremap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
-nnoremap <silent> <leader>sv :so $MYVIMRC<cr>
-
-"" allow saving when you forgot sudo
-cnoremap w!! w !sudo tee % >/dev/null
 
 "" turn on spell checking
 noremap <leader>spl :setlocal spell!<cr>
@@ -295,7 +291,10 @@ function! SetupJavaScriptLinter()
 	call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
 endfunction
 
-autocmd FileType javascript call SetupJavaScriptLinter()
+augroup syntastic
+    autocmd!
+    autocmd FileType javascript call SetupJavaScriptLinter()
+augroup END
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
@@ -333,37 +332,29 @@ let g:markdown_fenced_languages = [
 " Autocmd Rules {{{
 
 "" do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-
-"" Remember cursor position
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup general
+    autocmd!
+    autocmd BufEnter * :syntax sync fromstart
+augroup END
 
 "" txt, mail, tex
-au FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+augroup text
+    autocmd!
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+augroup END
 
 "" Python
-au FileType python set noexpandtab
+augroup python
+    autocmd FileType python set noexpandtab
+augroup END
 
 "" JavaScript
-au FileType javascript map <leader>r <esc>:TernRename<CR>
-
-"" Json
-au BufRead,BufNewFile *.json set ft=json
-
-"" Mustache
-au BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
-
-"" always open help in vertical split
-au FileType help wincmd L
+augroup web
+    autocmd!
+    autocmd FileType javascript map <leader>r <esc>:TernRename<CR>
+    autocmd BufRead,BufNewFile *.json set ft=json
+    autocmd BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
+augroup END
 
 " }}}
 
-" probably not needed {{{
-
-"" disable visual bell
-"set visualbell
-"set t_vb=
-
-"" spelling
-"set spelllang=en,de
-"}}}
