@@ -3,7 +3,7 @@ let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'right': [ [ 'ale', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
@@ -15,10 +15,10 @@ let g:lightline = {
       \   'ctrlpmark': 'CtrlPMark',
       \ },
       \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
+      \   'ale': 'ale#statusline#Status',
       \ },
       \ 'component_type': {
-      \   'syntastic': 'error',
+      \   'ale': 'error',
       \ },
       \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
@@ -113,15 +113,6 @@ let g:tagbar_status_func = 'TagbarStatusFunc'
 function! TagbarStatusFunc(current, sort, fname, ...) abort
     let g:lightline.fname = a:fname
   return lightline#statusline(0)
-endfunction
-
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp,*.js,*.py call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
 endfunction
 
 let g:unite_force_overwrite_statusline = 0

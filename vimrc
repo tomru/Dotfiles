@@ -28,7 +28,7 @@ Plug 'fholgado/minibufexpl.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 Plug 'tpope/vim-fugitive'
 Plug 'rhysd/conflict-marker.vim'
@@ -184,18 +184,18 @@ noremap <leader>bd :bd<cr>
 "" indent visual selected code without unselecting and going back to normal mode
 vnoremap > >gv
 vnoremap < <gv
+
+"" allow using . with visual mode
+vnoremap . :norm.<cr>
+
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
 "" pull word under cursor into lhs of a substitute (for quick search and replace)
-nmap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
+nnoremap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
-nnoremap <silent> <leader>sv :so $MYVIMRC<cr>
-
-"" allow saving when you forgot sudo
-cnoremap w!! w !sudo tee % >/dev/null
 
 "" turn on spell checking
 noremap <leader>spl :setlocal spell!<cr>
@@ -264,38 +264,13 @@ nnoremap <leader>fc :Commits<cr>
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
 
-"" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" local linter support
-let g:syntastic_javascript_checkers = []
-
-function! CheckJavaScriptLinter(filepath, linter)
-	if exists('b:syntastic_checkers')
-		return
-	endif
-	if filereadable(a:filepath)
-		let b:syntastic_checkers = [a:linter]
-		let {'b:syntastic_' . a:linter . '_exec'} = a:filepath
-	endif
-endfunction
-
-function! SetupJavaScriptLinter()
-	let l:current_folder = expand('%:p:h')
-	let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
-	let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
-	call CheckJavaScriptLinter(l:bin_folder . 'standard', 'standard')
-	call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
-endfunction
-
-autocmd FileType javascript call SetupJavaScriptLinter()
-
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
     source ~/.vim/lightline.vim
+    augroup ale-statusline
+        autocmd!
+        autocmd User ALELint call lightline#update()
+    augroup END
 endif
 
 "" Unimpaired
@@ -329,37 +304,29 @@ let g:markdown_fenced_languages = [
 " Autocmd Rules {{{
 
 "" do syntax highlight syncing from start
-autocmd BufEnter * :syntax sync fromstart
-
-"" Remember cursor position
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup general
+    autocmd!
+    autocmd BufEnter * :syntax sync fromstart
+augroup END
 
 "" txt, mail, tex
-au FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+augroup text
+    autocmd!
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+augroup END
 
 "" Python
-au FileType python set noexpandtab
+augroup python
+    autocmd FileType python set noexpandtab
+augroup END
 
 "" JavaScript
-au FileType javascript map <leader>r <esc>:TernRename<CR>
-
-"" Json
-au BufRead,BufNewFile *.json set ft=json
-
-"" Mustache
-au BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
-
-"" always open help in vertical split
-au FileType help wincmd L
+augroup web
+    autocmd!
+    autocmd FileType javascript map <leader>r <esc>:TernRename<CR>
+    autocmd BufRead,BufNewFile *.json set ft=json
+    autocmd BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
+augroup END
 
 " }}}
 
-" probably not needed {{{
-
-"" disable visual bell
-"set visualbell
-"set t_vb=
-
-"" spelling
-"set spelllang=en,de
-"}}}
