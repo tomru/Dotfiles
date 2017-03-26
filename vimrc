@@ -264,6 +264,10 @@ nnoremap <leader>fc :Commits<cr>
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
 
+"" ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
     source ~/.vim/lightline.vim
