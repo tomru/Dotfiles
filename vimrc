@@ -23,8 +23,6 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'fholgado/minibufexpl.vim'
-
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
