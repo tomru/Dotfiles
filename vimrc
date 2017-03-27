@@ -23,8 +23,6 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'fholgado/minibufexpl.vim'
-
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -252,17 +250,21 @@ let g:gutentags_file_list_command = {
     \ }
 
 "" fzf
-nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>ff :GFiles<cr>
 nnoremap <leader>FF :Files<cr>
 vnoremap <leader>ff y:Files <c-r>"<cr>
-nnoremap <leader>fa :Ag<space>
-vnoremap <leader>fa y:Ag <c-r>"<cr>
-nnoremap <leader>FA :Ag <c-r><c-w><cr>
-nnoremap <leader>fc :Commits<cr>
+nnoremap <leader>aa :Ag<space>
+vnoremap <leader>aa y:Ag <c-r>"<cr>
+nnoremap <leader>AA :Ag <c-r><c-w><cr>
+nnoremap <leader>cc :Commits<cr>
 
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
+
+"" ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
