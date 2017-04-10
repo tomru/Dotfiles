@@ -1,6 +1,6 @@
 " vim:      set fenc=utf-8 nu et sts=4 sw=4 ft=vim fdm=marker fmr={{{,}}}:
 " file:     ~/.vimrc
-" author: Thomas Ruoff (with the help of a myriad others)
+" author:   Thomas Ruoff (with the help of a myriad others)
 
 scriptencoding utf-8
 
@@ -132,8 +132,10 @@ set undoreload=10000
 
 " Visual Setting {{{
 set cursorline
-let base16colorspace=256
-colorscheme base16-solarized-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set number
 if exists('+relativenumber')

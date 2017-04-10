@@ -47,10 +47,6 @@ alias urlw='uttr --report=lastWeek'
 alias urm='uttr --report=month'
 alias urlm='uttr --report=lastMonth'
 
-# colourscheme
-alias dark='zsh ~/.base16-shell/scripts/base16-solarized-dark.sh'
-alias light='zsh ~/.base16-shell/scripts/base16-solarized-light.sh'
-
 # colors
 autoload -U colors && colors
 alias ls='ls --color=tty'
@@ -73,9 +69,10 @@ bindkey ' ' magic-space
 
 # Base16 Shell
 BASE16_SHELL=$HOME/.base16-shell/
-[ -n "$PS1" ] && dark
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+base16_gruvbox-dark-medium
 
-
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # zplug
