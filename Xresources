@@ -21,23 +21,22 @@ URxvt*lineSpace:            0
 URxvt*skipBuiltinGlyphs:    true
 
 ! Fonts
-URxvt*font:                 xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*font:                 xft:Fira Mono:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldFont:             xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*boldFont:             xft:Fira Mono:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*italicFont:           xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*italicFont:           xft:Fira Mono:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldItalicFont:       xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*boldItalicFont:       xft:Fira Mono:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-! Font size
 
 ! Scrollbar
 URxvt*scrollStyle:          rxvt
