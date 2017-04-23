@@ -181,7 +181,10 @@ nnoremap <leader>w :update<cr>
 nnoremap <leader><space> :noh<cr>
 
 "" fast window switching
-noremap <leader>, <C-W>w
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "" open next,prev buffer, cycle
 noremap <leader>. :bn<cr>
