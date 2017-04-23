@@ -17,7 +17,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -238,8 +238,10 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
 " Plugin Configuration {{{
 
-"" youcompleteme
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"" mucomplete
+set completeopt+=menuone
+set shortmess+=c
+set completeopt+=noinsert
 
 "" gutentags
 
