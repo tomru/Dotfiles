@@ -1,8 +1,6 @@
-" vim:      set fenc=utf-8 nu et sts=4 sw=4 ft=vim fdm=marker fmr={{{,}}}:
+" vim:      set fenc=utf-8 ft=vim fdm=marker fmr={{{,}}}:
 " file:     ~/.vimrc
 " author:   Thomas Ruoff (with the help of a myriad others)
-
-scriptencoding utf-8
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
