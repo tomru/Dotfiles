@@ -1,8 +1,6 @@
-" vim:      set fenc=utf-8 nu et sts=4 sw=4 ft=vim fdm=marker fmr={{{,}}}:
+" vim:      set fenc=utf-8 ft=vim fdm=marker fmr={{{,}}}:
 " file:     ~/.vimrc
-" author: Thomas Ruoff (with the help of a myriad others)
-
-scriptencoding utf-8
+" author:   Thomas Ruoff (with the help of a myriad others)
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
@@ -17,7 +15,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --tern-completer' }
+Plug 'lifepillar/vim-mucomplete'
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -50,65 +48,75 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'sheerun/vim-polyglot'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 call plug#end()
 " }}}
 
 " Basics {{{
 set encoding=utf-8
-set nocompatible                " choose no compatibility with legacy vi
-filetype plugin indent on       " Load filetype plugin/indent files.
-syntax on                       " Enable syntax highlighting.
+set nocompatible
+
+filetype plugin indent on
+syntax on
+
 set hidden
 set ttyfast
-set synmaxcol=512               " Limit syntax highlighting to 512 characters per line
-set modeline                    " Use file-specific settings, if available.
-set nobackup                      " Make backup files.
+set synmaxcol=512
+set modeline
+set nobackup
 set noswapfile
-set mouse=a                     " Mouse support everywhere.
-set mousehide                   " Auto-hide cursor while typing.
-set wildmode=list:longest,full  " Make completion more like zsh.
-set wildmenu                    " Turn on command-line completion wild style.
-set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
-set ignorecase                  " Ignore case, except...
-set smartcase                   " ...when search string contains uppercase.
-set incsearch                   " Highlight as you type search phrase.
-set hlsearch
-set number                      " Show line numbers.
-set report=0                    " Tell me when anything is changed via :...
-set ruler                       " Show current positions along bottom.
-set scrolloff=5                 " Keep 5 lines (top/bottom) for scope.
-set showcmd                     " Show command being typed.
-set showmatch                   " Show matching brackets.
-set spell                       " Highlight misspelled words.
-set spellcapcheck=              " Don't highlight uncapitalized first word.
-set complete+=kspell            " Use <C-n> and <C-p> to get suggested spelling completions.
-set splitright                  " Split to the right when executing :vsplit.
-let g:netrw_liststyle=3         " Use tree style directory listing.
-set background=dark
+
+set mouse=a
+set mousehide
+
 set path+=**
 
-set clipboard=unnamed
+set wildmode=list:longest,full
+set wildmenu
+set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
+
+let g:netrw_liststyle=3
+
+set splitright
+set splitbelow
+
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+set number
+set report=0
+
+set scrolloff=5
+
+set showcmd
+set showmatch
+
+set spell
+set spellcapcheck=
+set complete+=kspell
 
 " }}}
 
 " Local .vimrc {{{
-set exrc   " Enable use of directory-specific .vimrc
-set secure " Only run autocommands owned by me
+set exrc
+set secure
 " }}}
 
 " Text Formatting {{{
-set list                        " Show real tabs (so they can be removed).
+set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
-set linebreak                   " Don't soft-wrap in the middle of a word.
-set showbreak=↳                 " Show `…' at the beginning of a soft-broken line.
-set tabstop=4                   " Real tabs are 4 columns long.
-set expandtab                   " No real tabs (use spaces for tabs).
-set softtabstop=4               " Set # of spaces when hitting tab/delete.
-set shiftwidth=4                " Set # of softtabs when using cindent, <<, >>, ...
-set textwidth=80                " Set max # of characters on each line.
-set autoindent                  " Use indentation level of previous line.
-set nojoinspaces                " Don't add extra space after ., !, etc. when joining.
-set formatoptions+=j            " Delete comment character when joining commented lines.
+set linebreak
+set showbreak=↳
+set tabstop=4
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set textwidth=80
+set autoindent
+set nojoinspaces
 " }}}
 
 " Folding {{{
@@ -118,9 +126,9 @@ set foldlevelstart=10
 
 " Diff settings {{{
 set fillchars+=diff:⣿
-set diffopt=vertical                  " Use in vertical diff mode
-set diffopt+=filler                   " blank lines to keep sides aligned
-set diffopt+=iwhite                   " Ignore whitespace changes
+set diffopt=vertical
+set diffopt+=filler
+set diffopt+=iwhite
 " }}}
 
 " {{{ Undo
@@ -131,9 +139,13 @@ set undoreload=10000
 " }}}
 
 " Visual Setting {{{
+"
+set background=dark
 set cursorline
-let base16colorspace=256
-colorscheme base16-solarized-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 set number
 if exists('+relativenumber')
@@ -169,7 +181,10 @@ nnoremap <leader>w :update<cr>
 nnoremap <leader><space> :noh<cr>
 
 "" fast window switching
-noremap <leader>, <C-W>w
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "" open next,prev buffer, cycle
 noremap <leader>. :bn<cr>
@@ -236,8 +251,10 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 
 " Plugin Configuration {{{
 
-"" youcompleteme
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"" mucomplete
+set completeopt+=menuone
+set shortmess+=c
+set completeopt+=noinsert
 
 "" gutentags
 

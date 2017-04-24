@@ -9,13 +9,6 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-!-------------------------------------------------------------------------------
-! URxvt settings
-! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
-! More info at:
-! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
-!-------------------------------------------------------------------------------
-
 URxvt*depth:                32
 URxvt*geometry:             90x30
 URxvt*transparent:          false
@@ -28,23 +21,22 @@ URxvt*lineSpace:            0
 URxvt*skipBuiltinGlyphs:    true
 
 ! Fonts
-URxvt*font:                 xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*font:                 xft:Fira Mono:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldFont:             xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*boldFont:             xft:Fira Mono:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*italicFont:           xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*italicFont:           xft:Fira Mono:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldItalicFont:       xft:DejaVu Sans Mono:style=Book:size=10, \
+URxvt*boldItalicFont:       xft:Fira Mono:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
                             xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-! Font size
 
 ! Scrollbar
 URxvt*scrollStyle:          rxvt
@@ -64,15 +56,6 @@ URxvt.keysym.C-Down:        perl:font-size:decrease
 URxvt.keysym.C-S-Up:        perl:font-size:incglobal
 URxvt.keysym.C-S-Down:      perl:font-size:decglobal
 
-
-! Cursor
-URxvt*cursorBlink:          true
-URxvt*cursorColor:          #657b83
-URxvt*cursorUnderline:      false
-
-! Pointer
-URxvt*pointerBlank:         true
-
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
 URxvt*saveLines:            65536
 
@@ -81,104 +64,57 @@ URxvt*saveLines:            65536
 ! <CTRL>+<PRINT> : current screen and scrollbackbuffer
 URxvt*print-pipe:           cat > $(echo /tmp/urxvt.dump.$(date +'%Y-%m-%d--%H:%M:%S'))
 
-! Base16 Solarized Dark
-! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
+! Base16 Gruvbox dark, medium
+! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-#define base00 #002b36
-#define base01 #073642
-#define base02 #586e75
-#define base03 #657b83
-#define base04 #839496
-#define base05 #93a1a1
-#define base06 #eee8d5
-#define base07 #fdf6e3
-#define base08 #dc322f
-#define base09 #cb4b16
-#define base0A #b58900
-#define base0B #859900
-#define base0C #2aa198
-#define base0D #268bd2
-#define base0E #6c71c4
-#define base0F #d33682
+#define base00 #282828
+#define base01 #3c3836
+#define base02 #504945
+#define base03 #665c54
+#define base04 #bdae93
+#define base05 #d5c4a1
+#define base06 #ebdbb2
+#define base07 #fbf1c7
+#define base08 #fb4934
+#define base09 #fe8019
+#define base0A #fabd2f
+#define base0B #b8bb26
+#define base0C #8ec07c
+#define base0D #83a598
+#define base0E #d3869b
+#define base0F #d65d0e
 
-URxvt*foreground:   base05
-URxvt*background:   base00
-URxvt*cursorColor:  base05
+*.foreground:   base05
+#ifdef background_opacity
+*.background:   [background_opacity]base00
+#else
+*.background:   base00
+#endif
+*.cursorColor:  base05
 
-URxvt*color0:       base00
-URxvt*color1:       base08
-URxvt*color2:       base0B
-URxvt*color3:       base0A
-URxvt*color4:       base0D
-URxvt*color5:       base0E
-URxvt*color6:       base0C
-URxvt*color7:       base05
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
 
-URxvt*color8:       base03
-URxvt*color9:       base08
-URxvt*color10:      base0B
-URxvt*color11:      base0A
-URxvt*color12:      base0D
-URxvt*color13:      base0E
-URxvt*color14:      base0C
-URxvt*color15:      base07
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
 
 ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
 ! use 'shell' template to set these if necessary
-URxvt*color16:      base09
-URxvt*color17:      base0F
-URxvt*color18:      base01
-URxvt*color19:      base02
-URxvt*color20:      base04
-URxvt*color21:      base06
-
-! Base16 Solarized
-! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
-!
-!#define base00 #002b36
-!#define base01 #073642
-!#define base02 #586e75
-!#define base03 #657b83
-!#define base04 #839496
-!#define base05 #93a1a1
-!#define base06 #eee8d5
-!#define base07 #fdf6e3
-!#define base08 #dc322f
-!#define base09 #cb4b16
-!#define base0A #b58900
-!#define base0B #859900
-!#define base0C #2aa198
-!#define base0D #268bd2
-!#define base0E #6c71c4
-!#define base0F #d33682
-!
-!URxvt*foreground:   base02
-!URxvt*background:   base07
-!URxvt*cursorColor:  base02
-!
-!URxvt*color0:       base00
-!URxvt*color1:       base08
-!URxvt*color2:       base0B
-!URxvt*color3:       base0A
-!URxvt*color4:       base0D
-!URxvt*color5:       base0E
-!URxvt*color6:       base0C
-!URxvt*color7:       base05
-!
-!URxvt*color8:       base03
-!URxvt*color9:       base08
-!URxvt*color10:      base0B
-!URxvt*color11:      base0A
-!URxvt*color12:      base0D
-!URxvt*color13:      base0E
-!URxvt*color14:      base0C
-!URxvt*color15:      base07
-!
-! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
-! use 'shell' template to set these if necessary
-!URxvt*color16:      base09
-!URxvt*color17:      base0F
-!URxvt*color18:      base01
-!URxvt*color19:      base02
-!URxvt*color20:      base04
-!URxvt*color21:      base06
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
