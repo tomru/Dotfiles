@@ -47,6 +47,9 @@ alias urlw='uttr --report=lastWeek'
 alias urm='uttr --report=month'
 alias urlm='uttr --report=lastMonth'
 
+# dead simple todo list
+alias todo="mkdir -p ~/todos/\$(date +"%Y"); vim ~/todos/\$(date +"%Y")/todo-\$(date +"%m-%d").md"
+
 # colourscheme
 alias dark='zsh ~/.base16-shell/scripts/base16-solarized-dark.sh'
 alias light='zsh ~/.base16-shell/scripts/base16-solarized-light.sh'
