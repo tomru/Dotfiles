@@ -5,47 +5,62 @@ priority -30
 snippet def "define an AMD module"
 define([
 	'${1:backbone}'
-], function( 
-	${2:Name})
-) {
+], ( 
+	${2:Backbone})
+) => {
 	$0
 }
 endsnippet
 
 # Jasmine
 snippet des "Describe (js)" b
-describe('${1:description}', function() {
+describe('${1:description}', () => {
 	$0
 });
 endsnippet
 
 snippet it "it (js)" b
-it('${1:description}', function() {
+it('${1:description}', () => {
 	$0
 });
 endsnippet
 
 snippet bef "before each (js)" b
-beforeEach(function() {
+beforeEach(() => {
 	$0
 });
 endsnippet
 
 snippet aft "after each (js)" b
-afterEach(function() {
+afterEach(() => {
 	$0
 });
 endsnippet
 
 snippet befa "before all (js)" b
-beforeAll(function() {
+beforeAll(() => {
 	$0
 });
 endsnippet
 
 snippet afta "after all (js)" b
-afterAll(function() {
+afterAll(() => {
 	$0
 });
+endsnippet
+
+snippet scc "stub.callCount" b
+expect(${1:stub}.callCount).toEqual(${2:1});
+endsnippet
+
+snippet sca "stub.callCount and args" b
+expect(${1:stub}.callCount).toEqual(${2:1});
+expect($1.args[0][0]${2:.prop}).toEqual(${3:true});
+$0
+endsnippet
+
+snippet et "expect to be true" b
+expect(${1:toTest}).toEqual(true);
+$0
 endsnippet
 # vim:ft=snippets:
