@@ -15,7 +15,7 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'lifepillar/vim-mucomplete'
+Plug 'maralla/completor.vim', { 'do': 'make js'}
 
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -250,11 +250,6 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 " }}}
 
 " Plugin Configuration {{{
-
-"" mucomplete
-set completeopt+=menuone
-set shortmess+=c
-set completeopt+=noinsert
 
 "" gutentags
 
