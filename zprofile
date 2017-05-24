@@ -30,3 +30,9 @@ case $OSTYPE in
         export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
         ;;
 esac
+
+case $HOSTNAME in
+    "cassiopeia.uberspace.de" )
+        export PATH=/package/host/localhost/nodejs-6/bin:$PATH
+        ;;
+esac
