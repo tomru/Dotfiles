@@ -308,6 +308,10 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" markdown preview
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 1
+nnoremap <leader>lp :InstantMarkdownPreview<CR>
 
 " Tex
 let g:tex_flavor = "latex"
@@ -331,7 +335,7 @@ augroup END
 "" txt, mail, tex
 augroup text
     autocmd!
-    autocmd FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
 augroup END
 
 "" Python
