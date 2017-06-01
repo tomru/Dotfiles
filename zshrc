@@ -25,6 +25,15 @@ setopt auto_cd
 setopt multios
 setopt cdablevars
 
+
+########################
+# vi mode
+########################
+bindkey -v
+zle -N edit-command-line
+autoload -Uz edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
 ########################
 # Aliases
 ########################
@@ -53,7 +62,6 @@ alias ls='ls --color=tty'
 
 # keybindings
 
-bindkey -v
 export KEYTIMEOUT=1
 
 # prevent 2*ESC-i insert-mode switch failure
