@@ -50,6 +50,11 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" Investigate on custom text object, seems really usefull
+" Plug 'kana/vim-textobj-user'
+" Plug 'jceb/vim-textobj-uri' | Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-indent' | Plug 'kana/vim-textobj-user'
+
 call plug#end()
 " }}}
 
@@ -69,8 +74,6 @@ set noswapfile
 
 set mouse=a
 set mousehide
-
-set path+=**
 
 set wildmode=list:longest,full
 set wildmenu
@@ -121,7 +124,6 @@ set nojoinspaces
 
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=10
 " }}}
 
 " Diff settings {{{
@@ -270,6 +272,9 @@ nnoremap <leader>aa :Ag<space>
 vnoremap <leader>aa y:Ag <c-r>"<cr>
 nnoremap <leader>AA :Ag <c-r><c-w><cr>
 nnoremap <leader>cc :Commits<cr>
+nnoremap <leader>hf :History<cr>
+nnoremap <leader>hc :History<cr>
+nnoremap <leader>h/ :History<cr>
 
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
@@ -303,6 +308,10 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
+" markdown preview
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 1
+nnoremap <leader>lp :InstantMarkdownPreview<CR>
 
 " Tex
 let g:tex_flavor = "latex"
@@ -326,7 +335,7 @@ augroup END
 "" txt, mail, tex
 augroup text
     autocmd!
-    autocmd FileType text,markdown,mail,tex set wrap wm=2 textwidth=78 nocindent spell
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
 augroup END
 
 "" Python
