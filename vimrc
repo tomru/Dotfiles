@@ -75,8 +75,6 @@ set noswapfile
 set mouse=a
 set mousehide
 
-set path+=**
-
 set wildmode=list:longest,full
 set wildmenu
 set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
