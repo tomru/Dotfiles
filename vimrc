@@ -50,6 +50,11 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" Investigate on custom text object, seems really usefull
+" Plug 'kana/vim-textobj-user'
+" Plug 'jceb/vim-textobj-uri' | Plug 'kana/vim-textobj-user'
+" Plug 'kana/vim-textobj-indent' | Plug 'kana/vim-textobj-user'
+
 call plug#end()
 " }}}
 
