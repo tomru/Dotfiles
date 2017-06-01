@@ -272,6 +272,9 @@ nnoremap <leader>aa :Ag<space>
 vnoremap <leader>aa y:Ag <c-r>"<cr>
 nnoremap <leader>AA :Ag <c-r><c-w><cr>
 nnoremap <leader>cc :Commits<cr>
+nnoremap <leader>hf :History<cr>
+nnoremap <leader>hc :History<cr>
+nnoremap <leader>h/ :History<cr>
 
 "" minibufexpl
 map <Leader>t :MBEToggle<cr>
