@@ -46,6 +46,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'mhinz/vim-grepper'
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -84,10 +86,14 @@ let g:netrw_liststyle=3
 set splitright
 set splitbelow
 
-set ignorecase
+
+" set ignorecase
+set infercase
 set smartcase
 set incsearch
 set hlsearch
+
+set gdefault
 
 set number
 set report=0
@@ -111,7 +117,9 @@ set secure
 " Text Formatting {{{
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
-set linebreak
+"set linebreak
+set breakindent
+
 set showbreak=↳
 set tabstop=4
 set expandtab
