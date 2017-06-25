@@ -27,6 +27,7 @@ Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
