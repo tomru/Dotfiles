@@ -117,7 +117,9 @@ set secure
 " Text Formatting {{{
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
-set linebreak
+"set linebreak
+set breakindent
+
 set showbreak=↳
 set tabstop=4
 set expandtab
