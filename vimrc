@@ -27,6 +27,7 @@ Plug 'honza/vim-snippets'
 Plug 'w0rp/ale'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
@@ -51,6 +52,8 @@ Plug 'mhinz/vim-grepper'
 Plug 'sheerun/vim-polyglot'
 
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'tweekmonster/startuptime.vim'
 
 " Investigate on custom text object, seems really usefull
 " Plug 'kana/vim-textobj-user'
@@ -261,6 +264,10 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 " }}}
 
 " Plugin Configuration {{{
+
+"" editorconfig
+let g:EditorConfig_core_mode = 'python_external'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "" gutentags
 
