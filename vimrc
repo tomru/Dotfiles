@@ -46,6 +46,8 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+Plug 'mhinz/vim-grepper'
+
 Plug 'sheerun/vim-polyglot'
 
 Plug 'christoomey/vim-tmux-navigator'
