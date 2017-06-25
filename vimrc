@@ -132,6 +132,7 @@ set nojoinspaces
 
 " Folding {{{
 set foldmethod=indent
+set foldlevelstart=5
 " }}}
 
 " Diff settings {{{
