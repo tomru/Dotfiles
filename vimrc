@@ -86,10 +86,14 @@ let g:netrw_liststyle=3
 set splitright
 set splitbelow
 
-set ignorecase
+
+" set ignorecase
+set infercase
 set smartcase
 set incsearch
 set hlsearch
+
+set gdefault
 
 set number
 set report=0
