@@ -331,6 +331,10 @@ let g:markdown_fenced_languages = [
       \ 'html',
       \ 'javascript', 'js=javascript', 'json=javascript'
       \ ]
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
 " }}}
 
 " Autocmd Rules {{{
