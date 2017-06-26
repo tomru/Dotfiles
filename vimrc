@@ -35,7 +35,7 @@ Plug 'inside/vim-search-pulse'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
@@ -156,10 +156,7 @@ set undoreload=10000
 "
 set background=dark
 set cursorline
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+colorscheme gruvbox
 
 set number
 if exists('+relativenumber')
