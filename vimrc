@@ -15,6 +15,8 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'tpope/vim-projectionist'
+
 Plug 'maralla/completor.vim', { 'do': 'make js'}
 
 Plug 'ludovicchabant/vim-gutentags'
