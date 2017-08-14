@@ -1,16 +1,16 @@
 # Unix
-alias ll="ls -al"
-alias ln="ln -v"
-alias mkdir="mkdir -p"
-alias e="$EDITOR"
-alias v="$VISUAL"
+alias ls='ls --color=tty'
+alias ll='ls -al'
+alias ln='ln -v'
+alias mkdir='mkdir -p'
+alias e='$EDITOR'
+alias v='$VISUAL'
+alias _='sudo'
+alias nohist='unset HISTFILE'
 
-# Bundler
-alias b="bundle"
-
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias s="rspec"
+alias ta='tmux attach -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
