@@ -81,11 +81,8 @@ set mousehide
 set wildmode=list:longest,full
 set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
 
-let g:netrw_liststyle=3
-
 set splitright
 set splitbelow
-
 
 " set ignorecase
 set infercase
@@ -103,6 +100,14 @@ set showmatch
 set spell
 set spellcapcheck=
 set complete+=kspell
+
+"" netrw
+let g:netrw_liststyle = 1
+let g:netrw_sizestyle = "H"
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_hide = 1
+"let g:netrw_banner = 0
+
 
 " }}}
 
