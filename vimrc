@@ -143,7 +143,7 @@ set diffopt+=iwhite
 " }}}
 
 " {{{ Undo
-set undodir=~/.vim/undos
+set undodir=~/.vim/undos,/tmp
 set undofile
 set undolevels=1000
 set undoreload=10000
