@@ -178,6 +178,9 @@ nnoremap <leader>e :e<space>
 "" fast saving
 nnoremap <leader>w :update<cr>
 
+"" remove hightlighting
+nnoremap <leader><space> :nohls <cr>
+
 "" fast window switching
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
