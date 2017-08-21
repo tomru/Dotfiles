@@ -66,11 +66,7 @@ call plug#end()
 " }}}
 
 " Basics {{{
-set encoding=utf-8
 set nocompatible
-
-filetype plugin indent on
-syntax on
 
 set hidden
 set ttyfast
@@ -83,7 +79,6 @@ set mouse=a
 set mousehide
 
 set wildmode=list:longest,full
-set wildmenu
 set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
 
 let g:netrw_liststyle=3
@@ -95,15 +90,12 @@ set splitbelow
 " set ignorecase
 set infercase
 set smartcase
-set incsearch
 set hlsearch
 
 set gdefault
 
 set number
 set report=0
-
-set scrolloff=5
 
 set showcmd
 set showmatch
@@ -121,8 +113,6 @@ set secure
 
 " Text Formatting {{{
 set list
-set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣,trail:-
-"set linebreak
 set breakindent
 
 set showbreak=↳
@@ -131,7 +121,6 @@ set expandtab
 set softtabstop=4
 set shiftwidth=4
 set textwidth=80
-set autoindent
 set nojoinspaces
 " }}}
 
@@ -179,7 +168,6 @@ endif
 
 let mapleader=','
 let maplocalleader=','
-set timeoutlen=400
 
 "" fast escaping
 inoremap jj <ESC>
@@ -189,9 +177,6 @@ nnoremap <leader>e :e<space>
 
 "" fast saving
 nnoremap <leader>w :update<cr>
-
-"" clear highlight
-nnoremap <leader><space> :noh<cr>
 
 "" fast window switching
 nnoremap <C-J> <C-W><C-J>
