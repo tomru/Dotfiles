@@ -132,7 +132,7 @@ set nojoinspaces
 
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=5
+set nofoldenable
 " }}}
 
 " Diff settings {{{
@@ -294,6 +294,9 @@ map <Leader>t :MBEToggle<cr>
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
