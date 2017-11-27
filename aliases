@@ -1,6 +1,7 @@
 # Unix
 alias ls='ls --color=tty'
 alias ll='ls -al'
+alias ff='find -name'
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias e='$EDITOR'
