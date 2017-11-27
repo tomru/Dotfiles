@@ -7,10 +7,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 
-Plug 'L9'
-Plug 'unimpaired.vim'
-Plug 'surround.vim'
-Plug 'Align'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/unimpaired.vim'
+Plug 'vim-scripts/surround.vim'
+Plug 'vim-scripts/Align'
 Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
