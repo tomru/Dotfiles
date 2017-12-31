@@ -350,6 +350,7 @@ let g:jsx_ext_required = 0
 augroup general
     autocmd!
     autocmd BufEnter * :syntax sync fromstart
+    autocmd FileType netrw setl bufhidden=delete
 augroup END
 
 "" txt, mail, tex
