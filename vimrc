@@ -294,6 +294,7 @@ map <Leader>t :MBEToggle<cr>
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <Leader>gq <Plug>(ale_fix)
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
