@@ -13,8 +13,9 @@
 [alias]
     st = status
     co = checkout
-	cm = commit
-    br = branch
+    cm = commit
+    pr = !git fetch -fu ${2:-upstream} refs/pull/$1/head:pr/$1 && git checkout pr/$1 && :
+    pr-clean = "!git for-each-ref refs/heads/pr/* --format='%(refname)' | while read ref ; do branch=${ref#refs/heads/} ; git branch -D $branch ; done"
     llog = log --date=local
     changes = diff --name-status -r
     diffstat = diff --stat -r
