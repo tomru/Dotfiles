@@ -178,17 +178,11 @@ let maplocalleader=','
 "" fast escaping
 inoremap jj <ESC>
 
-"" fast editing
-nnoremap <leader>e :e<space>
-
 "" fast saving
 nnoremap <leader>w :update<cr>
 
 "" remove hightlighting
 nnoremap <leader><space> :nohls <cr>
-
-"" access copy buffer
-noremap <leader>x "+
 
 "" fast window switching
 nnoremap <C-J> <C-W><C-J>
@@ -214,9 +208,6 @@ vnoremap . :norm.<cr>
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
-"" pull word under cursor into lhs of a substitute (for quick search and replace)
-nnoremap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
-
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
@@ -235,9 +226,6 @@ nnoremap <silent> <leader>pp :set invpaste<CR>
 
 nnoremap <silent> <leader>nn :set invnumber<CR>
 nnoremap <silent> <leader>ii :set invrelativenumber<CR>
-
-"" <Leader>0: Run the visually selected code in node and replace it with the output
-vnoremap <silent> <Leader>0 :!node<cr>
 
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log
@@ -280,16 +268,8 @@ nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>ff :GFiles<cr>
 nnoremap <leader>FF :Files<cr>
 vnoremap <leader>ff y:Files <c-r>"<cr>
-nnoremap <leader>aa :Ag<space>
-vnoremap <leader>aa y:Ag <c-r>"<cr>
-nnoremap <leader>AA :Ag <c-r><c-w><cr>
 nnoremap <leader>cc :Commits<cr>
 nnoremap <leader>hf :History<cr>
-nnoremap <leader>hc :History<cr>
-nnoremap <leader>h/ :History<cr>
-
-"" minibufexpl
-map <Leader>t :MBEToggle<cr>
 
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -307,14 +287,6 @@ if filereadable(expand("~/.vim/lightline.vim"))
         autocmd User ALELint call lightline#update()
     augroup END
 endif
-
-"" Unimpaired
-"" bubble single lines
-nnoremap <leader>k [e
-nnoremap <leader>j ]e
-"" bubble multiple lines
-vnoremap <leader>k [egv
-vnoremap <leader>j ]egv
 
 "" Indent Guides
 nnoremap <leader>g :IndentGuidesToggle<CR>
