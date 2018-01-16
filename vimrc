@@ -263,6 +263,14 @@ let g:gutentags_file_list_command = {
         \ },
     \ }
 
+"" Grepper
+nnoremap <leader>g :Grepper -tool git<cr>
+nnoremap <leader>G :Grepper -tool ag<cr>
+nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
+
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
+
 "" fzf
 nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>ff :GFiles<cr>
@@ -289,7 +297,7 @@ if filereadable(expand("~/.vim/lightline.vim"))
 endif
 
 "" Indent Guides
-nnoremap <leader>g :IndentGuidesToggle<CR>
+nnoremap <leader>ig :IndentGuidesToggle<CR>
 
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
