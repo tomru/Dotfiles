@@ -11,27 +11,15 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-pulseaudio --start
 eval $(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)
 
 xrdb $HOME/.Xresources
-
-# add additional fonts
-xset +fp /usr/share/fonts/local
-xset fp rehash
-
-
-echo $1 > ~/.xinitrc-arg
 
 case $1 in
     xterm)
         exec xterm
         ;;
     herbstluftwm)  # default is herbstluftwm
-        xbindkeys -n &
-        urxvtd &
-        udiskie --tray &
-        systemctl --user start xautolock
         exec herbstluftwm --locked
         ;;
     *)
