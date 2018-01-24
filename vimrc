@@ -7,10 +7,10 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 
-Plug 'L9'
-Plug 'unimpaired.vim'
-Plug 'surround.vim'
-Plug 'Align'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/unimpaired.vim'
+Plug 'vim-scripts/surround.vim'
+Plug 'vim-scripts/Align'
 Plug 'Raimondi/delimitMate'
 
 Plug 'editorconfig/editorconfig-vim'
@@ -132,7 +132,7 @@ set nojoinspaces
 
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=5
+set nofoldenable
 " }}}
 
 " Diff settings {{{
@@ -294,6 +294,10 @@ map <Leader>t :MBEToggle<cr>
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <Leader>gq <Plug>(ale_fix)
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
@@ -346,6 +350,7 @@ let g:jsx_ext_required = 0
 augroup general
     autocmd!
     autocmd BufEnter * :syntax sync fromstart
+    autocmd FileType netrw setl bufhidden=delete
 augroup END
 
 "" txt, mail, tex
