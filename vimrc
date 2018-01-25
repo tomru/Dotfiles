@@ -149,7 +149,6 @@ set undoreload=10000
 
 " Visual Setting {{{
 "
-set background=dark
 set cursorline
 colorscheme gruvbox
 
