@@ -352,6 +352,7 @@ augroup END
 
 "" Python
 augroup python
+    autocmd!
     autocmd FileType python set noexpandtab
 augroup END
 
