@@ -66,8 +66,6 @@ call plug#end()
 " }}}
 
 " Basics {{{
-set nocompatible
-
 set hidden
 set ttyfast
 set synmaxcol=512
@@ -183,9 +181,6 @@ nnoremap <leader>e :e<space>
 
 "" fast saving
 nnoremap <leader>w :update<cr>
-
-"" remove hightlighting
-nnoremap <leader><space> :nohls <cr>
 
 "" access copy buffer
 noremap <leader>x "+
