@@ -153,9 +153,6 @@ set cursorline
 colorscheme gruvbox
 
 set number
-if exists('+relativenumber')
-  set relativenumber
-endif
 " }}}
 
 " GUI Settings {{{
