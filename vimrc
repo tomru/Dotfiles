@@ -346,7 +346,6 @@ augroup END
 augroup web
     autocmd!
     autocmd FileType javascript map <leader>r <esc>:TernRename<CR>
-    autocmd BufRead,BufNewFile *.json set ft=json
     autocmd BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
 augroup END
 
