@@ -329,9 +329,9 @@ let g:jsx_ext_required = 0
 
 " Autocmd Rules {{{
 
-"" do syntax highlight syncing from start
 augroup general
     autocmd!
+    "" do syntax highlight syncing from start
     autocmd BufEnter * :syntax sync fromstart
     autocmd FileType netrw setl bufhidden=delete
 augroup END
