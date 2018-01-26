@@ -1,6 +1,5 @@
 " vim:      set fenc=utf-8 ft=vim fdm=marker fmr={{{,}}}:
-" file:     ~/.vimrc
-" author:   Thomas Ruoff (with the help of a myriad others)
+" author:   Thomas Ruoff
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
