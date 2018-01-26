@@ -199,9 +199,6 @@ noremap <leader>bd :bd<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-"" allow using . with visual mode
-vnoremap . :norm.<cr>
-
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
