@@ -221,12 +221,7 @@ noremap <leader>sa zg
 noremap <leader>s? z=
 
 "" toggle states
-nnoremap <silent> <leader>hh :set invhlsearch<CR>
-nnoremap <silent> <leader>ll :set invlist<CR>
 nnoremap <silent> <leader>pp :set invpaste<CR>
-
-nnoremap <silent> <leader>nn :set invnumber<CR>
-nnoremap <silent> <leader>ii :set invrelativenumber<CR>
 
 "" <Leader>0: Run the visually selected code in node and replace it with the output
 vnoremap <silent> <Leader>0 :!node<cr>
