@@ -208,6 +208,9 @@ nnoremap <leader>r :%s#\<<C-r>=expand("<cword>")<CR>\>#
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
+"" cheetsheet
+nnoremap <silent> <leader>ec :e ~/.vim/cheetsheet.md<cr>
+
 "" turn on spell checking
 noremap <leader>spl :setlocal spell!<cr>
 "" spell checking shortcuts
