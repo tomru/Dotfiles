@@ -21,8 +21,6 @@ Plug 'maralla/completor.vim', { 'do': 'make js'}
 
 Plug 'ludovicchabant/vim-gutentags'
 
-Plug 'nathanaelkane/vim-indent-guides'
-
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -309,9 +307,6 @@ nnoremap <leader>j ]e
 "" bubble multiple lines
 vnoremap <leader>k [egv
 vnoremap <leader>j ]egv
-
-"" Indent Guides
-nnoremap <leader>g :IndentGuidesToggle<CR>
 
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
