@@ -342,12 +342,6 @@ augroup text
     autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
 augroup END
 
-"" Python
-augroup python
-    autocmd!
-    autocmd FileType python set noexpandtab
-augroup END
-
 "" JavaScript
 augroup web
     autocmd!
