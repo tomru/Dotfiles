@@ -252,6 +252,12 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 let g:EditorConfig_core_mode = 'python_external'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+"" vim-grepper
+nnoremap <leader>g :Grepper -tool rg<cr>
+
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
 "" gutentags
 
 let g:gutentags_cache_dir="~/.tags"
