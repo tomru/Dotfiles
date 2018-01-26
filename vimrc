@@ -222,9 +222,6 @@ noremap <leader>s? z=
 "" toggle states
 nnoremap <silent> <leader>pp :set invpaste<CR>
 
-"" <Leader>0: Run the visually selected code in node and replace it with the output
-vnoremap <silent> <Leader>0 :!node<cr>
-
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log
 nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
