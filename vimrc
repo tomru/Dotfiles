@@ -5,51 +5,55 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/unimpaired.vim'
-Plug 'vim-scripts/surround.vim'
-Plug 'vim-scripts/Align'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 
+" project config
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'tpope/vim-projectionist'
 
-Plug 'maralla/completor.vim', { 'do': 'make js'}
-
+" navigating in project
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
+" linting
 Plug 'w0rp/ale'
 
+" navigation
+Plug 'christoomey/vim-tmux-navigator'
+
+" completion
+Plug 'maralla/completor.vim', { 'do': 'make js'}
+
+" git related
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
+" appearence
 Plug 'itchyny/lightline.vim'
-
 Plug 'morhetz/gruvbox'
 
+" filetypes
+Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" javascript
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'mxw/vim-jsx'
 
+" previews
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'mhinz/vim-grepper'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'christoomey/vim-tmux-navigator'
-
+" debug
 Plug 'tweekmonster/startuptime.vim'
 
 " Investigate on custom text object, seems really usefull
