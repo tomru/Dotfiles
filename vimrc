@@ -257,9 +257,6 @@ nnoremap <leader>hf :History<cr>
 nnoremap <leader>hc :History<cr>
 nnoremap <leader>h/ :History<cr>
 
-"" minibufexpl
-map <Leader>t :MBEToggle<cr>
-
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
