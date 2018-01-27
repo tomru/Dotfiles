@@ -32,7 +32,6 @@ Plug 'maralla/completor.vim', { 'do': 'make js'}
 " git related
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
 " appearence
