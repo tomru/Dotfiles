@@ -189,11 +189,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"" open next,prev buffer, cycle
-noremap <leader>. :bn<cr>
-noremap <leader>m :bp<cr>
-noremap <leader>: :b#<cr>
-
 "" delete buffer
 noremap <leader>bd :bd<cr>
 
