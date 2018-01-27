@@ -235,7 +235,6 @@ let g:grepper = {}
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
 "" gutentags
-
 let g:gutentags_cache_dir="~/.tags"
 let g:gutentags_file_list_command = {
     \ 'markers': {
