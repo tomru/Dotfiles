@@ -198,9 +198,6 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 "" cheetsheet
 nnoremap <silent> <leader>ec :e ~/.vim/cheetsheet.md<cr>
 
-"" toggle states
-nnoremap <silent> <leader>pp :set invpaste<CR>
-
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log
 nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
