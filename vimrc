@@ -30,8 +30,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'inside/vim-search-pulse'
-
 Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
