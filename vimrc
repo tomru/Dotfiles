@@ -199,14 +199,6 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 "" cheetsheet
 nnoremap <silent> <leader>ec :e ~/.vim/cheetsheet.md<cr>
 
-"" turn on spell checking
-noremap <leader>spl :setlocal spell!<cr>
-"" spell checking shortcuts
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
-
 "" toggle states
 nnoremap <silent> <leader>pp :set invpaste<CR>
 
