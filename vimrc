@@ -180,12 +180,6 @@ nnoremap <leader>e :e<space>
 "" fast saving
 nnoremap <leader>w :update<cr>
 
-"" fast window switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 "" delete buffer
 noremap <leader>bd :bd<cr>
 
