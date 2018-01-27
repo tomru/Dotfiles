@@ -2,6 +2,14 @@
 
 Generel stuff that I need to get into my muscle memory.
 
+* `CTRL-W [hjkl]` - switch to window left, above, below, right
+
+## unimpared
+* `]b` - :bnext
+* `[b` - :bprevious
+* `]B` - :bfirst
+* `[B` - :blast
+
 ## surround
 * `cs"'` - changes surrouding " to '
 
