@@ -2,7 +2,7 @@
 
 Generel stuff that I need to get into my muscle memory.
 
-* `CTRL-W [hjkl]` - switch to window left, above, below, right
+* `C-W [hjkl]` - switch to window left, above, below, right
 
 ## yanking
 * `"ay` - replace content of register 'a'
@@ -11,7 +11,7 @@ Generel stuff that I need to get into my muscle memory.
 * `d` - will put stuff just in the default register `""` - so `"0p` will still
   paste the last yank
 * `3yy` - yank next three lines
-* `CTRL-r +` - paste register '+' in insert mode
+* `C-r +` - paste register '+' in insert mode
 * `"*` - linux the PRIMARY clipboard, system clipboard on other operating
   systems
 * `"+` - the system clipboard on all operating systems
