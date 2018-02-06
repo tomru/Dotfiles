@@ -80,6 +80,10 @@ set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
 set splitright
 set splitbelow
 
+" yank delete change and put operations go by default in `"+` register
+" so in the systems clipboard accessable by CTRL-V on all OS types
+set clipboard=unnamedplus
+
 " set ignorecase
 set infercase
 set smartcase
