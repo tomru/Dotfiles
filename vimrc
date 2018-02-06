@@ -23,9 +23,6 @@ Plug 'ludovicchabant/vim-gutentags'
 " linting
 Plug 'w0rp/ale'
 
-" navigation
-Plug 'christoomey/vim-tmux-navigator'
-
 " completion
 Plug 'maralla/completor.vim', { 'do': 'make js'}
 
