@@ -32,6 +32,25 @@ Generel stuff that I need to get into my muscle memory.
 * `<leader>g` - kick off
 * without entering anything, takes word under the cursor
 
+## options
+
+Generally `[o` is to enable, `]o` to disable and `=o` to toggle an
+option.
+
+* `[ob` 'background' (dark is off, light is on)
+* `[oc` 'cursorline'
+* `[od` 'diff' (actually |:diffthis| / |:diffoff|)
+* `[oh` 'hlsearch'
+* `[oi` 'ignorecase'
+* `[ol` 'list'
+* `[on` 'number'
+* `[or` 'relativenumber'
+* `[os` 'spell'
+* `[ou` 'cursorcolumn'
+* `[ov` 'virtualedit'
+* `[ow` 'wrap'
+* `[ox` 'cursorline' 'cursorcolumn' (x as in crosshairs)
+
 ## GitGutter
 
 * `]c`, `[c` - jump to next/prev hunk (*c*hange)
