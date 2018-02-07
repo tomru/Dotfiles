@@ -1,60 +1,55 @@
 " vim:      set fenc=utf-8 ft=vim fdm=marker fmr={{{,}}}:
-" file:     ~/.vimrc
-" author:   Thomas Ruoff (with the help of a myriad others)
+" author:   Thomas Ruoff
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/unimpaired.vim'
-Plug 'vim-scripts/surround.vim'
-Plug 'vim-scripts/Align'
-Plug 'Raimondi/delimitMate'
+" Plug 'Raimondi/delimitMate'
 
+" project config
 Plug 'editorconfig/editorconfig-vim'
-
 Plug 'tpope/vim-projectionist'
 
-Plug 'maralla/completor.vim', { 'do': 'make js'}
-
+" navigating in project
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 
-Plug 'nathanaelkane/vim-indent-guides'
+" linting
+Plug 'w0rp/ale'
 
+" completion
+Plug 'maralla/completor.vim', { 'do': 'make js'}
+
+" git related
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
+
+" appearence
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+
+" filetypes
+Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'w0rp/ale'
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'rhysd/conflict-marker.vim'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'inside/vim-search-pulse'
-
-Plug 'itchyny/lightline.vim'
-
-Plug 'morhetz/gruvbox'
-
+" javascript
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'mxw/vim-jsx'
 
+" previews
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'mhinz/vim-grepper'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'christoomey/vim-tmux-navigator'
-
+" debug
 Plug 'tweekmonster/startuptime.vim'
 
 " Investigate on custom text object, seems really usefull
@@ -66,8 +61,6 @@ call plug#end()
 " }}}
 
 " Basics {{{
-set nocompatible
-
 set hidden
 set ttyfast
 set synmaxcol=512
@@ -83,6 +76,10 @@ set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
 
 set splitright
 set splitbelow
+
+" yank delete change and put operations go by default in `"+` register
+" so in the systems clipboard accessable by CTRL-V on all OS types
+set clipboard=unnamedplus
 
 " set ignorecase
 set infercase
@@ -118,16 +115,19 @@ set secure
 
 " Text Formatting {{{
 set list
+
 set breakindent
 
 set showbreak=↳
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 set textwidth=79
 set colorcolumn=80
 set nojoinspaces
+
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
 " }}}
 
 " Folding {{{
@@ -151,14 +151,10 @@ set undoreload=10000
 
 " Visual Setting {{{
 "
-set background=dark
 set cursorline
 colorscheme gruvbox
 
 set number
-if exists('+relativenumber')
-  set relativenumber
-endif
 " }}}
 
 " GUI Settings {{{
@@ -181,20 +177,6 @@ inoremap jj <ESC>
 "" fast saving
 nnoremap <leader>w :update<cr>
 
-"" remove hightlighting
-nnoremap <leader><space> :nohls <cr>
-
-"" fast window switching
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"" open next,prev buffer, cycle
-noremap <leader>. :bn<cr>
-noremap <leader>m :bp<cr>
-noremap <leader>: :b#<cr>
-
 "" delete buffer
 noremap <leader>bd :bd<cr>
 
@@ -202,30 +184,14 @@ noremap <leader>bd :bd<cr>
 vnoremap > >gv
 vnoremap < <gv
 
-"" allow using . with visual mode
-vnoremap . :norm.<cr>
-
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
-"" turn on spell checking
-noremap <leader>spl :setlocal spell!<cr>
-"" spell checking shortcuts
-noremap <leader>sn ]s
-noremap <leader>sp [s
-noremap <leader>sa zg
-noremap <leader>s? z=
-
-"" toggle states
-nnoremap <silent> <leader>hh :set invhlsearch<CR>
-nnoremap <silent> <leader>ll :set invlist<CR>
-nnoremap <silent> <leader>pp :set invpaste<CR>
-
-nnoremap <silent> <leader>nn :set invnumber<CR>
-nnoremap <silent> <leader>ii :set invrelativenumber<CR>
+"" cheetsheet
+nnoremap <silent> <leader>ec :e ~/.vim/cheetsheet.md<cr>
 
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log
@@ -253,8 +219,13 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 let g:EditorConfig_core_mode = 'python_external'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-"" gutentags
+"" vim-grepper
+nnoremap <leader>g :Grepper -tool rg<cr>
 
+let g:grepper = {}
+let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
+"" gutentags
 let g:gutentags_cache_dir="~/.tags"
 let g:gutentags_file_list_command = {
     \ 'markers': {
@@ -296,8 +267,13 @@ if filereadable(expand("~/.vim/lightline.vim"))
     augroup END
 endif
 
-"" Indent Guides
-nnoremap <leader>ig :IndentGuidesToggle<CR>
+"" Unimpaired
+"" bubble single lines
+nnoremap <leader>k [e
+nnoremap <leader>j ]e
+"" bubble multiple lines
+vnoremap <leader>k [egv
+vnoremap <leader>j ]egv
 
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -326,9 +302,9 @@ let g:jsx_ext_required = 0
 
 " Autocmd Rules {{{
 
-"" do syntax highlight syncing from start
 augroup general
     autocmd!
+    "" do syntax highlight syncing from start
     autocmd BufEnter * :syntax sync fromstart
     autocmd FileType netrw setl bufhidden=delete
 augroup END
@@ -339,16 +315,10 @@ augroup text
     autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
 augroup END
 
-"" Python
-augroup python
-    autocmd FileType python set noexpandtab
-augroup END
-
 "" JavaScript
 augroup web
     autocmd!
     autocmd FileType javascript map <leader>r <esc>:TernRename<CR>
-    autocmd BufRead,BufNewFile *.json set ft=json
     autocmd BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
 augroup END
 
