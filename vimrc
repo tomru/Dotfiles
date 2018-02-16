@@ -136,6 +136,7 @@ set expandtab
 
 " Folding {{{
 set foldmethod=indent
+set foldlevelstart=1
 set nofoldenable
 " }}}
 
