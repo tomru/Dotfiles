@@ -79,7 +79,11 @@ set splitbelow
 
 " yank delete change and put operations go by default in `"+` register
 " so in the systems clipboard accessable by CTRL-V on all OS types
-set clipboard=unnamedplus
+if has('mac')
+  set clipboard^=unnamed
+else
+  set clipboard^=unamedplus
+endif
 
 " set ignorecase
 set infercase
