@@ -179,9 +179,6 @@ let maplocalleader=','
 "" fast escaping
 inoremap jj <ESC>
 
-"" fast saving
-nnoremap <leader>w :update<cr>
-
 "" delete buffer
 noremap <leader>bd :bd<cr>
 
