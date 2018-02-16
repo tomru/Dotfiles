@@ -222,7 +222,7 @@ let g:EditorConfig_core_mode = 'python_external'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "" vim-grepper
-nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>/ :Grepper -tool rg<cr>
 
 let g:grepper = {}
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
