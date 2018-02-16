@@ -269,14 +269,6 @@ if filereadable(expand("~/.vim/lightline.vim"))
     augroup END
 endif
 
-"" Unimpaired
-"" bubble single lines
-nnoremap <leader>k [e
-nnoremap <leader>j ]e
-"" bubble multiple lines
-vnoremap <leader>k [egv
-vnoremap <leader>j ]egv
-
 "" Ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
