@@ -82,7 +82,7 @@ set splitbelow
 if has('mac')
   set clipboard^=unnamed
 else
-  set clipboard^=unamedplus
+  set clipboard^=unnamedplus
 endif
 
 " set ignorecase
