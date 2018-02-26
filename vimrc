@@ -196,8 +196,8 @@ nnoremap gV `[v`]
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
-"" cheetsheet
-nnoremap <silent> <leader>ec :e ~/.vim/cheetsheet.md<cr>
+"" cheatsheet
+nnoremap <silent> <leader>ec :e ~/.vim/cheatsheet.md<cr>
 
 " debugging, use leader-DD to start, do a slow action, then leader-DQ to
 " finish. Your output will be in profile.log

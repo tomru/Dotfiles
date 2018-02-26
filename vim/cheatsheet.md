@@ -1,4 +1,4 @@
-# VIM CHEETSHEET
+# VIM CHEAT SHEET
 
 Generel stuff that I need to get into my muscle memory.
 
