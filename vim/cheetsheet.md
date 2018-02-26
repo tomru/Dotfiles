@@ -6,6 +6,7 @@ Generel stuff that I need to get into my muscle memory.
 * `C-L` - clear highlight
 
 ## yanking
+
 * `"ay` - replace content of register 'a'
 * `"Ay` - append to content of register 'a'
 * `y` - will put stuff in the default register `""` and `"0`
@@ -17,14 +18,15 @@ Generel stuff that I need to get into my muscle memory.
   systems
 * `"+` - the system clipboard on all operating systems
 
-
 ## unimpared
+
 * `]b` - :bnext
 * `[b` - :bprevious
 * `]B` - :bfirst
 * `[B` - :blast
 
 ## surround
+
 * `cs"'` - changes surrouding " to '
 
 ## Grepper
