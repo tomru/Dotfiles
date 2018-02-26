@@ -88,6 +88,7 @@ endif
 " set ignorecase
 set infercase
 set smartcase
+set ignorecase
 set hlsearch
 
 set gdefault
