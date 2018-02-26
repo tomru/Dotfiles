@@ -31,6 +31,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 
+" undo
+Plug 'simnalamburt/vim-mundo'
+
 " appearence
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
@@ -260,6 +263,9 @@ nmap <Leader>gq <Plug>(ale_fix)
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
+
+"" undo
+nnoremap <leader>u :MundoToggle
 
 "" lightline
 if filereadable(expand("~/.vim/lightline.vim"))
