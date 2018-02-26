@@ -29,6 +29,11 @@ Generel stuff that I need to get into my muscle memory.
 
 * `cs"'` - changes surrouding " to '
 
+## undo
+
+* `g+` `g-` - move to previous change, regardless of where it sits in the undo
+    tree
+
 ## Grepper
 
 * `<leader>g` - kick off
