@@ -20,6 +20,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 
+" file browser
+Plug 'francoiscabrol/ranger.vim'
+
 " linting
 Plug 'w0rp/ale'
 
@@ -105,14 +108,6 @@ set showmatch
 set spell
 set spellcapcheck=
 set complete+=kspell
-
-"" netrw
-let g:netrw_liststyle = 1
-let g:netrw_sizestyle = "H"
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_hide = 1
-"let g:netrw_banner = 0
-
 
 " }}}
 
@@ -231,6 +226,11 @@ nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 
 let g:grepper = {}
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
+"" file browser
+let g:ranger_map_keys = 0
+nnoremap <leader>d :Ranger<CR>
+let g:ranger_replace_netrw = 1
 
 "" gutentags
 let g:gutentags_cache_dir="~/.tags"
