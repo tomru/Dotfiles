@@ -227,6 +227,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 "" vim-grepper
 nnoremap <leader>/ :Grepper -tool rg<cr>
+nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 
 let g:grepper = {}
 let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
@@ -241,20 +242,27 @@ let g:gutentags_file_list_command = {
     \ }
 
 "" Grepper
-nnoremap <leader>g :Grepper -tool git<cr>
-nnoremap <leader>G :Grepper -tool ag<cr>
-nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
-
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
 
 "" fzf
-nnoremap <leader>bb :Buffers<cr>
-nnoremap <leader>ff :GFiles<cr>
-nnoremap <leader>FF :Files<cr>
-vnoremap <leader>ff y:Files <c-r>"<cr>
-nnoremap <leader>cc :Commits<cr>
-nnoremap <leader>hf :History<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>F :Files<cr>
+nnoremap <leader>c :Commits<cr>
+nnoremap <leader>bc :BCommits<cr>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>bt :BTags<cr>
+nnoremap <leader>l :Lines<cr>
+nnoremap <leader>bl :BLines<cr>
+nnoremap <leader>w :Windows<cr>
+nnoremap <leader>bh :History<cr>
+nnoremap <leader>ch :History:<cr>
+nnoremap <leader>sh :History/<cr>
+nnoremap <leader>vc :Commands<cr>
+nnoremap <leader>m :Maps<cr>
+nnoremap <leader>h :Helptags<cr>
+
 
 "" ale
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
