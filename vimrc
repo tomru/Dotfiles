@@ -54,6 +54,7 @@ Plug 'mxw/vim-jsx'
 " previews
 Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'tyru/open-browser.vim'
 
 " debug
 Plug 'tweekmonster/startuptime.vim'
@@ -312,6 +313,11 @@ let g:markdown_fenced_languages = [
 
 " vim-jsx
 let g:jsx_ext_required = 0
+
+" open-browser
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 " }}}
 
