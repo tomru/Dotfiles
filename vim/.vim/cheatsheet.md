@@ -4,6 +4,20 @@ Generel stuff that I need to get into my muscle memory.
 
 * `C-W [hjkl]` - switch to window left, above, below, right
 * `C-L` - clear highlight
+* `<C-o><C-o>` - Jump to last edited filed
+* `Control-o <<command>>` - For a single normal operation in insert mode 
+* `gx` - on URL to open it in the browser - WUUT
+* `:g/<<some-pattern>>/d` delete lines containing pattern
+* `:v/<<some-pattern>>/d` delete lines NOT containing pattern
+
+### edit macros
+* `"ip` to past register `i` in buffer
+* `"iyy` to yank into register `i`
+
+## Remember lately added config
+
+* `gdefault` - do always global substitute
+* read again and again `:h grepper`
 
 ## yanking
 
@@ -28,6 +42,7 @@ Generel stuff that I need to get into my muscle memory.
 ## surround
 
 * `cs"'` - changes surrouding " to '
+* `ysiw<em>` to add `<em></em>` around a word
 
 ## undo
 
@@ -38,6 +53,12 @@ Generel stuff that I need to get into my muscle memory.
 
 * `<leader>g` - kick off
 * without entering anything, takes word under the cursor
+
+## GitGutter
+
+* `]c`, `[c` - jump to next/prev hunk (*c*hange)
+* `<leader>hs` - stage hunk
+* `<leader>hu` - undo hunk
 
 ## options
 
@@ -57,12 +78,6 @@ option.
 * `[ov` 'virtualedit'
 * `[ow` 'wrap'
 * `[ox` 'cursorline' 'cursorcolumn' (x as in crosshairs)
-
-## GitGutter
-
-* `]c`, `[c` - jump to next/prev hunk (*c*hange)
-* `<leader>hs` - stage hunk
-* `<leader>hu` - undo hunk
 
 ## Debugging
 
