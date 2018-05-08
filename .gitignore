@@ -1,7 +1,5 @@
-irssi
-vim/plugged/*
-vim/undos/*
-vim/backup/
-vim/spell
-.netrwhist
-Xresources.compiled
+vim/.vim/plugged/*
+vim/.vim/undos/*
+vim/.vim/backup/*
+vim/.vim/spell/*
+x11/.Xresources.compiled
