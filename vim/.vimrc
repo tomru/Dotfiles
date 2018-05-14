@@ -218,8 +218,7 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 " Plugin Configuration {{{
 
 "" editorconfig
-let g:EditorConfig_core_mode = 'python_external'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 "" vim-grepper
 nnoremap <leader>/ :Grepper -tool rg<cr>
