@@ -189,6 +189,11 @@ vnoremap < <gv
 "" Visually select the text that was last edited/pasted
 nnoremap gV `[v`]
 
+"" session management (https://dockyard.com/blog/2018/06/01/simple-vim-session-management-part-1)
+let g:sessions_dir = '~/vim-sessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
