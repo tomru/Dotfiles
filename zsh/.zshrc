@@ -1,3 +1,6 @@
+# for startup profiling (also see end of file)
+# zmodload zsh/zprof
+
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
@@ -46,3 +49,5 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zprof
