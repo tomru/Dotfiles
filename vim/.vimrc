@@ -273,9 +273,8 @@ nnoremap <leader>h :Helptags<cr>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <Leader>gq <Plug>(ale_fix)
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
+let g:ale_fixers = {}
+let g:ale_fixers.javascript = ['eslint']
 
 "" undo
 nnoremap <leader>u :MundoToggle
