@@ -173,8 +173,8 @@ endif
 
 " Key mappings {{{
 
-let mapleader=','
-let maplocalleader=','
+let mapleader=" "
+let maplocalleader=" "
 
 "" fast escaping
 inoremap jj <ESC>
