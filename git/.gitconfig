@@ -1,15 +1,16 @@
 [user]
-	name = Thomas Ruoff
-	email = ThomasRuoff@gmail.com
+    name = Thomas Ruoff
+    email = ThomasRuoff@gmail.com
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [core]
     editor=vim -f +1 -c start!
     autocrlf=input
     eol=lf
+    excludesfile = ~/.gitignore
 [alias]
     st = status
     co = checkout
@@ -22,19 +23,5 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     fix = "!f() { ${EDITOR} $(git diff --name-only | uniq ); }; f"
     last = "!l() { ${EDITOR} $(git diff-tree --no-commit-id --name-only -r HEAD ); }; l"
-[merge]
-    tool = bc3
-[mergetool]
-    cmd = /usr/bin/bcompare $LOCAL $REMOTE $BASE $MERGED
-[push]
-	default = current
-[giggle]
-	main-window-maximized = false
-	main-window-geometry = 1229x863+2049+127
-	main-window-view = FileView
-	file-view-vpane-position = 304
-	file-view-hpane-position = 363
-[gui]
-	historybrowser = gitk
 [rebase]
-	autosquash = true
+    autosquash = true
