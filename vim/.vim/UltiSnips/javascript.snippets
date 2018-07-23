@@ -1,15 +1,334 @@
-priority -30
+snippet proto "prototype"
+${1:class_name}.prototype.${2:method_name} = function(${3}) {
+	${0:${VISUAL}}
+};
+endsnippet
 
-# AMD (Asynchronous Module Definition) snippets
+snippet fun "Function"
+function ${1:function_name}(${2}) {
+	${0:${VISUAL}}
+}
+endsnippet
 
-snippet def "define an AMD module"
-define([
-	'${1:backbone}'
-], ( 
-	${2:Backbone}
-) => {
-	$0
+snippet anf "Anonymous Function" w
+function(${1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet vaf "Anonymous Function assigned to constant"
+const ${1:function_name} = function(${2}) {
+	${0:${VISUAL}}
+};
+endsnippet
+
+snippet vf "Function assigned to constant"
+const ${1:function_name} = function $1(${2}) {
+	${0:${VISUAL}}
+};
+endsnippet
+
+snippet (f "Immediate function"
+(function(${1}) {
+	${0:${VISUAL}}
+}(${2}));
+endsnippet
+
+snippet ;fe "Minify safe iife"
+;(function(${1}) {
+	${0:${VISUAL}}
+}(${2}))
+endsnippet
+
+snippet if "if (condition) { ... }"
+if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }"
+if (${1:true}) {
+	${0:${VISUAL}}
+} else {
+	${2}
+}
+endsnippet
+
+snippet ter "tertiary conditional"
+${1:/* condition */} ? ${2:/* if true */} : ${0:/* if false */}
+endsnippet
+
+snippet switch "switch case"
+switch (${1:expression}) {
+	case '${3:case}':
+		${4}
+		break;
+	${0}
+	default:
+		${2}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case '${1:case}':
+	${0:${VISUAL}}
+	break;
+endsnippet
+
+snippet try "try { ... } catch(e) { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+}
+endsnippet
+
+snippet tryf "try { ... } catch(e) { ... } finally { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+} finally {
+	${3:/* be executed regardless of the try / catch result*/}
+}
+endsnippet
+
+snippet terr "throw Error"
+	throw new Error('${1:error message}')
+endsnippet
+
+snippet ret "return"
+	return ${0:result};
+endsnippet
+
+snippet for "for (...) {...}"
+for (let ${1:i} = 0, ${2:len} = ${3:Things.length}; $1 < $2; $1++) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet forr "reversed for (...) {...}"
+for (let ${2:i} = ${1:Things.length} - 1; $2 >= 0; $2--) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fori "For in loop"
+for (let ${1:prop} in ${2:object}) {
+	${0:$2[$1]}
+}
+endsnippet
+
+snippet :f "Object Method"
+${1:method_name}: function (${2:attribute}) {
+	${0:${VISUAL}}
+},
+endsnippet
+
+snippet has "hasOwnProperty"
+hasOwnProperty(${0})
+endsnippet
+
+snippet jsonp "JSON.parse"
+JSON.parse(${0:jstr});
+endsnippet
+
+snippet jsons "JSON.stringify"
+JSON.stringify(${0:object});
+endsnippet
+
+snippet by. "Elements by class"
+${1:document}.getElementsByClassName('${0:class}')
+endsnippet
+
+snippet by# "Element by ID"
+${1:document}.getElementById('${0:element ID}')
+endsnippet
+
+snippet qs "Query selector"
+${1:document}.querySelector('${0:CSS selector}')
+endsnippet
+
+snippet qsa "Query selector all"
+${1:document}.querySelectorAll('${0:CSS selector}')
+endsnippet
+
+snippet de "Debugging"
+debugger;
+endsnippet
+
+snippet cl "console.log"
+console.log(${0});
+endsnippet
+
+snippet cd "console.debug"
+console.debug(${0});
+endsnippet
+
+snippet ce "console.error"
+console.error(${0});
+endsnippet
+
+snippet cw "console.warn"
+console.warn(${0});
+endsnippet
+
+snippet ci "console.info"
+console.info(${0});
+endsnippet
+
+snippet ct "console.trace"
+console.trace(${0:label});
+endsnippet
+
+snippet ctime "console.time ... console.timeEnd"
+console.time("${1:label}");
+${0:${VISUAL}}
+console.timeEnd("$1");
+endsnippet
+
+snippet ctimestamp "console.timeStamp"
+console.timeStamp("${1:label}");
+endsnippet
+
+snippet ca "console.assert"
+console.assert(${1:expression}, ${0:obj});
+endsnippet
+
+snippet cclear "console.clear"
+console.clear();
+endsnippet
+
+snippet cdir "console.dir"
+console.dir(${0:obj});
+endsnippet
+
+snippet cdirx "console.dirxml"
+console.dirxml(${1:object});
+endsnippet
+
+snippet cgroup "console.group"
+console.group("${1:label}");
+${0:${VISUAL}}
+console.groupEnd();
+endsnippet
+
+snippet cgroupc "console.groupCollapsed"
+console.groupCollapsed("${1:label}");
+${0:${VISUAL}}
+console.groupEnd();
+endsnippet
+
+snippet cprof "console.profile"
+console.profile("${1:label}");
+${0:${VISUAL}}
+console.profileEnd();
+endsnippet
+
+snippet ctable "console.table"
+console.table(${1:"${2:value}"});
+endsnippet
+
+snippet us "use strict"
+'use strict';
+endsnippet
+
+snippet timeout "setTimeout"
+setTimeout(function () {${0}}${2}, ${1:10});
+endsnippet
+
+snippet const
+const ${1} = ${0};
+endsnippet
+
+snippet let
+let ${1} = ${0};
+endsnippet
+
+snippet im "import xyz from 'xyz'"
+import ${1} from '${2:$1}';
+endsnippet
+
+snippet imas "import * as xyz from 'xyz'"
+import * as ${1} from '${2:$1}';
+endsnippet
+
+snippet imm "import { member } from 'xyz'"
+import { ${1} } from '${2}';
+endsnippet
+
+snippet ed
+export default ${0}
+endsnippet
+
+snippet cla "define class"
+class ${1} extends ${2} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet clac "define class with constructor"
+class ${1} {
+	constructor(${2}) {
+		${0:${VISUAL}}
+	}
+}
+endsnippet
+
+snippet foro "for (const prop of object}) { ... }"
+for (const ${1:prop} of ${2:object}) {
+	${0:$1}
+}
+endsnippet
+
+snippet c=>
+const ${1:function_name} = (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet caf
+const ${1:function_name} = (${2}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet =>
+(${1}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet af "Arrow function"
+(${1}) => {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ${
+${${1:${VISUAL}}}${0}
+endsnippet
+
+snippet des "Jasmine Describe"
+describe('$1', () => {
+	${0:${VISUAL}}
 });
 endsnippet
 
-# vim:ft=snippets:
+snippet it "Jasmine it"
+it('$1', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet bef "Jasmine beforeEach"
+beforeEach('$1', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet aft "Jasmine afterEach"
+afterEach('$1', () => {
+	${0:${VISUAL}}
+});
+endsnippet

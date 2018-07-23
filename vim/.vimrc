@@ -198,6 +198,11 @@ let g:sessions_dir = '~/.vim/sessions'
 exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
+"" session management
+let g:sessions_dir = '~/.vim/sessions'
+exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
+
 "" fast editing of the .vimrc
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
