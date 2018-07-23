@@ -28,7 +28,10 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'w0rp/ale'
 
 " completion
-Plug 'maralla/completor.vim', { 'do': 'make js'}
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " git related
 Plug 'tpope/vim-fugitive'
@@ -296,9 +299,12 @@ function! LightlineReload()
 endfunction
 
 "" Ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+
+"" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " markdown preview
 let g:instant_markdown_autostart = 0
