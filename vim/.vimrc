@@ -312,7 +312,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 "" Deoplete
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup=1
+let g:deoplete#file#enable_buffer_path=1
 
 " markdown preview
 let g:instant_markdown_autostart = 0
