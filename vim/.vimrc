@@ -57,7 +57,6 @@ Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'mxw/vim-jsx'
 
 " previews
-Plug 'suan/vim-instant-markdown', { 'for': 'markdown' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'tyru/open-browser.vim'
 
@@ -315,11 +314,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 let g:deoplete#enable_at_startup=1
 let g:deoplete#file#enable_buffer_path=1
 
-" markdown preview
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_slow = 1
-nnoremap <leader>lp :InstantMarkdownPreview<CR>
-
 " Tex
 let g:tex_flavor = "latex"
 let g:livepreview_previewer = 'zathura'
@@ -353,6 +347,11 @@ augroup END
 augroup text
     autocmd!
     autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
+augroup END
+
+augroup markdown
+    autocmd!
+    autocmd FileType markdown set wrap wm=2 nocindent spell
 augroup END
 
 "" JavaScript
