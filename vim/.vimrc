@@ -22,6 +22,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'ludovicchabant/vim-gutentags'
 
 " file browser
+Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
 
 " linting
@@ -184,7 +185,7 @@ let maplocalleader=" "
 inoremap jj <ESC>
 
 "" delete buffer
-noremap <leader>bd :bd<cr>
+noremap <leader>bd :BClose<cr>
 
 "" indent visual selected code without unselecting and going back to normal mode
 vnoremap > >gv
