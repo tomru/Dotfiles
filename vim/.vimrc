@@ -46,17 +46,14 @@ Plug 'tpope/vim-projectionist'
 Plug 'simnalamburt/vim-mundo'
     nnoremap <leader>u :MundoToggle
 
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
     let g:deoplete#enable_at_startup=1
     let g:deoplete#file#enable_buffer_path=1
 
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
 
-Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
+Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
     let g:ranger_map_keys = 0
     nnoremap <leader>d :Ranger<CR>
     let g:ranger_replace_netrw = 1
