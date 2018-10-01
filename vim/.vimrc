@@ -9,8 +9,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 
-" Plug 'Raimondi/delimitMate'
-
 " project config
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-projectionist'
@@ -49,7 +47,6 @@ Plug 'morhetz/gruvbox'
 " filetypes
 Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 " javascript
 Plug 'pangloss/vim-javascript'
