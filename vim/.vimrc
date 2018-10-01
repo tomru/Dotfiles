@@ -9,10 +9,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 
-Plug 'editorconfig/editorconfig-vim'
-    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'airblade/vim-gitgutter'
 
-Plug 'tpope/vim-projectionist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
     nnoremap <leader>b :Buffers<cr>
@@ -38,14 +38,22 @@ Plug 'mhinz/vim-grepper'
     let g:grepper = {}
     let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
 
-Plug 'ludovicchabant/vim-gutentags'
-    let g:gutentags_cache_dir="~/.tags"
-    let g:gutentags_file_list_command = {
-        \ 'markers': {
-            \ '.git': 'git ls-files',
-            \ '.hg': 'hg files',
-            \ },
-        \ }
+Plug 'editorconfig/editorconfig-vim'
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+Plug 'tpope/vim-projectionist'
+
+Plug 'simnalamburt/vim-mundo'
+    nnoremap <leader>u :MundoToggle
+
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim'
+    let g:deoplete#enable_at_startup=1
+    let g:deoplete#file#enable_buffer_path=1
+
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+    let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
 
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
@@ -61,21 +69,6 @@ Plug 'w0rp/ale'
     let g:ale_linters.javascript = ['eslint']
     let g:ale_fixers = {}
     let g:ale_fixers.javascript = ['eslint']
-
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/deoplete.nvim'
-    let g:deoplete#enable_at_startup=1
-    let g:deoplete#file#enable_buffer_path=1
-
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'simnalamburt/vim-mundo'
-    nnoremap <leader>u :MundoToggle
 
 Plug 'itchyny/lightline.vim'
     if filereadable(expand("~/.vim/lightline.vim"))
@@ -94,18 +87,27 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'morhetz/gruvbox'
 
-Plug 'sheerun/vim-polyglot'
-    let g:polyglot_disabled = ['javascript', 'jsx']
-
 Plug 'SirVer/ultisnips'
     let g:UltiSnipsExpandTrigger="<S-Tab>"
     let g:UltiSnipsJumpForwardTrigger="<c-k>"
     let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
-" javascript
+Plug 'ludovicchabant/vim-gutentags'
+    let g:gutentags_cache_dir="~/.tags"
+    let g:gutentags_file_list_command = {
+        \ 'markers': {
+            \ '.git': 'git ls-files',
+            \ '.hg': 'hg files',
+            \ },
+        \ }
+
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
     let g:jsx_ext_required = 0
+
+Plug 'sheerun/vim-polyglot'
+    let g:polyglot_disabled = ['javascript', 'jsx']
+
 
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     let g:tex_flavor = "latex"
