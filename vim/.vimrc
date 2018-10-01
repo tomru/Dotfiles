@@ -113,11 +113,6 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
     let g:tex_flavor = "latex"
     let g:livepreview_previewer = 'zathura'
 
-Plug 'tyru/open-browser.vim'
-    let g:netrw_nogx = 1
-    nmap gx <Plug>(openbrowser-smart-search)
-    vmap gx <Plug>(openbrowser-smart-search)
-
 " debug
 Plug 'tweekmonster/startuptime.vim'
 
