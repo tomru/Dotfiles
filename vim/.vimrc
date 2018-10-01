@@ -9,53 +9,112 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
 
-" project config
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-projectionist'
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
-" navigating in project
+Plug 'tpope/vim-projectionist'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'mhinz/vim-grepper'
-Plug 'ludovicchabant/vim-gutentags'
+    nnoremap <leader>b :Buffers<cr>
+    nnoremap <leader>f :GFiles<cr>
+    nnoremap <leader>F :Files<cr>
+    nnoremap <leader>c :Commits<cr>
+    nnoremap <leader>bc :BCommits<cr>
+    nnoremap <leader>t :Tags<cr>
+    nnoremap <leader>bt :BTags<cr>
+    nnoremap <leader>l :Lines<cr>
+    nnoremap <leader>bl :BLines<cr>
+    nnoremap <leader>w :Windows<cr>
+    nnoremap <leader>bh :History<cr>
+    nnoremap <leader>ch :History:<cr>
+    nnoremap <leader>sh :History/<cr>
+    nnoremap <leader>vc :Commands<cr>
+    nnoremap <leader>m :Maps<cr>
+    nnoremap <leader>h :Helptags<cr>
 
-" file browser
+Plug 'mhinz/vim-grepper'
+    nnoremap <leader>/ :Grepper -tool rg<cr>
+    nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+    let g:grepper = {}
+    let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+
+Plug 'ludovicchabant/vim-gutentags'
+    let g:gutentags_cache_dir="~/.tags"
+    let g:gutentags_file_list_command = {
+        \ 'markers': {
+            \ '.git': 'git ls-files',
+            \ '.hg': 'hg files',
+            \ },
+        \ }
+
 Plug 'rbgrouleff/bclose.vim'
 Plug 'francoiscabrol/ranger.vim'
+    let g:ranger_map_keys = 0
+    nnoremap <leader>d :Ranger<CR>
+    let g:ranger_replace_netrw = 1
 
-" linting
 Plug 'w0rp/ale'
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+    nmap <Leader>gq <Plug>(ale_fix)
+    let g:ale_linters = {}
+    let g:ale_linters.javascript = ['eslint']
+    let g:ale_fixers = {}
+    let g:ale_fixers.javascript = ['eslint']
 
-" completion
-Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim'
+    let g:deoplete#enable_at_startup=1
+    let g:deoplete#file#enable_buffer_path=1
+
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
-" git related
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 
-" undo
 Plug 'simnalamburt/vim-mundo'
+    nnoremap <leader>u :MundoToggle
 
-" appearence
 Plug 'itchyny/lightline.vim'
+    if filereadable(expand("~/.vim/lightline.vim"))
+        source ~/.vim/lightline.vim
+        augroup ale-statusline
+            autocmd!
+            autocmd User ALELint call lightline#update()
+        augroup END
+    endif
+
+    function! LightlineReload()
+      call lightline#init()
+      call lightline#colorscheme()
+      call lightline#update()
+    endfunction
+
 Plug 'morhetz/gruvbox'
 
-" filetypes
 Plug 'sheerun/vim-polyglot'
+    let g:polyglot_disabled = ['javascript', 'jsx']
+
 Plug 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger="<S-Tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-k>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 " javascript
 Plug 'pangloss/vim-javascript'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
 Plug 'mxw/vim-jsx'
+    let g:jsx_ext_required = 0
 
-" previews
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+    let g:tex_flavor = "latex"
+    let g:livepreview_previewer = 'zathura'
+
 Plug 'tyru/open-browser.vim'
+    let g:netrw_nogx = 1
+    nmap gx <Plug>(openbrowser-smart-search)
+    vmap gx <Plug>(openbrowser-smart-search)
 
 " debug
 Plug 'tweekmonster/startuptime.vim'
@@ -225,114 +284,6 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 
 iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
-" }}}
-
-" Plugin Configuration {{{
-
-"" editorconfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
-"" plolyglott
-let g:polyglot_disabled = ['javascript', 'jsx']
-
-"" vim-grepper
-nnoremap <leader>/ :Grepper -tool rg<cr>
-nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-
-let g:grepper = {}
-let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
-
-"" file browser
-let g:ranger_map_keys = 0
-nnoremap <leader>d :Ranger<CR>
-let g:ranger_replace_netrw = 1
-
-"" gutentags
-let g:gutentags_cache_dir="~/.tags"
-let g:gutentags_file_list_command = {
-    \ 'markers': {
-        \ '.git': 'git ls-files',
-        \ '.hg': 'hg files',
-        \ },
-    \ }
-
-"" Grepper
-nmap gs  <plug>(GrepperOperator)
-xmap gs  <plug>(GrepperOperator)
-
-"" fzf
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>f :GFiles<cr>
-nnoremap <leader>F :Files<cr>
-nnoremap <leader>c :Commits<cr>
-nnoremap <leader>bc :BCommits<cr>
-nnoremap <leader>t :Tags<cr>
-nnoremap <leader>bt :BTags<cr>
-nnoremap <leader>l :Lines<cr>
-nnoremap <leader>bl :BLines<cr>
-nnoremap <leader>w :Windows<cr>
-nnoremap <leader>bh :History<cr>
-nnoremap <leader>ch :History:<cr>
-nnoremap <leader>sh :History/<cr>
-nnoremap <leader>vc :Commands<cr>
-nnoremap <leader>m :Maps<cr>
-nnoremap <leader>h :Helptags<cr>
-
-
-"" ale
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <Leader>gq <Plug>(ale_fix)
-let g:ale_linters = {}
-let g:ale_linters.javascript = ['eslint']
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['eslint']
-
-"" undo
-nnoremap <leader>u :MundoToggle
-
-"" lightline
-if filereadable(expand("~/.vim/lightline.vim"))
-    source ~/.vim/lightline.vim
-    augroup ale-statusline
-        autocmd!
-        autocmd User ALELint call lightline#update()
-    augroup END
-endif
-
-function! LightlineReload()
-  call lightline#init()
-  call lightline#colorscheme()
-  call lightline#update()
-endfunction
-
-"" Ultisnips
-let g:UltiSnipsExpandTrigger="<S-Tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-
-"" Deoplete
-let g:deoplete#enable_at_startup=1
-let g:deoplete#file#enable_buffer_path=1
-
-" Tex
-let g:tex_flavor = "latex"
-let g:livepreview_previewer = 'zathura'
-
-" markdown
-let g:markdown_fenced_languages = [
-      \ 'html',
-      \ 'javascript', 'js=javascript', 'json=javascript'
-      \ ]
-
-" vim-jsx
-let g:jsx_ext_required = 0
-
-" open-browser
-let g:netrw_nogx = 1
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
-
 " }}}
 
 " Autocmd Rules {{{
