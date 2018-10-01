@@ -232,6 +232,9 @@ iab xnow <c-r>=strftime("%Y-%m-%d %H:%M")<cr>
 "" editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
+"" plolyglott
+let g:polyglot_disabled = ['javascript', 'jsx']
+
 "" vim-grepper
 nnoremap <leader>/ :Grepper -tool rg<cr>
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
