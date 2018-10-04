@@ -1,6 +1,54 @@
 " vim:      set fenc=utf-8 ft=vim fdm=marker fmr={{{,}}}:
 " author:   Thomas Ruoff
 
+" Basics {{{
+set hidden
+set ttyfast
+set synmaxcol=512
+set modeline
+set nobackup
+set noswapfile
+
+set mouse=a
+set mousehide
+
+set wildmode=list:longest,full
+set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
+
+set splitright
+set splitbelow
+
+" yank delete change and put operations go by default in `"+` register
+" so in the systems clipboard accessable by CTRL-V on all OS types
+if has('mac')
+  set clipboard^=unnamed
+else
+  set clipboard^=unnamedplus
+endif
+
+" set ignorecase
+set infercase
+set smartcase
+set ignorecase
+set hlsearch
+
+set gdefault
+
+set number
+set report=0
+
+set showcmd
+set showmatch
+
+set spell
+set spellcapcheck=
+set complete+=kspell
+
+let mapleader=" "
+let maplocalleader=" "
+
+" }}}
+
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
@@ -121,51 +169,6 @@ Plug 'tweekmonster/startuptime.vim'
 call plug#end()
 " }}}
 
-" Basics {{{
-set hidden
-set ttyfast
-set synmaxcol=512
-set modeline
-set nobackup
-set noswapfile
-
-set mouse=a
-set mousehide
-
-set wildmode=list:longest,full
-set wildignore+=*.swp,*.bak,*.jpg,*.gif,*.png,*.git,
-
-set splitright
-set splitbelow
-
-" yank delete change and put operations go by default in `"+` register
-" so in the systems clipboard accessable by CTRL-V on all OS types
-if has('mac')
-  set clipboard^=unnamed
-else
-  set clipboard^=unnamedplus
-endif
-
-" set ignorecase
-set infercase
-set smartcase
-set ignorecase
-set hlsearch
-
-set gdefault
-
-set number
-set report=0
-
-set showcmd
-set showmatch
-
-set spell
-set spellcapcheck=
-set complete+=kspell
-
-" }}}
-
 " Local .vimrc {{{
 set exrc
 set secure
@@ -227,9 +230,6 @@ endif
 " }}}
 
 " Key mappings {{{
-
-let mapleader=" "
-let maplocalleader=" "
 
 "" fast escaping
 inoremap jj <ESC>
