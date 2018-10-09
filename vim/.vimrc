@@ -161,6 +161,7 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 " debug
 Plug 'tweekmonster/startuptime.vim'
 
+Plug 'wellle/targets.vim'
 " Investigate on custom text object, seems really usefull
 " Plug 'kana/vim-textobj-user'
 " Plug 'jceb/vim-textobj-uri' | Plug 'kana/vim-textobj-user'
