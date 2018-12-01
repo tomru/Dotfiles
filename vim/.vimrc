@@ -101,7 +101,7 @@ Plug 'Shougo/deoplete.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovi
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
 
-Plug 'francoiscabrol/ranger.vim' | Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
     let g:ranger_map_keys = 0
     nnoremap <leader>d :Ranger<CR>
     let g:ranger_replace_netrw = 1
