@@ -40,7 +40,6 @@ set report=0
 set showcmd
 set showmatch
 
-set spell
 set spellcapcheck=
 set complete+=kspell
 
@@ -293,19 +292,20 @@ augroup END
 "" txt, mail, tex
 augroup text
     autocmd!
-    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell textwidth=79 colorcolumn=80
 augroup END
 
 augroup markdown
     autocmd!
-    autocmd FileType markdown set wrap wm=2 nocindent spell
+    autocmd FileType markdown set wrap wm=2 nocindent spell textwidth=79 colorcolumn=80
 augroup END
 
-"" JavaScript
+"" Web
 augroup web
     autocmd!
     autocmd FileType javascript map <leader>r <esc>:TernRename<CR>
     autocmd BufRead,BufNewFile *.template set filetype=html.mustache syntax=mustache
+    autocmd BufRead,BufNewFile *.html set spell
 augroup END
 
 "" Help
