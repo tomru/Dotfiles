@@ -236,7 +236,7 @@ endif
 inoremap jj <ESC>
 
 "" delete buffer
-noremap <leader>bd :BClose<cr>
+noremap <leader>bd :bd<cr>
 
 "" indent visual selected code without unselecting and going back to normal mode
 vnoremap > >gv
