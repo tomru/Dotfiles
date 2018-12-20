@@ -3,3 +3,4 @@ vim/.vim/undos/*
 vim/.vim/backup/*
 vim/.vim/spell/*
 x11/.Xresources.compiled
+.netrwhist
