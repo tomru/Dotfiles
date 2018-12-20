@@ -3,7 +3,7 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi: 112
+Xft.dpi: 120
 Xft.autohint: false
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
@@ -23,21 +23,17 @@ URxvt*lineSpace:            0
 URxvt*skipBuiltinGlyphs:    true
 
 ! Fonts
-URxvt*font:                 xft:Hack:style=Regular:size=11, \
+URxvt*font:                 xft:Fira Code:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
-                            xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldFont:             xft:Hack:style=Bold:size=11, \
+URxvt*boldFont:             xft:Fira Code:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
-                            xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*italicFont:           xft:Hack:style=Regular:size=11, \
+URxvt*italicFont:           xft:Fira Code:style=Regular:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
-                            xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
-URxvt*boldItalicFont:       xft:Hack:style=Bold:size=11, \
+URxvt*boldItalicFont:       xft:Fira Code:style=Bold:size=11, \
                             xft:Droid Sans Fallback:style=Regular, \
-                            xft:Droid Sans Japanese:style=Regular, \
                             xft:unifont:style=Medium
 
 ! Scrollbar

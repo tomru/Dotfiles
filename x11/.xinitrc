@@ -13,7 +13,12 @@ fi
 
 eval $(gpg-agent -s --enable-ssh-support --daemon --write-env-file $HOME/.gpg-agent-info)
 
-xrdb $HOME/.Xresources
+DISPLAY_SCALE=1.25
+export GDK_DPI_SCALE=$DISPLAY_SCALE
+export QT_AUTO_SCREEN_SCALE_FACTOR=$DISPLAY_SCALE
+
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+
 
 case $1 in
     xterm)
