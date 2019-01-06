@@ -156,15 +156,10 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
+Plug 'wellle/targets.vim'
 
 " debug
 Plug 'tweekmonster/startuptime.vim'
-
-Plug 'wellle/targets.vim'
-" Investigate on custom text object, seems really usefull
-" Plug 'kana/vim-textobj-user'
-" Plug 'jceb/vim-textobj-uri' | Plug 'kana/vim-textobj-user'
-" Plug 'kana/vim-textobj-indent' | Plug 'kana/vim-textobj-user'
 
 call plug#end()
 " }}}
