@@ -73,16 +73,7 @@ Plug 'junegunn/fzf.vim'
     nnoremap <leader>f :GFiles<cr>
     nnoremap <leader>F :Files<cr>
     nnoremap <leader>c :Commits<cr>
-    nnoremap <leader>bc :BCommits<cr>
-    nnoremap <leader>t :Tags<cr>
-    nnoremap <leader>bt :BTags<cr>
-    nnoremap <leader>l :Lines<cr>
-    nnoremap <leader>bl :BLines<cr>
     nnoremap <leader>w :Windows<cr>
-    nnoremap <leader>bh :History<cr>
-    nnoremap <leader>ch :History:<cr>
-    nnoremap <leader>sh :History/<cr>
-    nnoremap <leader>vc :Commands<cr>
     nnoremap <leader>m :Maps<cr>
     nnoremap <leader>h :Helptags<cr>
 
