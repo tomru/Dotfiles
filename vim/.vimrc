@@ -150,6 +150,9 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'wellle/targets.vim'
 
 Plug 'janko-m/vim-test'
+  nmap <silent> <leader>t :TestNearest<CR>
+  nmap <silent> <leader>T :TestFile<CR>
+
 
 " debug
 Plug 'tweekmonster/startuptime.vim'
