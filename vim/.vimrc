@@ -152,12 +152,10 @@ Plug 'mxw/vim-jsx'
     let g:jsx_ext_required = 0
 
 Plug 'sheerun/vim-polyglot'
-    let g:polyglot_disabled = ['javascript', 'jsx']
+    let g:polyglot_disabled = ['javascript', 'jsx', 'latex']
 
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-    let g:tex_flavor = "latex"
-    let g:livepreview_previewer = 'zathura'
 
 " debug
 Plug 'tweekmonster/startuptime.vim'
