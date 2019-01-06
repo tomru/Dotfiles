@@ -158,6 +158,8 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 
 Plug 'wellle/targets.vim'
 
+Plug 'janko-m/vim-test'
+
 " debug
 Plug 'tweekmonster/startuptime.vim'
 
