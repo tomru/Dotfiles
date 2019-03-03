@@ -15,6 +15,11 @@ alias tl='tmux list-sessions'
 
 alias did="vim +'normal Go' +'r\!date' ~/did.txt"
 
+if [ $OSTYPE == 'linux-gnu' ]
+then
+    alias open="xdg-open"
+fi
+
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
