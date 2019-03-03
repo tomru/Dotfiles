@@ -3,16 +3,22 @@
 Generel stuff that I need to get into my muscle memory.
 
 * `C-W [hjkl]` - switch to window left, above, below, right
+* `C-W x` - switch to windows
+* `C-W C-o` - only current window, close others
 * `C-L` - clear highlight
 * `<C-o><C-o>` - Jump to last edited filed
 * `Control-o <<command>>` - For a single normal operation in insert mode 
-* `gx` - on URL to open it in the browser - WUUT
+* `gx` - on URL/file via xdg-open/open
 * `:g/<<some-pattern>>/d` delete lines containing pattern
 * `:v/<<some-pattern>>/d` delete lines NOT containing pattern
+* `g[;,]` - goto older/newer position in changelist
 
 ### edit macros
 * `"ip` to past register `i` in buffer
 * `"iyy` to yank into register `i`
+
+## search'n'replace
+* `\ze` in regular expressions to start from here with replacing
 
 ## Remember lately added config
 
