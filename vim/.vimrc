@@ -171,8 +171,8 @@ set list
 set breakindent
 
 set showbreak=↳
-set textwidth=79
-set colorcolumn=80
+set textwidth=0
+set colorcolumn=+1
 set nojoinspaces
 
 set tabstop=4
