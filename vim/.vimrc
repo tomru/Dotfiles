@@ -240,12 +240,7 @@ let g:sessions_dir = '~/.vim/sessions'
 exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
 exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
 
-"" session management
-let g:sessions_dir = '~/.vim/sessions'
-exec 'nnoremap <Leader>ss :mks! ' . g:sessions_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
-exec 'nnoremap <Leader>sr :so ' . g:sessions_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
-
-"" fast editing of the .vimrc
+"" fast editing of config
 nnoremap <silent> <leader>ev :e $MYVIMRC<cr>
 
 "" cheatsheet
@@ -282,12 +277,12 @@ augroup END
 "" txt, mail, tex
 augroup text
     autocmd!
-    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell textwidth=79 colorcolumn=80
+    autocmd FileType text,markdown,mail,tex set wrap wm=2 nocindent spell textwidth=79
 augroup END
 
 augroup markdown
     autocmd!
-    autocmd FileType markdown set wrap wm=2 nocindent spell textwidth=79 colorcolumn=80
+    autocmd FileType markdown set wrap wm=2 nocindent spell textwidth=79
 augroup END
 
 "" Web
@@ -315,6 +310,7 @@ endfunction
 " Reloading vim
 augroup VimReload
     autocmd!
+    autocmd BufRead $MYVIMRC :lcd fnamemodify(resolve($MYVIMRC), ':h:p')
     autocmd BufWritePost $MYVIMRC source $MYVIMRC | call LightlineReload()
 augroup END
 
