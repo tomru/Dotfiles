@@ -1,7 +1,15 @@
 # Unix
-alias ls='ls --color=tty'
+
+# Detect which `ls` flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU `ls`
+    ls_colorflag="--color"
+else # BSD like `ls`
+    ls_colorflag="-G"
+fi
+
+alias ls="ls ${ls_colorflag}"
 alias ll='ls -al'
-alias ff='find -name'
+alias ff='find . -name'
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias e='$EDITOR'
