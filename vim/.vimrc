@@ -310,7 +310,6 @@ endfunction
 " Reloading vim
 augroup VimReload
     autocmd!
-    autocmd BufRead $MYVIMRC :lcd fnamemodify(resolve($MYVIMRC), ':h:p')
     autocmd BufWritePost $MYVIMRC source $MYVIMRC | call LightlineReload()
 augroup END
 
