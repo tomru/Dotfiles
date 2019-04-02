@@ -91,13 +91,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'simnalamburt/vim-mundo'
     nnoremap <leader>u :MundoToggle
 
-Plug 'Shougo/deoplete.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
-    let g:deoplete#enable_at_startup=1
-    let g:deoplete#file#enable_buffer_path=1
-
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-    let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
-
 Plug 'w0rp/ale'
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -129,15 +122,6 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpForwardTrigger="<c-k>"
     let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
-Plug 'ludovicchabant/vim-gutentags'
-    let g:gutentags_cache_dir="~/.tags"
-    let g:gutentags_file_list_command = {
-        \ 'markers': {
-            \ '.git': 'git ls-files',
-            \ '.hg': 'hg files',
-            \ },
-        \ }
-
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
     let g:jsx_ext_required = 0
@@ -152,6 +136,25 @@ Plug 'wellle/targets.vim'
 Plug 'janko-m/vim-test'
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
+
+" vim 8 plugins
+if v:version >= 800
+    Plug 'Shougo/deoplete.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
+        let g:deoplete#enable_at_startup=1
+        let g:deoplete#file#enable_buffer_path=1
+
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+        let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
+
+    Plug 'ludovicchabant/vim-gutentags'
+        let g:gutentags_cache_dir="~/.tags"
+        let g:gutentags_file_list_command = {
+            \ 'markers': {
+                \ '.git': 'git ls-files',
+                \ '.hg': 'hg files',
+                \ },
+            \ }
+endif
 
 
 " debug
@@ -168,7 +171,9 @@ set secure
 " Text Formatting {{{
 set list
 
-set breakindent
+if v:version > 800
+    set breakindent
+endif
 
 set showbreak=↳
 set textwidth=0
