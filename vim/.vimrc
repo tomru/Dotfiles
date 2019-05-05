@@ -116,7 +116,7 @@ Plug 'itchyny/lightline.vim'
       call lightline#update()
     endfunction
 
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 
 Plug 'SirVer/ultisnips'
     let g:UltiSnipsExpandTrigger="<S-Tab>"
@@ -212,7 +212,7 @@ set undoreload=10000
 "
 set cursorline
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox8
 
 set number
 " }}}
