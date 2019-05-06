@@ -12,6 +12,8 @@
     eol=lf
     excludesfile = ~/.gitignore
 [alias]
+    rbm = rebase upstream/master
+    rbc = rebase --continue
     st = status
     co = checkout
     cm = commit
