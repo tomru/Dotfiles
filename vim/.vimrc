@@ -145,6 +145,7 @@ Plug 'sheerun/vim-polyglot'
     let g:polyglot_disabled = ['javascript', 'jsx', 'latex']
 
 Plug 'lervag/vimtex', { 'for': 'tex' }
+    let g:vimtex_view_method = 'zathura'
 
 Plug 'wellle/targets.vim'
 
