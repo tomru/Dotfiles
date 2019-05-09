@@ -91,15 +91,30 @@ Plug 'tpope/vim-projectionist'
 Plug 'simnalamburt/vim-mundo'
     nnoremap <leader>u :MundoToggle
 
-let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> [a <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
-    nmap <Leader>gq <Plug>(ale_fix)
     let g:ale_linters = {}
-    let g:ale_linters.javascript = ['eslint', 'tsserver']
+    let g:ale_linters.javascript = ['eslint']
     let g:ale_fixers = {}
     let g:ale_fixers.javascript = ['eslint']
+    let g:ale_fix_on_save = 1
+
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+    " Remap keys for gotos
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    " Use `[c` and `]c` to navigate diagnostics
+    nmap <silent> [d <Plug>(coc-diagnostic-prev)
+    nmap <silent> ]d <Plug>(coc-diagnostic-next)
+    " Remap for rename current word
+    nmap <leader>rn <Plug>(coc-rename)
+    " Remap for do codeAction of current line
+    nmap <leader>ac  <Plug>(coc-codeaction)
+    " Fix autofix problem of current line
+    nmap <leader>qf  <Plug>(coc-fix-current)
 
 Plug 'itchyny/lightline.vim'
     if filereadable(expand("~/.vim/lightline.vim"))
@@ -140,13 +155,6 @@ Plug 'janko-m/vim-test'
 
 " vim 8 plugins
 if v:version >= 800
-    Plug 'Shougo/deoplete.nvim' | Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
-        let g:deoplete#enable_at_startup=1
-        let g:deoplete#file#enable_buffer_path=1
-
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-        let g:deoplete#sources#ternjs#filetypes = [ 'jsx', 'javascript.jsx' ]
-
     Plug 'ludovicchabant/vim-gutentags'
         let g:gutentags_cache_dir="~/.tags"
         let g:gutentags_file_list_command = {
