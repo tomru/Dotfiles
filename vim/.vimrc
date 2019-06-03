@@ -151,6 +151,7 @@ Plug 'wellle/targets.vim'
 Plug 'janko-m/vim-test'
   nmap <silent> <leader>t :TestNearest<CR>
   nmap <silent> <leader>T :TestFile<CR>
+  let test#strategy = "vimterminal"
 
 " vim 8 plugins
 if v:version >= 800
