@@ -139,8 +139,7 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-    let g:jsx_ext_required = 0
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 Plug 'sheerun/vim-polyglot'
     let g:polyglot_disabled = ['javascript', 'jsx', 'latex']
