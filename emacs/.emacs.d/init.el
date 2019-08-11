@@ -86,5 +86,50 @@
   :config
   (evil-mode 1))
 
+(use-package org
+  :ensure t
+  :defer  t
+  :diminish org-indent-mode
+  :config
+  (let ((main-org-file "~/.emacs.d/todo/todo.org"))
+    (setq org-agenda-files (list main-org-file))
+    (setq org-default-notes-file main-org-file)
+    (setq org-capture-templates
+	  '(("i" "Idea" entry (file+headline main-org-file "Half-Baked Ideas")
+	     "* TODO %?")
+	    ("j" "Jira" entry (file+headline main-org-file "Jiras")
+	     "* TODO %^{prompt}%? :%\\1:\n  %c")
+	    ("l" "Listing" entry (file+headline main-org-file "Listings")
+	     "* TODO opt%^{prompt}%? :opp%\\1:\n  %c")
+	    ("t" "Todo" entry (file+headline main-org-file "Tasks")
+	     "* TODO %?"))))
+
+  (add-hook 'org-mode-hook
+	    (lambda()
+	      (org-indent-mode t)))
+
+  ;; syntax highlighting for code blocks
+  (setq org-src-fontify-natively t)
+
+  (setq org-use-fast-todo-selection t))
+
+(use-package org-bullets
+  :ensure t
+  :commands (org-bullets-mode)
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook ((org-mode . evil-org-mode)
+         (evil-org-mode . evil-org-set-key-theme))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
+
+;; replace emacs M-x with helm-M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
