@@ -33,14 +33,14 @@
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       pretty-code       ; replace bits of code with pretty symbols
+       ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
+       ;;window-select     ; visually switch windows
+       ;;workspaces        ; tab emulation, persistence & separate workspaces
 
        :editor
        (evil +everywhere); come to the dark side, we have cookies
@@ -51,7 +51,7 @@
        ;;multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
-       rotate-text       ; cycle region at point between text candidates
+       ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
 
        :emacs
@@ -59,8 +59,8 @@
         +ranger         ; bringing the goodness of ranger to dired
         +icons          ; colorful icons for dired-mode
         )
-       electric          ; smarter, keyword-based electric-indent
-       vc                ; version-control and Emacs, sitting in a tree
+       ;;electric          ; smarter, keyword-based electric-indent
+       ;;vc                ; version-control and Emacs, sitting in a tree
 
        :term
        ;;eshell            ; a consistent, cross-platform shell (WIP)
@@ -82,7 +82,9 @@
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        lsp
-       ;;macos             ; MacOS-specific commands
+       (:if IS-MAC
+           macos             ; MacOS-specific commands
+         )
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
@@ -127,8 +129,9 @@
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         +dragndrop       ; file drag & drop support
-        +ipython         ; ipython support for babel
+       ;; +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
+        +gnuplot
         +present)        ; using Emacs for presentations
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
