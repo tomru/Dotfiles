@@ -7,3 +7,8 @@
 
 (eval-after-load 'js2-mode
   '(add-hook 'js2-mode-hook #'add-node-modules-path))
+
+;; org-mode
+(setq org-directory "~/documents/org/")
+(setq org-clock-persist 'history)
+(org-clock-persistence-insinuate)
