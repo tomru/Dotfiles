@@ -12,5 +12,8 @@
 
 ;; org-mode
 (setq org-directory "~/documents/org/")
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-clock-persist 'history)
+(setq org-log-done 'time)
+
 (org-clock-persistence-insinuate)
