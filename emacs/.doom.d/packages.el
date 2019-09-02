@@ -7,3 +7,4 @@
 ;; (package! builtin-package :disable t)
 
 (package! add-node-modules-path)
+(package! exec-path-from-shell)
