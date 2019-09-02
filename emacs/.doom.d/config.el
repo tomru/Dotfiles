@@ -1,5 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+(setq doom-font (font-spec :family "Fira Code" :size 16))
+
 ;; Place your private configuration here
 
 (eval-after-load 'js-mode
