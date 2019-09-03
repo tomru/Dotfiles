@@ -15,5 +15,7 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-clock-persist 'history)
 (setq org-log-done 'time)
+(setq org-todo-keywords '((sequence "TODO(t)" "REVIEW(r)" "|" "DONE(d)")
+                          (sequence "[ ](T)" "[?](R)" "|" "[X](D)")))
 
 (org-clock-persistence-insinuate)
