@@ -1,8 +1,8 @@
-;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
-
-(setq doom-font (font-spec :family "Fira Code" :size 16))
+;;; .dotfiles/emacs/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
+(setq doom-font (font-spec :family "Fira Code" :size 16))
+
 
 (eval-after-load 'js-mode
   '(add-hook 'js-mode-hook #'add-node-modules-path))
