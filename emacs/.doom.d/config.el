@@ -3,6 +3,8 @@
 ;; Place your private configuration here
 (setq doom-font (font-spec :family "Fira Code" :size 16))
 
+(setq user-full-name "Thomas Ruoff")
+(setq user-mail-address "thomasruoff@gmail.com")
 
 (eval-after-load 'js-mode
   '(add-hook 'js-mode-hook #'add-node-modules-path))
