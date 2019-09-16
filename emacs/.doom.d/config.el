@@ -12,12 +12,13 @@
   '(add-hook 'js2-mode-hook #'add-node-modules-path))
 
 ;; org-mode
-(setq org-directory "~/documents/org/")
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-clock-persist 'history)
-(setq org-log-done 'time)
-(setq org-todo-keywords '((sequence "TODO(t)" "REVIEW(r)" "|" "DONE(d)")
-                          (sequence "[ ](T)" "[?](R)" "|" "[X](D)")))
+(after! org
+  (setq org-directory "~/documents/org/")
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-clock-persist 'history)
+  (setq org-log-done 'time)
+  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)")))
+  (org-clock-persistence-insinuate))
 
 
 (setq doom-font (font-spec :family "Fira Code" :size 18))
