@@ -14,9 +14,9 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ;;helm              ; the *other* search engine for love and life
+       ;;(helm +fuzzy)     ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy +fuzzy)        ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -37,7 +37,7 @@
        ;;pretty-code       ; replace bits of code with pretty symbols
        ;;tabs              ; an tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various languages
+       ;;unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
@@ -47,7 +47,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       (format +onsave)  ; automated prettiness
        ;;lispy             ; vim for lisp, for people who dont like vim
        ;;multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
@@ -59,10 +59,10 @@
        :emacs
        (dired +ranger)   ; making dired pretty [functional]
        ;;electric          ; smarter, keyword-based electric-indent
-       ;;vc                ; version-control and Emacs, sitting in a tree
+       vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell            ; a consistent, cross-platform shell (WIP)
+       eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
        ;;vterm             ; another terminals in Emacs
@@ -71,13 +71,13 @@
        ;;ansible
        ;;debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
-       ;;docker
+       docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
        flycheck          ; tasing you for every semicolon you forget
        flyspell          ; tasing you for misspelling mispelling
-       ;;gist              ; interacting with github gists
+       gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
        lsp
@@ -86,7 +86,7 @@
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        ;;rgb               ; creating color strings
        ;;terraform         ; infrastructure as code
@@ -159,7 +159,7 @@
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
-       ;;calendar
+       calendar
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
