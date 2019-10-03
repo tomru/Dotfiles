@@ -94,6 +94,9 @@
    "SPC" '(counsel-M-x :which-key "M-x")
    "w" '(hydra-window/body :which-key "Window")
 
+   "g" '(:ignore t :which-key "Git")
+   "gg" '(magit :which-key "Magit Status")
+
    "f" '(:ignore t :which-key "Files")
    "ff" '(counsel-git :which-key "find in git dir")
    "fd" '(find-user-init-file :which-key "open init file")
@@ -102,9 +105,20 @@
 ;; evil
 (use-package evil
   :ensure t
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map "jk" 'evil-normal-state))
+
+(use-package evil-magit
+  :ensure t)
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 ;; which key
 (use-package which-key
@@ -184,7 +198,6 @@
 (use-package forge
   :ensure t)
 
-
 ;; org
 (use-package f
   :ensure t)
@@ -196,6 +209,15 @@
 (use-package org-bullets
   :ensure t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package doom-themes
+  :ensure t
+  :config (load-theme 'doom-one t))
+
+(use-package all-the-icons)
+(use-package doom-modeline
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
 
 (add-hook 'org-mode-hook 'flyspell-mode)
 (add-hook 'text-mode-hook 'flyspell-mode)
