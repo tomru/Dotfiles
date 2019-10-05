@@ -1,3 +1,7 @@
 elpa
 forge-database.sqlite
 transient
+auto-save-list
+elpa*
+emacs.el
+projectile-bookmarks.eld

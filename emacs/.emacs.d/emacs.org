@@ -1,0 +1,238 @@
+#+TITLE: My Emacs Config
+
+* bootstrapping
+  I've manly been following the [[https://github.com/danielmai/.emacs.d][Daniel Mai's approach]] to bootstrap the config.
+
+* Private Settings
+
+  #+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Thomas Ruoff"
+      user-mail-address "thomasruoff@gmail.com"
+      calendar-latitude 48.286993
+      calendar-longitude 8.726407
+      calendar-location-name "Rosenfeld, Germany")
+  #+END_SRC
+
+* Customize settings
+  Set up the customize file to its own separate file, instead of saving customize settings in init.el.
+
+  - [ ] TODO do not load when file is missing
+
+  #+BEGIN_SRC emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file)
+  #+END_SRC
+
+* looks
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+    :ensure t
+    :config (load-theme 'doom-one t))
+
+  (use-package all-the-icons)
+  (use-package doom-modeline
+    :ensure t
+    :hook (after-init . doom-modeline-mode))
+  #+END_SRC
+* Functions
+
+  #+BEGIN_SRC emacs-lisp
+    (defun find-user-init-file ()
+      "Edit the `user-init-file', in another window."
+      (interactive)
+      (find-file "~/.dotfiles/emacs/.emacs.d/emacs.org"))
+  #+END_SRC
+
+* backups
+
+  #+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+  (setq auto-save-default nil)
+  #+END_SRC
+
+* Splash Screen
+
+  #+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-screen t)
+  (setq initial-scratch-message "* Now, go wild!")
+  #+END_SRC
+
+* editor
+  #+BEGIN_SRC emacs-lisp
+  (setq-default tab-width 4
+                tab-always-indent t
+                indent-tabs-mode nil
+                fill-column 80)
+
+  #+END_SRC
+
+* Word wrapping
+  #+BEGIN_SRC emacs-lisp
+  (setq-default word-wrap t
+                truncate-lines t
+                truncate-partial-width-windows nil)
+
+  (setq sentence-end-double-space nil
+        delete-trailing-lines nil
+        require-final-newline t
+        tabify-regexp "^\t* [ \t]+")  ; for :retab
+  #+END_SRC
+
+* keybindings
+  - [ ] figure out how to define mode keybindings with general
+  #+BEGIN_SRC emacs-lisp
+  (use-package general
+    :ensure t
+    :config
+    (general-define-key
+     :states '(normal visual insert emacs)
+     :prefix "SPC"
+     :non-normal-prefix "M-SPC"
+     "/" '(counsel-rg :wich-key "rg")
+     "TAB" '(ivy-switch-buffer :which-key "prev buffer")
+     "SPC" '(counsel-M-x :which-key "M-x")
+     "w" '(hydra-window/body :which-key "Window")
+
+     "g" '(:ignore t :which-key "Git")
+     "gg" '(magit :which-key "Magit Status")
+     
+     "h" '(:ignore t :which-key "Help")
+     "hc" '(apropos-command :which-key "Command")
+     "hv" '(apropos-variable :which-key "Variable")
+
+     "f" '(:ignore t :which-key "Files")
+     "ff" '(counsel-git :which-key "find in git dir")
+     "fd" '(find-user-init-file :which-key "open init file")
+     
+     "m" '(:ignore t :which-key "Mode")
+     ;"m'" '(:major-modes org-mode :which-key "Edit code block")
+     ))
+  #+END_SRC
+
+* evil
+  #+BEGIN_SRC emacs-lisp
+  (use-package evil
+    :ensure t
+    :init
+    (setq evil-want-keybinding nil)
+    :config
+    (evil-mode 1)
+    (define-key evil-insert-state-map "jk" 'evil-normal-state))
+
+  (use-package evil-magit
+    :ensure t)
+
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init))
+  #+END_SRC
+
+* which key
+  #+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :init
+    (setq which-key-separator " ")
+    (setq which-key-prefix-prefix "+")
+    :config
+    (which-key-mode 1))
+  #+END_SRC
+
+* completion 
+  #+BEGIN_SRC emacs-lisp
+  (use-package company
+    :ensure t 
+    :init (add-hook 'after-init-hook 'global-company-mode))
+  #+END_SRC
+* ivy
+  #+BEGIN_SRC emacs-lisp
+  (use-package ivy
+    :ensure t
+    :defer 1
+    :init
+    (setq ivy-re-builders-alist
+          '((counsel-ag . ivy--regex-plus)
+            (counsel-rg . ivy--regex-plus)
+            (counsel-grep . ivy--regex-plus)
+            (swiper . ivy--regex-plus)
+            (swiper-isearch . ivy--regex-plus)
+            ; Ignore order for non-fuzzy searches by default
+            ;(t . ivy--regex-ignore-order)
+            ))
+    :config
+    (setq ivy-height 15
+          ivy-wrap t
+          ivy-fixed-height-minibuffer t
+          projectile-completion-system 'ivy
+          ; Don't use ^ as initial input
+          ivy-initial-inputs-alist nil
+          ; disable magic slash on non-match
+          ivy-magic-slash-non-match-action nil
+          ; don't show recent files in switch-buffer
+          ivy-use-virtual-buffers nil
+          ; ...but if that ever changes, show their full path
+          ivy-virtual-abbreviate 'full
+          ; don't quit minibuffer on delete-error
+          ivy-on-del-error-function nil
+          ; enable ability to select prompt (alternative to `ivy-immediate-done')
+          ivy-use-selectable-prompt t)
+    (ivy-mode +1))
+
+  (use-package ivy-rich
+    :after ivy
+    :ensure t
+    :config
+    (ivy-rich-mode +1))
+
+  ;(use-package flx
+  ;  :defer t  ; is loaded by ivy
+  ;  :init
+  ;  (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-fuzzy)
+  ;  (setq ivy-initial-inputs-alist nil
+  ;        ivy-flx-limit 10000))
+
+  (use-package counsel
+    :ensure t)
+
+  (use-package counsel-projectile
+    :ensure t
+    :defer t)
+  #+END_SRC
+
+* Projectile
+  #+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init
+    (setq projectile-require-project-root nil))
+  #+END_SRC
+
+* git
+  #+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind ("C-x g" . magit-status))
+
+  (use-package forge
+    :ensure t)
+
+  (use-package git-gutter
+    :ensure t)
+  #+END_SRC
+
+* org
+  #+BEGIN_SRC emacs-lisp
+  (use-package f
+    :ensure t)
+  (use-package org
+    :ensure t
+    :config
+    (setq org-directory "~/org/"))
+
+  (use-package org-bullets
+    :ensure t
+    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  #+END_SRC
+
