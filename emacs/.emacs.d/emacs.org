@@ -16,15 +16,6 @@
     :hook (after-init . doom-modeline-mode))
   #+END_SRC
 
-* Functions
-
-  #+BEGIN_SRC emacs-lisp
-    (defun find-user-init-file ()
-      "Edit the `user-init-file', in another window."
-      (interactive)
-      (find-file "~/.dotfiles/emacs/.emacs.d/emacs.org"))
-  #+END_SRC
-
 * Backups
 
   #+BEGIN_SRC emacs-lisp
@@ -81,6 +72,9 @@
        "b" '(ivy-switch-buffer :which-key "Switch Buffer")
        "SPC" '(counsel-M-x :which-key "M-x")
        "r" '(restart-emacs :which-key "Restart")
+       "a" '(org-agenda :which-key "Org Agenda")
+       "n" '((lambda () (interactive) (find-file "~/org/notes.org"))
+             :which-key "Notes")
 
        "g" '(:ignore t :which-key "Git")
        "gg" '(magit :which-key "Magit Status")
@@ -91,7 +85,8 @@
 
        "f" '(:ignore t :which-key "Files")
        "ff" '(counsel-git :which-key "find in git dir")
-       "fd" '(find-user-init-file :which-key "open init file")
+       "fd" '((lambda () (interactive) (find-file "~/.emacs.d/emacs.org"))
+             :which-key "open config file")
 
        "m" '(:ignore t :which-key "Mode")
        "m'" '(org-edit-src-code :which-key "Edit code block")
@@ -221,17 +216,30 @@
 * Org-Mode
 
   #+BEGIN_SRC emacs-lisp
-  (use-package f
-    :ensure t)
-  (use-package org
-    :ensure t
-    :config
-    (setq org-directory "~/org/")
-    (org-indent-mode t))
+      (use-package f
+        :ensure t)
+      (use-package org
+        :ensure t
+        :init
+        (setq org-agenda-files (list "~/org/"))
+        :config
+        (setq org-archive-location "~/org/archive.org::* From %s")
+        (org-indent-mode t))
 
-  (use-package org-bullets
-    :ensure t
-    :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+      (use-package org-bullets
+        :ensure t
+        :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+      (use-package evil-org
+        :ensure t
+        :after org
+        :config
+        (add-hook 'org-mode-hook 'evil-org-mode)
+        (add-hook 'evil-org-mode-hook
+                    (lambda ()
+                    (evil-org-set-key-theme)))
+        (require 'evil-org-agenda)
+        (evil-org-agenda-set-keys))
   #+END_SRC
 
 * Restart
