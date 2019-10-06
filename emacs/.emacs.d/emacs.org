@@ -68,7 +68,7 @@
        :states '(normal visual insert emacs)
        :prefix "SPC"
        :non-normal-prefix "M-SPC"
-       "/" '(counsel-rg :wich-key "rg")
+       "/" '(counsel-projectile-rg :wich-key "Fulltext Search")
        "b" '(ivy-switch-buffer :which-key "Switch Buffer")
        "SPC" '(counsel-M-x :which-key "M-x")
        "r" '(restart-emacs :which-key "Restart")
