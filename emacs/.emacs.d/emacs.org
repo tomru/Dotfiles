@@ -96,8 +96,15 @@
     :init
     (setq evil-want-keybinding nil)
     :config
-    (evil-mode 1)
-    (define-key evil-insert-state-map "jk" 'evil-normal-state))
+    (evil-mode 1))
+  
+  (use-package evil-escape
+    :ensure t
+    :config
+    (setq-default
+      evil-escape-key-sequence "jk"
+      evil-escape-delay 0.2)
+    (evil-escape-mode 1))
 
   (use-package evil-magit
     :ensure t)
