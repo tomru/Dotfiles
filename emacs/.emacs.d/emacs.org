@@ -138,8 +138,6 @@
             (counsel-grep . ivy--regex-plus)
             (swiper . ivy--regex-plus)
             (swiper-isearch . ivy--regex-plus)
-            ; Ignore order for non-fuzzy searches by default
-            ;(t . ivy--regex-ignore-order)
             ))
     :config
     (setq ivy-height 15
@@ -157,7 +155,9 @@
           ; don't quit minibuffer on delete-error
           ivy-on-del-error-function nil
           ; enable ability to select prompt (alternative to `ivy-immediate-done')
-          ivy-use-selectable-prompt t)
+          ivy-use-selectable-prompt t
+          ; use fuzzy matching
+          ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
     (ivy-mode +1))
 
   (use-package ivy-rich
@@ -165,13 +165,6 @@
     :ensure t
     :config
     (ivy-rich-mode +1))
-
-  ;(use-package flx
-  ;  :defer t  ; is loaded by ivy
-  ;  :init
-  ;  (setf (alist-get 't ivy-re-builders-alist) #'ivy--regex-fuzzy)
-  ;  (setq ivy-initial-inputs-alist nil
-  ;        ivy-flx-limit 10000))
 
   (use-package counsel
     :ensure t)
