@@ -3,27 +3,7 @@
 * bootstrapping
   I've manly been following the [[https://github.com/danielmai/.emacs.d][Daniel Mai's approach]] to bootstrap the config.
 
-* Private Settings
-
-  #+BEGIN_SRC emacs-lisp
-  (setq user-full-name "Thomas Ruoff"
-      user-mail-address "thomasruoff@gmail.com"
-      calendar-latitude 48.286993
-      calendar-longitude 8.726407
-      calendar-location-name "Rosenfeld, Germany")
-  #+END_SRC
-
-* Customize settings
-  Set up the customize file to its own separate file, instead of saving customize settings in init.el.
-
-  - [ ] TODO do not load when file is missing
-
-  #+BEGIN_SRC emacs-lisp
-  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-  (load custom-file)
-  #+END_SRC
-
-* looks
+* Looks
   #+BEGIN_SRC emacs-lisp
   (use-package doom-themes
     :ensure t
@@ -43,7 +23,7 @@
       (find-file "~/.dotfiles/emacs/.emacs.d/emacs.org"))
   #+END_SRC
 
-* backups
+* Backups
 
   #+BEGIN_SRC emacs-lisp
   (setq make-backup-files nil)
@@ -54,10 +34,10 @@
 
   #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-screen t)
-  (setq initial-scratch-message "* Now, go wild!")
+  (setq initial-scratch-message "; Now, go wild!")
   #+END_SRC
 
-* editor
+* Editor
   #+BEGIN_SRC emacs-lisp
   (setq-default tab-width 4
                 tab-always-indent t
@@ -78,35 +58,35 @@
         tabify-regexp "^\t* [ \t]+")  ; for :retab
   #+END_SRC
 
-* keybindings
+* Keybindings
   - [ ] figure out how to define mode keybindings with general
   #+BEGIN_SRC emacs-lisp
-  (use-package general
-    :ensure t
-    :config
-    (general-define-key
-     :states '(normal visual insert emacs)
-     :prefix "SPC"
-     :non-normal-prefix "M-SPC"
-     "/" '(counsel-rg :wich-key "rg")
-     "TAB" '(ivy-switch-buffer :which-key "prev buffer")
-     "SPC" '(counsel-M-x :which-key "M-x")
-     "w" '(hydra-window/body :which-key "Window")
+    (use-package general
+      :ensure t
+      :config
+      (general-define-key
+       :states '(normal visual insert emacs)
+       :prefix "SPC"
+       :non-normal-prefix "M-SPC"
+       "/" '(counsel-rg :wich-key "rg")
+       "b" '(ivy-switch-buffer :which-key "Switch Buffer")
+       "SPC" '(counsel-M-x :which-key "M-x")
+       "r" '(restart-emacs :which-key "Restart")
 
-     "g" '(:ignore t :which-key "Git")
-     "gg" '(magit :which-key "Magit Status")
-     
-     "h" '(:ignore t :which-key "Help")
-     "hc" '(apropos-command :which-key "Command")
-     "hv" '(apropos-variable :which-key "Variable")
+       "g" '(:ignore t :which-key "Git")
+       "gg" '(magit :which-key "Magit Status")
 
-     "f" '(:ignore t :which-key "Files")
-     "ff" '(counsel-git :which-key "find in git dir")
-     "fd" '(find-user-init-file :which-key "open init file")
-     
-     "m" '(:ignore t :which-key "Mode")
-     ;"m'" '(:major-modes org-mode :which-key "Edit code block")
-     ))
+       "h" '(:ignore t :which-key "Help")
+       "hc" '(counsel-describe-function :which-key "Command")
+       "hv" '(counsel-describe-variable :which-key "Variable")
+
+       "f" '(:ignore t :which-key "Files")
+       "ff" '(counsel-git :which-key "find in git dir")
+       "fd" '(find-user-init-file :which-key "open init file")
+
+       "m" '(:ignore t :which-key "Mode")
+       "m'" '(org-edit-src-code :which-key "Edit code block")
+       ))
   #+END_SRC
 
 * evil
@@ -129,7 +109,7 @@
     (evil-collection-init))
   #+END_SRC
 
-* which key
+* which-key
   #+BEGIN_SRC emacs-lisp
   (use-package which-key
     :ensure t
@@ -140,10 +120,10 @@
     (which-key-mode 1))
   #+END_SRC
 
-* completion 
+* Completion
   #+BEGIN_SRC emacs-lisp
   (use-package company
-    :ensure t 
+    :ensure t
     :init (add-hook 'after-init-hook 'global-company-mode))
   #+END_SRC
 * ivy
@@ -209,7 +189,7 @@
     (setq projectile-require-project-root nil))
   #+END_SRC
 
-* git
+* Git
   #+BEGIN_SRC emacs-lisp
   (use-package magit
     :ensure t
@@ -222,17 +202,42 @@
     :ensure t)
   #+END_SRC
 
-* org
+* Org-Mode
   #+BEGIN_SRC emacs-lisp
   (use-package f
     :ensure t)
   (use-package org
     :ensure t
     :config
-    (setq org-directory "~/org/"))
+    (setq org-directory "~/org/")
+    (org-indent-mode t))
 
   (use-package org-bullets
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  #+END_SRC
+
+* Restart
+  #+BEGIN_SRC emacs-lisp
+  (use-package restart-emacs :ensure t)
+  #+END_SRC
+* Customize settings
+  Set up the customize file to its own separate file, instead of saving customize settings in init.el.
+
+  - [ ] TODO do not load when file is missing
+
+  #+BEGIN_SRC emacs-lisp
+  (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (load custom-file)
+  #+END_SRC
+
+* Private Settings
+
+  #+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Thomas Ruoff"
+      user-mail-address "thomasruoff@gmail.com"
+      calendar-latitude 48.286993
+      calendar-longitude 8.726407
+      calendar-location-name "Rosenfeld, Germany")
   #+END_SRC
 
