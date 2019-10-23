@@ -238,7 +238,7 @@ endif
 " Key mappings {{{
 
 "" fast escaping
-inoremap jj <ESC>
+inoremap jk <ESC>
 
 "" delete buffer
 noremap <leader>d :bd<cr>
