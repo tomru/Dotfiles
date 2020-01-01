@@ -46,7 +46,7 @@
        :editor
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
-       fold              ; (nigh) universal code folding
+       ;;fold              ; (nigh) universal code folding
        (format +onsave)  ; automated prettiness
        ;;lispy             ; vim for lisp, for people who dont like vim
        ;;multiple-cursors  ; editing in many places at once
@@ -57,7 +57,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       (dired +ranger)   ; making dired pretty [functional]
+       (dired)   ; making dired pretty [functional]
        ;;electric          ; smarter, keyword-based electric-indent
        vc                ; version-control and Emacs, sitting in a tree
 
