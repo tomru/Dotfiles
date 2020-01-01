@@ -2,6 +2,9 @@
 
 ;; Place your private configuration here
 
+(setq doom-font (font-spec :family "Fira Code" :size 18))
+(color-theme-sanityinc-tomorrow-eighties)
+
 (setq user-full-name "Thomas Ruoff")
 (setq user-mail-address "thomasruoff@gmail.com")
 
@@ -21,4 +24,3 @@
   (org-clock-persistence-insinuate))
 
 
-(setq doom-font (font-spec :family "Fira Code" :size 18))
