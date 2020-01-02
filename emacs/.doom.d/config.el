@@ -14,6 +14,8 @@
 (eval-after-load 'js2-mode
   '(add-hook 'js2-mode-hook #'add-node-modules-path))
 
+(setq projectile-project-search-path '("~/projects"))
+
 ;; org-mode
 (after! org
   (setq org-directory "~/documents/org/")
