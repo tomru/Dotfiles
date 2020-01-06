@@ -9,3 +9,4 @@
 (package! add-node-modules-path)
 (package! exec-path-from-shell)
 (package! color-theme-sanityinc-tomorrow)
+(package! direnv)
