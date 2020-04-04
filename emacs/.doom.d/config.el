@@ -8,8 +8,6 @@
 (setq user-full-name "Thomas Ruoff")
 (setq user-mail-address "thomasruoff@gmail.com")
 
-(direnv-mode 1)
-
 (eval-after-load 'js-mode
   '(add-hook 'js-mode-hook #'add-node-modules-path))
 
@@ -20,11 +18,29 @@
 
 ;; org-mode
 (after! org
-  (setq org-directory "~/documents/org/")
+  (setq org-directory "~/org/")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-clock-persist 'history)
   (setq org-log-done 'time)
   (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)")))
-  (org-clock-persistence-insinuate))
+  (setq org-capture-templates '(("t" "Personal todo" entry
+                                      (file+headline +org-capture-todo-file "Inbox")
+                                      "* [ ] %?\n%i\n%a" :prepend t)
+                                     ("n" "Personal notes" entry
+                                         (file+headline +org-capture-notes-file "Inbox")
+                                         "* %u %?\n%i\n%a" :prepend t)
+                                     ("j" "Journal" entry
+                                         (file+datetree+prompt +org-capture-journal-file)
+                                         "* %U %?\n%i\n%a" :prepend t)
+                                     ("p" "Templates for projects")
+                                     ("pt" "Project-local todo" entry
+                                         (file+headline +org-capture-project-todo-file "Inbox")
+                                         "* TODO %?\n%i\n%a" :prepend t)
+                                     ("pn" "Project-local notes" entry
+                                         (file+headline +org-capture-project-notes-file "Inbox")
+                                         "* %U %?\n%i\n%a" :prepend t)
+                                     ("pc" "Project-local changelog" entry
+                                         (file+headline +org-capture-project-changelog-file "Unreleased")
+                                         "* %U %?\n%i\n%a" :prepend t))))
 
 
