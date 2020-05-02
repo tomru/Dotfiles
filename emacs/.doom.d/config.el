@@ -24,6 +24,7 @@
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-clock-persist 'history)
   (setq org-log-done 'time)
+  (setq org-agenda-skip-scheduled-if-done t)
   (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)")))
   (setq org-capture-templates '(("t" "Personal todo" entry
                                       (file+headline +org-capture-todo-file "Inbox")
