@@ -8,6 +8,8 @@
 (setq user-full-name "Thomas Ruoff")
 (setq user-mail-address "thomasruoff@gmail.com")
 
+(setq fancy-splash-image "~/.doom.d/emacs-doom-dashboard.png")
+
 (eval-after-load 'js-mode
   '(add-hook 'js-mode-hook #'add-node-modules-path))
 
