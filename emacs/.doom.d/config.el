@@ -30,7 +30,7 @@
                                          (file+headline +org-capture-notes-file "Inbox")
                                          "* %u %?\n%i\n%a" :prepend t)
                                      ("j" "Journal" entry
-                                         (file+datetree+prompt +org-capture-journal-file)
+                                         (file+olp+datetree +org-capture-journal-file)
                                          "* %U %?\n%i\n%a" :prepend t)
                                      ("p" "Templates for projects")
                                      ("pt" "Project-local todo" entry
