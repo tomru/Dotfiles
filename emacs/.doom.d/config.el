@@ -25,7 +25,7 @@
   (setq org-clock-persist 'history)
   (setq org-log-done 'time)
   (setq org-agenda-skip-scheduled-if-done t)
-  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "LATR(l)" "|" "DONE(d)" "DROP(p)")))
   (setq org-capture-templates '(("t" "Personal todo" entry
                                       (file+headline +org-capture-todo-file "Inbox")
                                       "* [ ] %?\n%i\n%a" :prepend t)
