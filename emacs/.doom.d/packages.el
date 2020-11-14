@@ -7,3 +7,6 @@
 ;; (package! builtin-package :disable t)
 
 (package! color-theme-sanityinc-tomorrow)
+
+(package! doom-snippets :ignore t)
+(package! yasnippet-snippets)

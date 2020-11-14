@@ -10,13 +10,16 @@
 
 (setq fancy-splash-image "~/.doom.d/emacs-doom-dashboard.png")
 
-(eval-after-load 'js-mode
-  '(add-hook 'js-mode-hook #'add-node-modules-path))
-
-(eval-after-load 'js2-mode
-  '(add-hook 'js2-mode-hook #'add-node-modules-path))
+;;(eval-after-load 'js-mode
+;;  '(add-hook 'js-mode-hook #'add-node-modules-path))
+;;
+;;(eval-after-load 'js2-mode
+;;  '(add-hook 'js2-mode-hook #'add-node-modules-path))
 
 (setq projectile-project-search-path '("~/projects"))
+
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+(setq-hook! 'typescript-tsx-mode-hook +format-with-lsp nil)
 
 ;; org-mode
 (after! org
@@ -25,7 +28,7 @@
   (setq org-clock-persist 'history)
   (setq org-log-done 'time)
   (setq org-agenda-skip-scheduled-if-done t)
-  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "LATR(l)" "|" "DONE(d)" "DROP(p)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "WAIT(w)" "LATR(l)" "|" "DONE(d)" "CANC(c)")))
   (setq org-capture-templates '(("t" "Personal todo" entry
                                       (file+headline +org-capture-todo-file "Inbox")
                                       "* [ ] %?\n%i\n%a" :prepend t)
