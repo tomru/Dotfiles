@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: beforeEachBlock
+# key: bfe
+# --
+
+beforeEach('$1', () => {
+  $0
+})

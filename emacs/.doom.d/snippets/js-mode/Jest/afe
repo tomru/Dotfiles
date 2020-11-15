@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: afterEachBlock
+# key: afe
+# --
+
+afterEach('$1', () => {
+  $0
+})
