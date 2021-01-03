@@ -90,8 +90,8 @@ Plug 'editorconfig/editorconfig-vim'
 
 Plug 'tpope/vim-projectionist'
 
-Plug 'simnalamburt/vim-mundo'
-    nnoremap <leader>u :MundoToggle
+Plug 'mbbill/undotree'
+    nnoremap <leader>u :UndotreeToggle<cr>
 
 Plug 'w0rp/ale'
     nmap <silent> [a <Plug>(ale_previous_wrap)
