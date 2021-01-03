@@ -97,7 +97,7 @@ Plug 'w0rp/ale'
     let g:ale_fixers.javascript = ['eslint']
     let g:ale_fix_on_save = 1
 
-Plug 'neoclide/coc.nvim', {'tag': '*'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Remap keys for gotos
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
