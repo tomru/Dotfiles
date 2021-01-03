@@ -76,12 +76,9 @@ Plug 'junegunn/fzf.vim'
     nnoremap <leader>w :Windows<cr>
     nnoremap <leader>m :Maps<cr>
     nnoremap <leader>h :Helptags<cr>
-
-Plug 'mhinz/vim-grepper'
-    nnoremap <leader>/ :Grepper -tool rg<cr>
-    nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-    let g:grepper = {}
-    let g:grepper.tools = ['rg', 'git', 'ag', 'grep']
+    nnoremap <leader>/ :Rg<cr>
+    nnoremap <leader>* :Rg <C-r><C-a><cr>
+    nnoremap <leader>C :Commands<cr>
 
 Plug 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
