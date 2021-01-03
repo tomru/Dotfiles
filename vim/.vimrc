@@ -82,6 +82,9 @@ Plug 'junegunn/fzf.vim'
     nnoremap <leader>* :Rg <C-r><C-a><cr>
     nnoremap <leader>C :Commands<cr>
 
+Plug 'junegunn/vim-peekaboo'
+Plug 'machakann/vim-highlightedyank'
+
 Plug 'editorconfig/editorconfig-vim'
     let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
