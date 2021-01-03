@@ -4,6 +4,8 @@
 " Basics {{{
 set hidden
 set ttyfast
+set lazyredraw
+set updatetime=300
 set synmaxcol=512
 set modeline
 set nobackup
